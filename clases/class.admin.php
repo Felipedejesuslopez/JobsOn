@@ -1,58 +1,50 @@
 <?php
-class reclutador
+class admin
 {
     protected $id;
-    protected $user;
-    protected $email;
+    protected $username;
     protected $password;
-    protected $cedula;
+    protected $email;
     protected $name;
-    protected $telefono;
-    protected $foto;
     protected $nacimiento;
+    protected $ciudad;
+    protected $telefono;
+    protected $respaldo;
 
-    protected $ingreso;
-    protected $estatus;
-
-    public function __construct($id, $user, $email, $password, $cedula, $name, $telefono, $foto, $nacimiento, $ingreso, $estatus)
+    public function __construct($id, $username, $password, $email, $name, $nacimiento, $ciudad, $telefono, $respaldo)
     {
         $this->id = $id;
-        $this->user = $user;
-        $this->email = $email;
+        $this->username = $username;
         $this->password = $password;
-        $this->cedula = $cedula;
+        $this->email = $email;
         $this->name = $name;
-        $this->telefono = $telefono;
-        $this->foto = $foto;
         $this->nacimiento = $nacimiento;
-        $this->ingreso = $ingreso;
-        $this->estatus = $estatus;
+        $this->ciudad = $ciudad;
+        $this->telefono = $telefono;
+        $this->respaldo = $respaldo;
     }
-
 
     public function create()
     {
         $bd = new Conexion();
-        $ct = "SHOW TABLES LIKE 'reclutadores'";
+        $ct = "SHOW TABLES LIKE 'admins'";
         $h = $bd->query($ct);
 
-        $sql = "INSERT INTO reclutadores (USER, EMAIL, PASSWORD, CEDULA, NAME, TELEFONO, FOTO, NACIMIENTO, INGRESO, ESTATUS) 
-                VALUES ('{$this->user}', '{$this->email}', '{$this->password}', '{$this->cedula}', '{$this->name}', '{$this->telefono}', '{$this->foto}', '{$this->nacimiento}', '{$this->ingreso}', '{$this->estatus}')";
+        $sql = "INSERT INTO admins (USERNAME, PASSWORD, EMAIL, NAME, NACIMIENTO, CIUDAD, TELEFONO, RESPALDO) 
+                VALUES ('{$this->username}', '{$this->password}', '{$this->email}', '{$this->name}', '{$this->nacimiento}', '{$this->ciudad}', '{$this->telefono}', '{$this->respaldo}')";
 
         if ($h->num_rows < 1) {
-            // La tabla 'reclutadores' no existe, crea la tabla y luego realiza la inserción
-            $sqlCreateTable = "CREATE TABLE reclutadores (
+            // La tabla 'admins' no existe, crea la tabla y luego realiza la inserción
+            $sqlCreateTable = "CREATE TABLE admins (
                                 ID INT AUTO_INCREMENT PRIMARY KEY,
-                                USER VARCHAR(255),
-                                EMAIL VARCHAR(255),
+                                USERNAME VARCHAR(255),
                                 PASSWORD VARCHAR(255),
-                                CEDULA VARCHAR(255),
+                                EMAIL VARCHAR(255),
                                 NAME VARCHAR(255),
-                                TELEFONO VARCHAR(20),
-                                FOTO VARCHAR(255),
                                 NACIMIENTO DATE,
-                                INGRESO DATE,
-                                ESTATUS VARCHAR(50)
+                                CIUDAD VARCHAR(255),
+                                TELEFONO VARCHAR(20),
+                                RESPALDO TEXT
                             )";
 
             $bd->query($sqlCreateTable);
@@ -67,10 +59,10 @@ class reclutador
 
         if ($id !== null) {
             // Si se proporciona un ID, obtén ese registro específico
-            $sql = "SELECT * FROM reclutadores WHERE ID = {$id}";
+            $sql = "SELECT * FROM admins WHERE ID = {$id}";
         } else {
             // Si no se proporciona un ID, obtén todos los registros ordenados por ID de mayor a menor
-            $sql = "SELECT * FROM reclutadores ORDER BY ID DESC";
+            $sql = "SELECT * FROM admins ORDER BY ID DESC";
         }
 
         $result = $bd->query($sql);
@@ -90,7 +82,7 @@ class reclutador
 
         $setClause = rtrim($setClause, ', ');
 
-        $sql = "UPDATE reclutadores SET {$setClause} WHERE ID = {$id}";
+        $sql = "UPDATE admins SET {$setClause} WHERE ID = {$id}";
 
         $bd->query($sql);
 
@@ -100,7 +92,7 @@ class reclutador
     public function delete($id)
     {
         $bd = new Conexion();
-        $sql = "DELETE FROM reclutadores WHERE ID = {$id}";
+        $sql = "DELETE FROM admins WHERE ID = {$id}";
 
         $bd->query($sql);
 
@@ -112,21 +104,21 @@ class reclutador
         $bd = new Conexion();
 
         $credential = $this->email; // Asume que el correo es la credencial por defecto
-        if ($this->user !== null) {
-            $credential = $this->user;
+        if ($this->username !== null) {
+            $credential = $this->username;
         } elseif ($this->telefono !== null) {
             $credential = $this->telefono;
         }
 
-        $sql = "SELECT * FROM reclutadores WHERE EMAIL = '{$credential}'";
+        $sql = "SELECT * FROM admins WHERE EMAIL = '{$credential}'";
 
         $result = $bd->query($sql);
 
         if ($result->num_rows > 0) {
-            $reclutador = $result->fetch_assoc();
+            $admin = $result->fetch_assoc();
             // Verifica si la contraseña proporcionada coincide
-            if (password_verify($this->password, $reclutador['PASSWORD'])) {
-                return $reclutador; // Devuelve el reclutador si las credenciales son correctas
+            if (password_verify($this->password, $admin['PASSWORD'])) {
+                return $admin; // Devuelve el usuario si las credenciales son correctas
             }
         }
 

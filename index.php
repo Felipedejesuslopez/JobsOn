@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(isset($_SESSION["ID"])){
-    $id = $_SESSION["ID"];
+    //$id = $_SESSION["ID"];
 }else{
     ?>
     <script>

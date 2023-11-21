@@ -107,5 +107,31 @@ class Laboratorio
 
         // Manejo del resultado si es necesario
     }
+
+    public function login()
+    {
+        $bd = new Conexion();
+
+        $credential = $this->email; // Asume que el correo es la credencial por defecto
+        if ($this->user !== null) {
+            $credential = $this->user;
+        } elseif ($this->telefono !== null) {
+            $credential = $this->telefono;
+        }
+
+        $sql = "SELECT * FROM laboratorios WHERE EMAIL = '{$credential}'";
+
+        $result = $bd->query($sql);
+
+        if ($result->num_rows > 0) {
+            $laboratorio = $result->fetch_assoc();
+            // Verifica si la contraseña proporcionada coincide
+            if (password_verify($this->password, $laboratorio['PASSWORD'])) {
+                return $laboratorio; // Devuelve el laboratorio si las credenciales son correctas
+            }
+        }
+
+        return null; // Devuelve null si las credenciales son incorrectas
+    }
 }
 ?>

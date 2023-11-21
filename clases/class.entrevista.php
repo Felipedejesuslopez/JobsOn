@@ -1,5 +1,4 @@
 <?php
-include 'class.conexion.php';
 
 class Entrevista {
 
