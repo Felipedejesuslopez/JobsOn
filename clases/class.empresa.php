@@ -11,8 +11,10 @@ class Empresa {
     protected $contactoNombre;
     protected $contactoCorreo;
     protected $sitioWeb;
+    protected $correo;
+    protected $psw;
 
-    public function __construct($id, $nombre, $direccion, $telefono, $descripcion, $sector, $contactoNombre, $contactoCorreo, $sitioWeb) {
+    public function __construct($id, $nombre, $direccion, $telefono, $descripcion, $sector, $contactoNombre, $contactoCorreo, $sitioWeb, $correo, $psw) {
         $this->id = $id;
         $this->nombre = $nombre;
         $this->direccion = $direccion;
@@ -22,6 +24,9 @@ class Empresa {
         $this->contactoNombre = $contactoNombre;
         $this->contactoCorreo = $contactoCorreo;
         $this->sitioWeb = $sitioWeb;
+        $this->correo = $correo;
+        $this->psw = $psw;
+
     }
 
     public static function crearTablaSiNoExiste($conexion) {
@@ -32,15 +37,17 @@ class Empresa {
 
         if ($resultado->num_rows == 0) {
             $crearTabla = "CREATE TABLE $nombreTabla (
-                id INT AUTO_INCREMENT PRIMARY KEY,
-                nombre VARCHAR(255) NOT NULL,
-                direccion VARCHAR(255),
-                telefono VARCHAR(20),
-                descripcion TEXT,
-                sector VARCHAR(100),
-                contacto_nombre VARCHAR(255),
-                contacto_correo VARCHAR(255),
-                sitio_web VARCHAR(255)
+                ID INT AUTO_INCREMENT PRIMARY KEY,
+                NOMBRE VARCHAR(255) NOT NULL,
+                DIRECCION VARCHAR(255),
+                TELEFONO VARCHAR(20),
+                DESCRIPCION TEXT,
+                SECTOR VARCHAR(100),
+                CONTACTO_NOMBRE VARCHAR(255),
+                CONTACTO_CORREO VARCHAR(255),
+                SITIO_WEB VARCHAR(255)
+                CORREO VARCHAR(50),
+                PSW VARCHAR(20)
             )";
 
             if ($conexion->query($crearTabla)) {
@@ -57,14 +64,14 @@ class Empresa {
     public function login() {
         $bd = new Conexion();
 
-        $sql = "SELECT * FROM empresa WHERE nombre = '{$this->nombre}'";
+        $sql = "SELECT * FROM empresa WHERE NOMBRE = '{$this->nombre}'";
 
         $result = $bd->query($sql);
 
         if ($result->num_rows > 0) {
             $empresa = $result->fetch_assoc();
         
-            if ($this->direccion == $empresa['direccion'] || $this->telefono == $empresa['telefono']) {
+            if ($this->direccion == $empresa['DIRECCION'] || $this->telefono == $empresa['TELEFONO']) {
                 return $empresa; 
             }
         }
