@@ -45,7 +45,7 @@ class usuariopostulante
                 CORREO VARCHAR(255),
                 NSS VARCHAR(255),
                 REFERENCIAS VARCHAR(255),
-                FOTO VARCHAR(255))"
+                FOTO VARCHAR(255))";
         }
 
         if($bd->query($creartabla))

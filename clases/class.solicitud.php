@@ -61,7 +61,7 @@ class solicitud
                 CORREO VARCHAR(255),
                 IDIOMAS VARCHAR(255),
                 PUESTO VARCHAR(255),
-                SUELDO VARCHAR(255))"
+                SUELDO VARCHAR(255))";
         }
 
         if($bd->query($creartabla))

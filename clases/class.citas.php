@@ -27,7 +27,7 @@ class Cita {
         $this->participantes = $participantes;
     }
 
-    public static function crearTablaSiNoExiste($conexion) {
+    public static function create($conexion) {
         $nombreTabla = 'citas';
 
         $consultaExistencia = "SHOW TABLES LIKE '$nombreTabla'";
