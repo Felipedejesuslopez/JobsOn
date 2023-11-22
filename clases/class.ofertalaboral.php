@@ -33,7 +33,7 @@ class OfertaLaboral {
 
 }
 
-public static function crearTablaSiNoExiste($conexion) {
+public function crearTablaSiNoExiste($conexion) {
     $nombreTabla = 'ofertas_laborales';
 
   
