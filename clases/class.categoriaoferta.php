@@ -54,3 +54,5 @@ class CategoriaOferta
         return $bd->query($sql);
     }
 }
+
+?>

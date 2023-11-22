@@ -1,6 +1,7 @@
 <?php
 
-class Entrevista {
+class Entrevista
+{
 
     protected $id_empresa;
     protected $id_oferta;
@@ -12,7 +13,8 @@ class Entrevista {
     protected $ubicacion;
     protected $estado_resultado;
 
-    public function __construct($id_empresa, $id_oferta, $id, $id_reclutador, $id_usuario, $fecha, $hora, $ubicacion, $estado_resultado) {
+    public function __construct($id_empresa, $id_oferta, $id, $id_reclutador, $id_usuario, $fecha, $hora, $ubicacion, $estado_resultado)
+    {
         $this->id_empresa = $id_empresa;
         $this->id_oferta = $id_oferta;
         $this->id = $id;
@@ -24,33 +26,49 @@ class Entrevista {
         $this->estado_resultado = $estado_resultado;
     }
 
-    public static function crearTablaSiNoExiste($conexion) {
-        $nombreTabla = 'entrevistas';
+    public function create()
+    {
+        $bd = new Conexion();
+        $consultaExistencia = "SHOW TABLES LIKE 'entrevistas'";
+        $resultado = $bd->query($consultaExistencia);
+        $sql = "INSERT INTO entrevistas (ID_EMPRESA, ID_OFERTA, ID_RECLUTADOR, ID_USUARIO, FECHA, HORA, UBICACION, ESTADO_RESULTADO) VALUES ('{$this->id_empresa}', '{$this->id_oferta}', '{$this->id_reclutador}', '{$this->id_usuario}', '{$this->fecha}', '{$this->hora}', '{$this->ubicacion}', '{$this->estado_resultado}')";
 
-        $consultaExistencia = "SHOW TABLES LIKE '$nombreTabla'";
-        $resultado = $conexion->query($consultaExistencia);
-
-        if ($resultado->num_rows == 0) {
-            $crearTabla = "CREATE TABLE $nombreTabla (
-                id_empresa INT,
-                id_oferta INT,
-                id INT AUTO_INCREMENT PRIMARY KEY,
-                id_reclutador INT,
-                id_usuario INT,
-                fecha DATE,
-                hora TIME,
-                ubicacion VARCHAR(100),
-                estado_resultado VARCHAR(255)
+        if ($resultado->num_rows < 1) {
+            $crearTabla = "CREATE TABLE entrevistas (
+                ID_EMPRESA INT,
+                ID_OFERTA INT,
+                ID INT AUTO_INCREMENT PRIMARY KEY,
+                ID_RECLUTADOR INT,
+                ID_USUARIO INT,
+                FECHA DATE,
+                HORA TIME,
+                UBICACION VARCHAR(100),
+                ESTADO_RESULTADO VARCHAR(255)
             )";
 
-            if ($conexion->query($crearTabla)) {
-                echo "Tabla creada con éxito.<br>";
-            } else {
-                echo "Error al crear la tabla: " . $conexion->error . "<br>";
-            }
-        } else {
-            echo "La tabla ya existe.<br>";
+            $bd->query($crearTabla);
         }
+
+        return $bd->query($sql);
+    }
+
+    public function read()
+    {
+        $bd = new Conexion();
+        if (isset($this->id) && $this->id != "") {
+            $sql = "SELECT * FROM entrevistas ORDER BY ID ASC";
+        } else {
+            $sql = "SELECT * FROM entrevistas WHERE ID = '{$this->id}'";
+        }
+
+        return $bd->query($sql);
+    }
+
+    public function update()
+    {
+        $bd = new Conexion();
+        $sql = "UPDATE entrevistas SET ID_EMPRESA = '{$this->id_empresa}', ID_OFERTA = '{$this->id_oferta}', ID_RECLUTADOR = '{$this->id_reclutador}', ID_USUARIO = '{$this->id_usuario}', FECHA = '{$this->fecha}', HORA = '{$this->hora}', UBICACION = '{$this->ubicacion}', ESTADO_RESULTADO = '{$this->estado_resultado}' WHERE ID = '{$this->id}'";
+        return $bd->query($sql);
     }
 }
 ?>

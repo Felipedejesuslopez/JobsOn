@@ -63,13 +63,13 @@ class Empresa {
 
         if ($result->num_rows > 0) {
             $empresa = $result->fetch_assoc();
-            // Verifica si la contraseña proporcionada coincide
+        
             if ($this->direccion == $empresa['direccion'] || $this->telefono == $empresa['telefono']) {
-                return $empresa; // Devuelve la empresa si las credenciales son correctas
+                return $empresa; 
             }
         }
 
-        return null; // Devuelve null si las credenciales son incorrectas
+        return null; 
     }
 
 }

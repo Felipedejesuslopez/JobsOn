@@ -1,7 +1,7 @@
 <?php
-include 'class.conexion.php';
 
-class OfertaLaboral {
+class OfertaLaboral
+{
 
     protected $id;
     protected $titulo;
@@ -16,7 +16,8 @@ class OfertaLaboral {
     protected $nivelExperiencia;
     protected $beneficios;
 
-    public function __construct($id, $titulo, $descripcion, $ubicacion, $salario, $requisitos, $fechaPublicacion, $fechaExpiracion, $empresa, $tipoContrato, $nivelExperiencia, $beneficios) {
+    public function __construct($id, $titulo, $descripcion, $ubicacion, $salario, $requisitos, $fechaPublicacion, $fechaExpiracion, $empresa, $tipoContrato, $nivelExperiencia, $beneficios)
+    {
         $this->id = $id;
         $this->titulo = $titulo;
         $this->descripcion = $descripcion;
@@ -31,42 +32,52 @@ class OfertaLaboral {
         $this->beneficios = $beneficios;
     }
 
-}
+    public function create()
+    {
+        $bd = new Conexion();
+        $consultaExistencia = "SHOW TABLES LIKE 'ofertas_laborales'";
+        $resultado = $bd->query($consultaExistencia);
+        $sql = "INSERT INTO ofertas_laborales (TITULO, DESCRIPCION, UBICACION, SALARIO, REQUISITOS, FECHA_PUBLICACION, FECHA_EXPIRACION, EMPRESA, TIPO_CONTRATO, NIVEL_EXPERIENCIA, BENEFICIOS) VALUES ('{$this->titulo}','{$this->descripcion}','{$this->ubicacion}','{$this->salario}','{$this->requisitos}','{$this->fechaPublicacion}','{$this->fechaExpiracion}','{$this->empresa}','{$this->tipoContrato}','{$this->nivelExperiencia}','{$this->beneficios}')";
 
-public function crearTablaSiNoExiste($conexion) {
-    $nombreTabla = 'ofertas_laborales';
+        if ($resultado->num_rows < 1) {
+            $crearTabla = "CREATE TABLE ofertas_laborales (
+                ID INT AUTO_INCREMENT PRIMARY KEY,
+                TITULO VARCHAR(255) NOT NULL,
+                DESCRIPCION TEXT,
+                UBICACION VARCHAR(100),
+                SALARIO DECIMAL(10, 2),
+                REQUISITOS TEXT,
+                FECHA_PUBLICACION DATE,
+                FECHA_EXPIRACION DATE,
+                EMPRESA VARCHAR(255),
+                TIPO_CONTRATO VARCHAR(50),
+                NIVEL_EXPERIENCIA VARCHAR(50),
+                BENEFICIOS TEXT
+            )";
 
-  
-    $consultaExistencia = "SHOW TABLES LIKE '$nombreTabla'";
-    $resultado = $conexion->query($consultaExistencia);
-
-    if ($resultado->num_rows == 0) {
-      
-        $crearTabla = "CREATE TABLE $nombreTabla (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            titulo VARCHAR(255) NOT NULL,
-            descripcion TEXT,
-            ubicacion VARCHAR(100),
-            salario DECIMAL(10, 2),
-            requisitos TEXT,
-            fecha_publicacion DATE,
-            fecha_expiracion DATE,
-            empresa VARCHAR(255),
-            tipo_contrato VARCHAR(50),
-            nivel_experiencia VARCHAR(50),
-            beneficios TEXT
-        )";
-
-        if ($conexion->query($crearTabla)) {
-            echo "Tabla creada con éxito.<br>";
-        } else {
-            echo "Error al crear la tabla: " . $conexion->error . "<br>";
+            $bd->query($crearTabla);
         }
-    } else {
-        echo "La tabla ya existe.<br>";
+
+        return $bd->query($sql);
+    }
+
+    public function read()
+    {
+        $bd = new Conexion();
+        if (isset($this->id) && $this->id != "") {
+            $sql = "SELECT * FROM ofertas_laborales ORDER BY TITULO ASC";
+        } else {
+            $sql = "SELECT * FROM ofertas_laborales WHERE ID = '{$this->id}'";
+        }
+
+        return $bd->query($sql);
+    }
+
+    public function update()
+    {
+        $bd = new Conexion();
+        $sql = "UPDATE ofertas_laborales SET TITULO = '{$this->titulo}', DESCRIPCION = '{$this->descripcion}', UBICACION = '{$this->ubicacion}', SALARIO = '{$this->salario}', REQUISITOS = '{$this->requisitos}', FECHA_PUBLICACION = '{$this->fechaPublicacion}', FECHA_EXPIRACION = '{$this->fechaExpiracion}', EMPRESA = '{$this->empresa}', TIPO_CONTRATO = '{$this->tipoContrato}', NIVEL_EXPERIENCIA = '{$this->nivelExperiencia}', BENEFICIOS = '{$this->beneficios}' WHERE ID = '{$this->id}'";
+        return $bd->query($sql);
     }
 }
-
-
 ?>
-
