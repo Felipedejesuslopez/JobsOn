@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="main.js"></script>
     <?php include '../css/bts.php'; ?>
     <link rel="stylesheet" href="../css/login.css">
     <title>Inicie Sesión</title>
@@ -16,15 +17,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 login-sec">
-                    <h2 class="text-center">Login Now</h2>
+                    <h2 class="text-center">Inicie Sesión</h2>
                     <form class="login-form">
                         <div class="form-group">
-                            <label for="exampleInputEmail1" class="text-uppercase">Username</label>
+                            <label for="exampleInputEmail1" class="text-uppercase">Usuario/Email</label>
                             <input type="text" class="form-control" placeholder="">
 
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1" class="text-uppercase">Password</label>
+                            <label for="exampleInputPassword1" class="text-uppercase">Contraseña</label>
                             <input type="password" class="form-control" placeholder="">
                         </div>
 
@@ -32,9 +33,9 @@
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input type="checkbox" class="form-check-input">
-                                <small>Remember Me</small>
+                                <small>Recuérdame</small>
                             </label>
-                            <button type="submit" class="btn btn-login float-right">Submit</button>
+                            <button type="submit" class="btn btn-login float-right">Iniciar Sesión</button>
                         </div>
 
                     </form>
