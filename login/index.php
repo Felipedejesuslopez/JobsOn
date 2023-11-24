@@ -18,7 +18,7 @@
             <div class="row">
                 <div class="col-md-4 login-sec">
                     <h2 class="text-center">Inicie Sesión</h2>
-                    <form class="login-form">
+                    <form class="login-form" action="../php/login.php" method="post">
                         <div class="form-group">
                             <label for="exampleInputEmail1" class="text-uppercase">Usuario/Email</label>
                             <input type="text" class="form-control" placeholder="">
@@ -37,6 +37,7 @@
                             </label>
                             <button type="submit" class="btn btn-login float-right">Iniciar Sesión</button>
                         </div>
+                        <div id="res"></div>
 
                     </form>
                     <div class="copy-text">Created with <i class="fa fa-heart"></i> by Grafreez</div>
