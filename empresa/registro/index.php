@@ -1,5 +1,5 @@
 <?php
-require_once 'class.registroempresa.php';   
+require_once 'registroempresa.php';   
 ?>
 <!DOCTYPE html>
 <html lang="es">
