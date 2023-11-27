@@ -21,6 +21,42 @@
     }
 }
 
+@media screen and (max-width: 767px) {
+    /* Estilos específicos para pantallas pequeñas */
+    .logo {
+        width: 70%;
+        text-align: center;
+        margin-top: 15%;
+        margin-bottom: 15%;
+    }
+}
+
+
+/* Estilos para pantallas con un ancho mínimo de 768px y un máximo de 991px (pantallas medianas como tabletas) */
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    /* Estilos específicos para pantallas medianas */
+    .logo {
+        width: 70%;
+        text-align: center;
+        margin-top: 15;
+        margin-bottom: 15%;
+    }
+}
+
+
+/* Estilos para pantallas con un ancho mínimo de 992px (pantallas grandes como escritorios) */
+
+@media screen and (min-width: 992px) {
+    /* Estilos específicos para pantallas grandes */
+    .logo {
+        width: 70%;
+        text-align: center;
+        margin-top: -15%;
+        margin-bottom: 15%;
+    }
+}
+
 body {
     /* Fallback para navegadores que no admiten gradientes lineales */
     background: #046fff;
@@ -139,9 +175,26 @@ body {
     color: #fff;
 }
 
-.logo {
-    width: 70%;
-    text-align: center;
-    margin-top: -15%;
-    margin-bottom: 15%;
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f8f9fa;
+    /* Cambié el color de fondo para hacerlo más claro */
+}
+
+.login-sec {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px #00000029;
+}
+
+.banner-sec {
+    padding: 0;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px #00000029;
 }
