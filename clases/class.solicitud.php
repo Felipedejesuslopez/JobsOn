@@ -1,9 +1,9 @@
 <?php
 class solicitud
 {
-    protected $id_solicitud;
+    protected $id;
     protected $nombre;
-    protected $apellido;
+    protected $apellidos;
     protected $nacimiento;
     protected $nacionalidad;
     protected $ciudad;
@@ -18,11 +18,11 @@ class solicitud
     protected $puesto;
     protected $sueldo;
 
-    public function __construct() 
+    public function __construct($id, $nombre, $apellidos, $nacimiento, $nacionalidad, $ciudad, $estadocivil, $domicilio, $trabajoprevio, $trabajoactual, $estudios, $telefono, $correo, $idiomas, $puesto, $sueldo) 
     {
-        $this->id_solicitud = $id_solicitud;
+        $this->id = $id;
         $this->nombre = $nombre;
-        $this->apellido = $apellido0;
+        $this->apellidos = $apellidos;
         $this->nacimiento = $nacimiento;
         $this->nacionalidad = $nacionalidad;
         $this->ciudad = $ciudad;
@@ -38,18 +38,23 @@ class solicitud
         $this->sueldo = $sueldo;
     }
 
-    public function creartabla(){
+    public function create(){
         $bd = new Conexion();
+        
+        $sql = "INSERT INTO solicitud (
+            NOMBRE, APELLIDOS, NACIMIENTO, NACIONALIDAD, CIUDAD, ESTADOCIVIL, DOMICILIO, TRABAJOPREVIO, TRABAJOACTUAL, ESTUDIOS, TELEFONO, CORREO, IDIOMAS, PUESTO, SUELDO) 
+        VALUES ('{$this->nombre}','{$this->apellidos}','{$this->nacimiento}','{$this->nacionalidad}','{$this->ciudad}','{$this->domicilio}','{$this->trabajoprevio}','{$this->trabajoactual}','{$this->estudios}','{$this->telefono}','{$this->correo}','{$this->idiomas}','{$this->puesto}','{$this->sueldo}')";
+        
         $consulta = "SHOW TABLES LIKE 'solicitud'";
         $dato = $bd->query($consulta);
 
-        if($dato->num_rows ==  0)
+        if($dato->num_rows < 1)
         {
             $creartabla = "CREATE TABLE solicitud (
-                ID_SOLICITUD INT AUTO_INCREMENT PRIMARY KEY,
+                ID INT AUTO_INCREMENT PRIMARY KEY,
                 NOMBRE VARCHAR(255),
                 APELLIDOS VARCHAR(255),
-                NACIMIENTO DATE,
+                NACIMIENTO VARCHAR(255),
                 NACIONALIDAD VARCHAR(255),
                 CIUDAD VARCHAR(255),
                 ESTADOCIVIL VARCHAR(255),
@@ -62,18 +67,35 @@ class solicitud
                 IDIOMAS VARCHAR(255),
                 PUESTO VARCHAR(255),
                 SUELDO VARCHAR(255))";
+            
+            $bd->query($creartabla);
         }
-
-        if($bd->query($creartabla))
-        {
-            echo '<script language="javascript">alert("Registro creado exitosamente");</script>';
-        }
-        else{
-            echo '<script language="javascript">alert("Error al crear el registro");</script>';
-        }
+        $bd->query($sql);
     }
 
+    public function read(){
+        $bd = new Conexion();
+        if(isset($this->id) && $this->id != ""){
+            $sql = "SELECT * FROM solicitud WHERE ID = '{$this->id}'";
+        }else{
+            $sql = "SELECT * FROM solicitud ORDER BY ID DESC";
+        }
 
+        $ret = $bd->query($sql);
+        return $ret;
+    }
+
+    public function update(){
+        $bd = new Conexion();
+        $sql = "UPDATE solicitud SET NOMBRE = '{$this->nombre}', APELLIDOS = '{$this->apellidos}', NACIMIENTO = '{$this->nacimiento}', NACIONALIDAD ='{$this->nacionalidad}', CIUDAD = '{$this->ciudad}', ESTADOCIVIL = '{$this->estadocivil}', DOMICILIO = '{$this->domicilio}', TRABAJOPREVIO = '{$this->trabajoprevio}', TRABAJOACTUAL = '{$this->trabajoactual}', ESTUDIOS = '{$this->estudios}', TELEFONO = '{$this->telefono}' , CORREO = '$this->correo', IDIOMAS = '{$this->idiomas}', PUESTO = '{$this->puesto}', SUELDO = '{$this->sueldo}' WHERE ID = '{$this->id}'";
+        return $bd->query($sql);
+    }
+
+    public function delete($id){
+        $bd = new Conexion();
+        $sql = "DELETE FROM solicitud WHERE ID = {$id}";
+        $bd->query($sql);
+    }
 
 }
 ?>
