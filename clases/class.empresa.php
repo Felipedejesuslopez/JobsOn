@@ -29,7 +29,7 @@ class Empresa {
 
     }
 
-    public static function crearTablaSiNoExiste($conexion) {
+    public function crearTablaSiNoExiste($conexion) {
         $nombreTabla = 'empresa';
 
         $consultaExistencia = "SHOW TABLES LIKE '$nombreTabla'";

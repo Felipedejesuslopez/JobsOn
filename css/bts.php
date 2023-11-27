@@ -2,8 +2,12 @@
 <link rel="shortcut icon" href="../img/logo.png" type="image/png">
 <link rel="icon" href="img/logo.png" type="image/png">
 <link rel="shortcut icon" href="img/logo.png" type="image/png">
-<link rel="icon" href="../../img/logo.png" type="image/png">
-<link rel="shortcut icon" href="../../img/logo.png" type="image/png">
+<link rel="icon" href="../../img/Logo.png" type="image/png">
+<link rel="shortcut icon" href="../../img/Logo.png" type="image/png">
+<link rel="icon" href="../img/Logo.png" type="image/png">
+<link rel="shortcut icon" href="../img/Logo.png" type="image/png">
+<link rel="icon" href="img/Logo.png" type="image/png">
+<link rel="shortcut icon" href="img/Logo.png" type="image/png">
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -13,6 +17,7 @@
 
 <!-- Bootstrap 4 CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <!-- Bootstrap 4 JS -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

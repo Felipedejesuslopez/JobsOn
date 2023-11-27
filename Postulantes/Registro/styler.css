@@ -1,0 +1,139 @@
+@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+.loading {
+    border: 6px solid #f3f3f3;
+    /* Light grey */
+    border-top: 6px solid #3498db;
+    /* Blue */
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+    /* Centra el círculo de carga */
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+body {
+    background: linear-gradient(to bottom right, #046fff, white);
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 2000px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+span {
+    color: black;
+    font-size: 14pt;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #046fff;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+label {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: black;
+    display: block;
+    text-align: center;
+}
+
+input {
+    width: calc(100% - 20px);
+    padding: 15px;
+    border: 2px solid #046fff;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin-bottom: 10px;
+    transition: border-color 0.3s ease-in-out;
+}
+
+input:focus {
+    border-color: #05a5ff;
+    outline: none;
+}
+
+button {
+    width: calc(100% - 20px);
+    padding: 15px;
+    background-color: #046fff;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #05a5ff;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+label {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #046fff;
+    display: block;
+    text-align: left;
+}
+
+input {
+    width: calc(100% - 20px);
+    padding: 15px;
+    border: 2px solid #046fff;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin-bottom: 10px;
+    transition: border-color 0.3s ease-in-out;
+}
+
+input:focus {
+    border-color: #05a5ff;
+    outline: none;
+}

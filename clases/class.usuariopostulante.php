@@ -19,12 +19,12 @@ class usuariopostulante
     protected $op2;
     protected $op3;
 
-    public function __construct($id_usuario,$usuario,$email,$password, $nombre, $apellidos, $nacimiento, $direccion, $telefono, $correo, $nss, $foto, $op1, $op2, $op3)
+    public function __construct($id_usuario, $usuario, $email, $password, $nombre, $apellidos, $nacimiento, $direccion, $telefono, $correo, $nss, $foto, $op1, $op2, $op3)
     {
         $this->id = $id_usuario;
         $this->user = $usuario;
         $this->email = $email;
-        $this->password = $password;
+        $this->password = md5($password);
         $this->nombre = $nombre;
         $this->apellidos = $apellidos;
         $this->nacimiento = $nacimiento;
@@ -44,7 +44,8 @@ class usuariopostulante
 
         $sql = "INSERT INTO usuarios 
         (USUARIO, EMAIL, PASSWORD, NOMBRE, APELLIDOS, NACIMIENTO, DIRECCION, TELEFONO, CORREO, NSS, FOTO) 
-        VALUES ('{$this->user}', '{$this->email}','{$this->password}','{$this->nombre}', '{$this->apellidos}',{$this->nacimiento}', '{$this->direccion}', '{$this->telefono}', '{$this->correo}', '{$this->nss}', '{$this->foto}')";
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
 
         $consulta = "SHOW TABLES LIKE 'usuarios'";
         $dato = $bd->query($consulta);
@@ -57,23 +58,28 @@ class usuariopostulante
                 PASSWORD VARCHAR(255),
                 NOMBRE VARCHAR(255),
                 APELLIDOS VARCHAR(255),
-                NACIMIENTO DATE,
+                NACIMIENTO VARCHAR(255),
                 DIRECCION VARCHAR(255),
                 TELEFONO VARCHAR(255),
                 CORREO VARCHAR(255),
                 NSS VARCHAR(255),
                 FOTO VARCHAR(255))";
 
-                $bd->query($creartabla);
+            $bd->query($creartabla);
         }
-        $bd -> query($sql);
+        
+        $stmt = $bd->prepare($sql);
+        $stmt->bind_param("sssssssssss", $this->user, $this->email, $this->password, $this->nombre, $this->apellidos, $this->nacimiento, $this->direccion, $this->telefono, $this->correo, $this->nss, $this->foto);
+
+        $stmt->execute();
     }
 
-    public function read(){
+    public function read()
+    {
         $bd = new Conexion();
-        if(isset($this->id) && $this->id != ""){
+        if (isset($this->id) && $this->id != "") {
             $sql = "SELECT * FROM usuarios WHERE ID = '{$this->id}'";
-        }else{
+        } else {
             $sql = "SELECT * FROM usuarios ORDER BY ID DESC";
         }
 
@@ -81,24 +87,39 @@ class usuariopostulante
         return $ret;
     }
 
-    public function update(){
-
+    public function update()
+    {
     }
 
-    public function delete(){
-
+    public function delete()
+    {
     }
 
-    public function login(){
+    public function login()
+    {
         $bd = new Conexion();
-        $sql = "SELECT * FROM usuarios WHERE USUARIO = '{$this->user}' OR EMAIL = '{$this->email}' AND PASSWORD = '{$this->password}'";
-        $ret = $bd->query($sql);
-        if( $ret->num_rows > 0) {
+        $sql = "SELECT * FROM usuarios WHERE (USUARIO = ? OR EMAIL = ?) AND PASSWORD = ?";
+        
+        // Utilizar una consulta preparada
+        $stmt = $bd->prepare($sql);
+        $stmt->bind_param("sss", $this->user, $this->email, $this->password);
+    
+        // Ejecutar la consulta
+        $stmt->execute();
+    
+        // Obtener el resultado
+        $result = $stmt->get_result();
+    
+        // Verificar si hay al menos una fila en el resultado
+        if ($result->num_rows > 0) {
+            // Iniciar sesión y almacenar los datos del usuario en la sesión
             session_start();
-            $_SESSION[] = $ret->fetch_array();
-            return true;
-        }else{
-            return false;
+            $_SESSION= $result->fetch_assoc();  
+            return 1;
+        } else {
+            session_destroy();
+            return 0;
         }
     }
+    
 }

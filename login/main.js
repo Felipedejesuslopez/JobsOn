@@ -29,11 +29,20 @@ $(document).ready(function() {
                     $('#res .loading').remove();
                 }
             }).done(function(response) {
+                console.log(response);
+
                 // Maneja la respuesta exitosa
                 if (response == 0) {
                     $('#res').html('<div class="alert alert-danger" style="text-align:center;">Usuario y/o Contraseña incorrectos</div>');
                 } else if (response == 1) {
                     // Aquí puedes agregar opciones adicionales según el usuario que ingrese
+                    $('#res').html('<div class="loading"></div>');
+                    setTimeout(function() {
+                        // Redirige a la nueva página
+                        window.location.href = "../";
+                    }, 3000);
+                } else {
+                    $('#res').html(response);
                 }
             }).fail(function(e) {
                 // Maneja los errores de la solicitud AJAX

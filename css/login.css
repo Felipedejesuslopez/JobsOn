@@ -21,6 +21,17 @@
     }
 }
 
+body {
+    /* Fallback para navegadores que no admiten gradientes lineales */
+    background: #046fff;
+    /* Para navegadores que admiten gradientes lineales */
+    background: linear-gradient(to bottom right, #046fff, white);
+    /* Establece el fondo para abarcar toda la ventana del navegador */
+    min-height: 100vh;
+    /* Elimina el margen del cuerpo para que el fondo se extienda completamente */
+    margin: 0;
+}
+
 .login-block {
     background: #de6262;
     /* fallback for old browsers */
@@ -70,25 +81,25 @@
 }
 
 .login-sec .copy-text i {
-    color: #feb58a;
+    color: black;
 }
 
 .login-sec .copy-text a {
-    color: #e36262;
+    color: black;
 }
 
 .login-sec h2 {
     margin-bottom: 30px;
     font-weight: 800;
     font-size: 30px;
-    color: #de6262;
+    color: black;
 }
 
 .login-sec h2:after {
     content: " ";
     width: 100px;
     height: 5px;
-    background: #feb58a;
+    background: #046fff;
     display: block;
     margin-top: 20px;
     border-radius: 3px;
@@ -97,8 +108,8 @@
 }
 
 .btn-login {
-    background: #de6262;
-    color: #fff;
+    background: black;
+    color: #046fff;
     font-weight: 600;
 }
 
@@ -126,4 +137,11 @@
 
 .banner-text p {
     color: #fff;
+}
+
+.logo {
+    width: 70%;
+    text-align: center;
+    margin-top: -15%;
+    margin-bottom: 15%;
 }

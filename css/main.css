@@ -1,0 +1,80 @@
+/* Estilos generales */
+
+
+/* Estilos para pantallas con un ancho máximo de 767px (pantallas pequeñas como móviles) */
+
+@media screen and (max-width: 767px) {
+    /* Estilos específicos para pantallas pequeñas */
+}
+
+
+/* Estilos para pantallas con un ancho mínimo de 768px y un máximo de 991px (pantallas medianas como tabletas) */
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    /* Estilos específicos para pantallas medianas */
+}
+
+
+/* Estilos para pantallas con un ancho mínimo de 992px (pantallas grandes como escritorios) */
+
+@media screen and (min-width: 992px) {
+    /* Estilos específicos para pantallas grandes */
+    #sidebarMenu {
+        width: 25%;
+    }
+}
+
+.container {
+    margin-bottom: 15%;
+    margin-top: 8%;
+}
+
+#logo {
+    width: 95%;
+}
+
+#profile {
+    width: 50%;
+}
+
+#mad {
+    text-align: right;
+}
+
+.menu {
+    padding: 5%;
+}
+
+.botonmenu {
+    width: 100%;
+}
+
+.custom-search {
+    justify-content: center;
+    align-items: center;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+    /* Ajusta el ancho según tus necesidades */
+}
+
+.search-input {
+    border: 1px solid #ced4da;
+    border-radius: 20px;
+    width: 120%;
+    outline: none;
+}
+
+.search-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: none;
+    border-radius: 0 20px 20px 0;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+}
