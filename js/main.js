@@ -80,6 +80,32 @@ $(document).ready(function() {
         })
     });
 
+    $('#main').on('submit', 'form', function(e) {
+        e.preventDefault();
+
+
+        var form = $(this);
+        var url = form.attr('action');
+        var formData = new FormData(form[0]);
+
+        $.ajax({
+            url: url,
+            method: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false
+        }).done(function(msg) {
+            $('#aviso').html(msg);
+            $('#modalavisos').modal('show');
+            console.log(msg);
+        }).fail(function(e) {
+            $('#main').html(e);
+        });
+
+        // Ejemplo de impresión en la consola
+        console.log('Action:', url);
+        console.log('Form Data:', formData);
+    });
 
     $(document).on("contextmenu", function(e) {
         e.preventDefault();

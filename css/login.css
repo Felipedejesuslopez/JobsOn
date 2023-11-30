@@ -29,6 +29,9 @@
         margin-top: 15%;
         margin-bottom: 15%;
     }
+    .login {
+        padding: 5%;
+    }
 }
 
 
@@ -36,7 +39,8 @@
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
     /* Estilos específicos para pantallas medianas */
-    .logo {
+    .login {
+        padding: 5%;
         width: 70%;
         text-align: center;
         margin-top: 15;
@@ -55,146 +59,44 @@
         margin-top: -15%;
         margin-bottom: 15%;
     }
+    .login {
+        padding: 10%;
+    }
+}
+
+.logo {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10%;
+}
+
+.login {
+    color: white;
 }
 
 body {
-    /* Fallback para navegadores que no admiten gradientes lineales */
-    background: #046fff;
-    /* Para navegadores que admiten gradientes lineales */
-    background: linear-gradient(to bottom right, #046fff, white);
-    /* Establece el fondo para abarcar toda la ventana del navegador */
-    min-height: 100vh;
-    /* Elimina el margen del cuerpo para que el fondo se extienda completamente */
-    margin: 0;
-}
-
-.login-block {
-    background: #de6262;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient( to bottom, #ffb88c, #de6262);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient( to bottom, #ffb88c, #de6262);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    float: left;
-    width: 100%;
-    padding: 50px 0;
-}
-
-.banner-sec {
-    background: url(https://static.pexels.com/photos/33972/pexels-photo.jpg) no-repeat left bottom;
-    background-size: cover;
-    min-height: 500px;
-    border-radius: 0 10px 10px 0;
-    padding: 0;
-}
-
-.container {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 15px 20px 0px rgba(0, 0, 0, 0.1);
-}
-
-.carousel-inner {
-    border-radius: 0 10px 10px 0;
-}
-
-.carousel-caption {
-    text-align: left;
-    left: 5%;
-}
-
-.login-sec {
-    padding: 50px 30px;
+    background: linear-gradient(to right, #2c3e50, #3498db);
+    /* Gradiente azul */
+    color: #ecf0f1;
+    /* Texto en blanco */
+    /* Añade algunos post-its */
     position: relative;
 }
 
-.login-sec .copy-text {
-    position: absolute;
-    width: 80%;
-    bottom: 20px;
-    font-size: 13px;
-    text-align: center;
-}
 
-.login-sec .copy-text i {
-    color: black;
-}
+/* Agrega un suave movimiento */
 
-.login-sec .copy-text a {
-    color: black;
-}
-
-.login-sec h2 {
-    margin-bottom: 30px;
-    font-weight: 800;
-    font-size: 30px;
-    color: black;
-}
-
-.login-sec h2:after {
-    content: " ";
-    width: 100px;
-    height: 5px;
-    background: #046fff;
-    display: block;
-    margin-top: 20px;
-    border-radius: 3px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.btn-login {
-    background: black;
-    color: #046fff;
-    font-weight: 600;
-}
-
-.banner-text {
-    width: 70%;
-    position: absolute;
-    bottom: 40px;
-    padding-left: 20px;
-}
-
-.banner-text h2 {
-    color: #fff;
-    font-weight: 600;
-}
-
-.banner-text h2:after {
-    content: " ";
-    width: 100px;
-    height: 5px;
-    background: #fff;
-    display: block;
-    margin-top: 20px;
-    border-radius: 3px;
-}
-
-.banner-text p {
-    color: #fff;
+@keyframes colorChange {
+    0% {
+        background-color: #3498db;
+    }
+    50% {
+        background-color: #2ecc71;
+    }
+    100% {
+        background-color: #3498db;
+    }
 }
 
 body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f8f9fa;
-    /* Cambié el color de fondo para hacerlo más claro */
-}
-
-.login-sec {
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px 0px #00000029;
-}
-
-.banner-sec {
-    padding: 0;
-    background: white;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px 0px #00000029;
+    animation: colorChange 10s infinite;
 }
