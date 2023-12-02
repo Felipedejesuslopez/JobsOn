@@ -64,13 +64,10 @@
     }
 }
 
-.logo {
-    background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 10%;
-}
-
 .login {
     color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
 }
 
 body {

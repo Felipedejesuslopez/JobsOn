@@ -22,7 +22,7 @@ if (isset($_SESSION["ID"])) {
 <body>
 
     <br><br>
-    <div class="container" >
+    <div class="container">
         <div class="row">
             <div class="col-sm-4"></div>
             <div class="col-sm-4" class="login">
@@ -45,21 +45,21 @@ if (isset($_SESSION["ID"])) {
                                 <input type="password" name="psw" class="form-control" required>
                             </div>
                             <div class="form-check">
-                                <label >
-                                    <input type="checkbox"" name="noclose">
+                                <label>
+                                    <input type="checkbox"" name=" noclose">
                                     <small>Recuérdame</small>
                                 </label>
                                 <button type="submit" class="btn btn-primary float-right">Iniciar Sesión</button>
                             </div>
-                        </form>
+                        </form><br>
+                        <div class="container" style="text-align: center; margin-top: 20px;">
+                            <p>¿No tienes una cuenta? <a href="../Postulantes/Registro/">Regístrate</a> ahora</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="container" style="text-align: center; margin-top: 20px;">
-            <p>¿No tienes una cuenta? <a href="../Postulantes/Registro/">Regístrate</a> ahora</p>
-        </div>
     </div>
 </body>
 

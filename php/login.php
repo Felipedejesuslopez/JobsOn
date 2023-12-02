@@ -6,6 +6,9 @@ $user = $_POST['user'];
 $psw = $_POST['psw'];
 
 $usuario = new usuariopostulante('', $user, $user, $psw, '', '', '', '', '', '', '', '', '', '', '');
-$login = $usuario->login();
+$tusuario = $usuario->login();
 
-echo $login;
+
+if($tusuario == 0){
+
+}else if()
