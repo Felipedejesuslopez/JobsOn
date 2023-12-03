@@ -5,7 +5,7 @@ if(isset($_SESSION["ID"])){
 }else{
     ?>
     <script>
-        window.location = "../../login/";
+        //window.location = "../../login/";
     </script>
     <?php
 }
@@ -19,9 +19,9 @@ if(isset($_SESSION["ID"])){
     <title>Jobs0n</title>
 </head>
 <body> 
-<form method="post" action="registroadmin.php" id="formulario">
+<form method="post" action="../../php/registroadmin.php" id="formulario">
         <label for="username">USERNAME:</label>
-        <input type="text" id="nombre" name="nombre" required>
+        <input type="text" id="nombre" name="username" required>
 
         <label for="password">PASSWORD:</label>
         <input type="password" id="password" name="password" required>
@@ -43,6 +43,7 @@ if(isset($_SESSION["ID"])){
 
         <label for="respaldo">RESPALDO:</label>
         <input type="text" id="respaldo" name="respaldo" required>
+        <input type="text" name="action" value="create" style="display:none;">
 
         <input type="submit" value="Enviar">
     </form>

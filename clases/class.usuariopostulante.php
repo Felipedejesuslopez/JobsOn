@@ -98,11 +98,18 @@ class usuariopostulante
     public function login()
     {
         $bd = new Conexion();
-        $sql = "SELECT * FROM usuarios WHERE (USUARIO = ? OR EMAIL = ?) AND PASSWORD = ?";
+        $sql = "SELECT * FROM usuarios WHERE (USUARIO = ? OR EMAIL = ? OR TELEFONO = ?) AND PASSWORD = ?";
         
         // Utilizar una consulta preparada
         $stmt = $bd->prepare($sql);
-        $stmt->bind_param("sss", $this->user, $this->email, $this->password);
+    
+        // Verificar si la preparación fue exitosa
+        if (!$stmt) {
+            die("Error en la preparación de la consulta: " . $bd->error);
+        }
+    
+        // Vincular los parámetros
+        $stmt->bind_param("ssss", $this->user, $this->email, $this->telefono, $this->password);
     
         // Ejecutar la consulta
         $stmt->execute();
@@ -114,12 +121,12 @@ class usuariopostulante
         if ($result->num_rows > 0) {
             // Iniciar sesión y almacenar los datos del usuario en la sesión
             session_start();
-            $_SESSION= $result->fetch_assoc();  
+            $_SESSION = $result->fetch_assoc();  
             return 1;
         } else {
-            session_destroy();
             return 0;
         }
     }
+    
     
 }

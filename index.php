@@ -26,8 +26,26 @@ if (isset($_SESSION["ID"])) {
 
 <body>
     <?php
-    //segun el tipo {}
-     include 'components/menu.usuario.php'; ?>
+    switch ($_SESSION['tipo']) {
+        case 1:
+            include 'components/menu.usuario.php';
+            break;
+        case 2:
+            include 'components/menu.admin.php';
+            break;
+
+        case 3:
+            include 'components/menu.empresa.php';
+            break;
+
+            case 4:
+                include 'components/menu.laboratorio.php';
+        default:
+            # code...
+            break;
+    }
+
+    ?>
     <div></div>
     <div class="container" id="content">
         <div id="main">
