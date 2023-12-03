@@ -3,7 +3,7 @@
 
             <div class="container menu" style="margin-top:-15%;">
                 <div class="row">
-                    <!-- Col-sm-6 se ajustará automáticamente a la pantalla completa en dispositivos pequeños -->
+                 
                     <div class="col-8">
                         <img src="img/JobsOn.png" id="logo">
                         <h7><br>
@@ -12,7 +12,7 @@
                             </b>
                         </h7>
                     </div>
-                    <!-- Col-sm-6 se ajustará automáticamente a la pantalla completa en dispositivos pequeños -->
+                    
                     <div class="col-4" id="mad">
                         <br>
                         <img src="img/profile.png" id="profile" alt="">
@@ -22,7 +22,7 @@
                 <div class="container custom-search">
                     <div class="input-group">
                         <input type="text" class="form-control search-input" placeholder="Buscar" aria-label="Buscar" aria-describedby="search-addon" />
-                        <!-- Eliminado el botón de limpiar -->
+                      
                         <button type="button" class="btn btn-primary search-btn">
                             <i class="fas fa-search search-icon"></i>
                         </button>
@@ -67,11 +67,11 @@
                 <div class="od">
                     <center>
                         <a href="Settings/" class="botonopt">
-                            <img src="img/Menu/Settings.png" class="botonopt">
+                            <img src="img/Menu/User/Settings.png" class="botonopt">
                         </a>
                         <br><br>
                         <a href="php/logout.php" class="botonopt">
-                            <img src="img/Menu/Logout.png" class="botonopt">
+                            <img src="img/Menu/User/Logout.png" class="botonopt">
                         </a>
                     </center>
                 </div>
