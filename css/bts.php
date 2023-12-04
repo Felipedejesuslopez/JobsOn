@@ -465,7 +465,7 @@ if ($_SESSION['TEMA'] == 'D') {
         /* Borde blanco */
         border-top: 4px solid #007bff;
         /* Color azul */
-        border-bottom: 4px solid #ff0000;
+        border-bottom: 4px solid black;
         /* Color rojo */
         border-radius: 50%;
         /* Forma circular */
@@ -503,7 +503,7 @@ if ($_SESSION['TEMA'] == 'D') {
         /* Borde blanco (más grueso) */
         border-top: 6px solid #007bff;
         /* Color azul (más grueso) */
-        border-bottom: 6px solid #ff0000;
+        border-bottom: 6px solid black;
         /* Color rojo (más grueso) */
         border-radius: 50%;
         /* Forma circular */
@@ -559,7 +559,7 @@ if ($_SESSION['TEMA'] == 'D') {
         left: 0;
         padding: 58px 0 0;
         /* Height of navbar */
-        box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+        box-shadow: 0 2px 10px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
         width: 240px;
         z-index: 600;
     }
