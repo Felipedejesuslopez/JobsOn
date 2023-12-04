@@ -1,6 +1,3 @@
-<?php
-require_once 'registrolaboratorio.php';
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,7 +6,7 @@ require_once 'registrolaboratorio.php';
 </head>
 <body>
 
-    <form method="post" action="">
+    <form method="post" action="../../php/registrolaboratorio.php">
         <label for="action">Acción:</label>
         <select name="action" id="action">
             <option value="create">Crear Laboratorio</option>

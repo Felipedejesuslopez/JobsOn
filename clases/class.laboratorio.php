@@ -110,28 +110,29 @@ class Laboratorio
 
     public function login()
     {
+
         $bd = new Conexion();
+        $sql = "SELECT * FROM laboratorios WHERE (USER = ? OR EMAIL = ? OR TELEFONO = ?) AND PASSWORD = ?";
 
-        $credential = $this->email; // Asume que el correo es la credencial por defecto
-        if ($this->user !== null) {
-            $credential = $this->user;
-        } elseif ($this->telefono !== null) {
-            $credential = $this->telefono;
-        }
+        // Utilizar una consulta preparada
+        $stmt = $bd->prepare($sql);
+        $stmt->bind_param("ssss", $this->user, $this->email, $this->telefono, $this->password);
 
-        $sql = "SELECT * FROM laboratorios WHERE EMAIL = '{$credential}'";
+        // Ejecutar la consulta
+        $stmt->execute();
 
-        $result = $bd->query($sql);
+        // Obtener el resultado
+        $result = $stmt->get_result();
 
+        // Verificar si hay al menos una fila en el resultado
         if ($result->num_rows > 0) {
-            $laboratorio = $result->fetch_assoc();
-            // Verifica si la contraseña proporcionada coincide
-            if (password_verify($this->password, $laboratorio['PASSWORD'])) {
-                return $laboratorio; // Devuelve el laboratorio si las credenciales son correctas
-            }
+            // Iniciar sesión y almacenar los datos del usuario en la sesión
+            session_start();
+            $_SESSION = $result->fetch_assoc();
+            return 1;
+        } else {
+            return 0;
         }
-
-        return null; // Devuelve null si las credenciales son incorrectas
     }
 }
 ?>

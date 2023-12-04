@@ -25,11 +25,13 @@ if (isset($_SESSION["ID"])) {
 </head>
 
 <body>
+    <div>
     <?php
     switch ($_SESSION['tipo']) {
         case 1:
             include 'components/menu.usuario.php';
             break;
+
         case 2:
             include 'components/menu.admin.php';
             break;
@@ -38,15 +40,21 @@ if (isset($_SESSION["ID"])) {
             include 'components/menu.empresa.php';
             break;
 
-            case 4:
-                include 'components/menu.laboratorio.php';
-        default:
-            # code...
+        case 4:
+            include 'components/menu.laboratorio.php';
+            break;
+
+        case 5:
+            include 'components/menu.conductor.php';
+            break;
+
+        case 6:
+            include 'components/menu.reclutador.php';
             break;
     }
 
     ?>
-    <div></div>
+    </div>
     <div class="container" id="content">
         <div id="main">
 

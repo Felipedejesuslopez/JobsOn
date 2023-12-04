@@ -48,7 +48,7 @@ class Empresa
                 SECTOR VARCHAR(100),
                 CONTACTO_NOMBRE VARCHAR(255),
                 CONTACTO_CORREO VARCHAR(255),
-                SITIO_WEB VARCHAR(255)
+                SITIO_WEB VARCHAR(255),
                 CORREO VARCHAR(50),
                 PSW VARCHAR(20)
             )";
@@ -68,11 +68,11 @@ class Empresa
     {
 
         $bd = new Conexion();
-        $sql = "SELECT * FROM empresa WHERE (TELEFONO = ? OR SITIO_WEB = ? OR CONTACTO = ?) AND PSW = ?";
+        $sql = "SELECT * FROM empresa WHERE (TELEFONO = ? OR SITIO_WEB = ? OR CONTACTO_CORREO = ?) AND PSW = ?";
 
         // Utilizar una consulta preparada
         $stmt = $bd->prepare($sql);
-        $stmt->bind_param("sss", $this->sitioWeb, $this->correo, $this->telefono, $this->psw);
+        $stmt->bind_param("ssss", $this->sitioWeb, $this->correo, $this->telefono, $this->psw);
 
         // Ejecutar la consulta
         $stmt->execute();

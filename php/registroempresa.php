@@ -1,6 +1,8 @@
 <?php
-require_once 'class.empresa.php';  
-require_once 'class.conexion.php';  
+ini_set("display_errors",1);
+error_reporting(E_ALL);
+require_once '../clases/class.conexion.php';  
+require_once '../clases/class.empresa.php';  
 
 function mostrarMensaje($mensaje, $tipo = 'success')
 {

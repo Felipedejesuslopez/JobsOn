@@ -1,6 +1,4 @@
-<?php
-require_once 'registroempresa.php';   
-?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,8 +7,7 @@ require_once 'registroempresa.php';
 </head>
 <body>    
     
-<form method="post" action="">
-    <label for="action">Acción:</label>
+<form method="post" action="../../php/registroempresa.php">
     <select name="action" id="action">
         <option value="create">Crear Empresa</option>
         <option value="read">Buscar Empresa por ID</option>
