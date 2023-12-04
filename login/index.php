@@ -53,6 +53,7 @@ if (isset($_SESSION["ID"])) {
                             </div>
                         </form><br>
                         <div class="container" style="text-align: center; margin-top: 20px;">
+                            <p>¿No recuerdas tu contraseña? <a href="../recuperacion/forgot_password_form.php">Recuperar contraseña</a></p>
                             <p>¿No tienes una cuenta? <a href="../Postulantes/Registro/">Regístrate</a> ahora</p>
                         </div>
                     </div>
