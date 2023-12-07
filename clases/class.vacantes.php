@@ -23,6 +23,11 @@ class Vacantes
         $ct = "SHOW TABLES LIKE 'vacantes'";
         $h = $conexion->query($ct);
 
+        $carpetaImagenes = 'img/vacantes';
+        if (!is_dir($carpetaImagenes)) {
+            mkdir($carpetaImagenes, 0755, true);
+        }
+
         $nombre = $conexion->real_escape_string($this->nombre);
         $tipo = $conexion->real_escape_string($this->tipo);
         $descripcion = $conexion->real_escape_string($this->descripcion);
