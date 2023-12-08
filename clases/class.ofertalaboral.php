@@ -38,7 +38,6 @@ class OfertaLaboral
     {
         $bd = new Conexion();
 
-        // Verificar si la carpeta 'img/vacantes' existe, si no, crearla
         $carpetaImagenes = 'img/vacantes';
         if (!is_dir($carpetaImagenes)) {
             mkdir($carpetaImagenes, 0755, true);
