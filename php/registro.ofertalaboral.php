@@ -1,3 +1,7 @@
+<?php
+require_once 'clases/class.ofertalaboral.php';
+require_once 'clases/class.conexion.php';
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,7 +13,7 @@
 
 <h2>Crear Oferta Laboral</h2>
 
-<form action="..clases/class.ofertalaboral.php" method="post" enctype="multipart/form-data">
+<form action="procesarFormulario" method="post" enctype="multipart/form-data">
     <label for="titulo">Título:</label>
     <input type="text" id="titulo" name="titulo" required><br>
 
