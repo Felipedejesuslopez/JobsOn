@@ -29,7 +29,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <!--<div class="row">
                 <div class="col-6">
                     <a class="botonmenu" href="ParaTi/">
                         <img src="img/Menu/Admin/adpostulantes.png" class="botonmenu">
@@ -47,7 +47,7 @@
                         <img class="botonmenu" src="img/Menu/Admin/advacantes.png" alt="">
                     </a>
                 </div>
-            </div>
+            </div>-->
             <br><br><br>
             <div class="od">
                 <center>

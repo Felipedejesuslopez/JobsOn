@@ -1,0 +1,37 @@
+.contenedor {
+    display: flex;
+    width: 100%;
+}
+
+.cuadrado {
+    width: 100%;
+    padding-bottom: 100%;
+    /* Esta propiedad mantiene el aspecto cuadrado */
+    background-image: url("../img/blank-post-it.png");
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    /* Agregamos una transición a la propiedad transform */
+}
+
+.cuadrado:hover {
+    transform: scale(1.2);
+    /* Hacemos el cuadrado un 20% más grande al pasar el cursor sobre él */
+}
+
+.contenido {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 10%;
+}
+
+@media screen and (max-width: 767px) {
+    /* Estilos específicos para pantallas pequeñas */
+    .col-sm-4 {
+        margin-top: 10%;
+    }
+}

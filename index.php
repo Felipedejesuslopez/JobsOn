@@ -26,38 +26,67 @@ if (isset($_SESSION["ID"])) {
 
 <body>
     <div>
-    <?php
-    switch ($_SESSION['tipo']) {
-        case 1:
-            include 'components/menu.usuario.php';
-            break;
+        <?php
+        switch ($_SESSION['tipo']) {
+            case 1:
+                include 'components/menu.usuario.php';
+                break;
 
-        case 2:
-            include 'components/menu.admin.php';
-            break;
+            case 2:
+                include 'components/menu.admin.php';
+                break;
 
-        case 3:
-            include 'components/menu.empresa.php';
-            break;
+            case 3:
+                include 'components/menu.empresa.php';
+                break;
 
-        case 4:
-            include 'components/menu.laboratorio.php';
-            break;
+            case 4:
+                include 'components/menu.laboratorio.php';
+                break;
 
-        case 5:
-            include 'components/menu.conductor.php';
-            break;
+            case 5:
+                include 'components/menu.conductor.php';
+                break;
 
-        case 6:
-            include 'components/menu.reclutador.php';
-            break;
-    }
+            case 6:
+                include 'components/menu.reclutador.php';
+                break;
+        }
 
-    ?>
+        ?>
     </div>
     <div class="container" id="content">
         <div id="main">
+            <div class="container">
 
+                <?php
+                switch ($_SESSION['tipo']) {
+                    case 1:
+                        include 'vacantes/index.php';
+                        break;
+
+                    case 2:
+                        include 'components/menu.admin.php';
+                        break;
+
+                    case 3:
+                        include 'components/menu.empresa.php';
+                        break;
+
+                    case 4:
+                        include 'components/menu.laboratorio.php';
+                        break;
+
+                    case 5:
+                        include 'components/menu.conductor.php';
+                        break;
+
+                    case 6:
+                        include 'components/menu.reclutador.php';
+                        break;
+                }
+                ?>
+            </div>
         </div>
     </div>
 </body>

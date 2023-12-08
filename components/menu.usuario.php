@@ -31,7 +31,7 @@
 
             <div class="row">
                 <div class="col-6">
-                    <a class="botonmenu" href="ParaTi/">
+                    <a class="botonmenu" href="vacantes/">
                         <img src="img/Menu/User/1.png" class="botonmenu">
                     </a>
                 </div>
