@@ -15,8 +15,11 @@ class OfertaLaboral
     protected $tipoContrato;
     protected $nivelExperiencia;
     protected $beneficios;
+    protected $imagen1;
+    protected $imagen2;
+    protected $imagen3;
 
-    public function __construct($id, $titulo, $descripcion, $ubicacion, $salario, $requisitos, $fechaPublicacion, $fechaExpiracion, $empresa, $tipoContrato, $nivelExperiencia, $beneficios)
+    public function __construct($id, $titulo, $descripcion, $ubicacion, $salario, $requisitos, $fechaPublicacion, $fechaExpiracion, $empresa, $tipoContrato, $nivelExperiencia, $beneficios, $imagen1, $imagen2, $imagen3)
     {
         $this->id = $id;
         $this->titulo = $titulo;
@@ -30,6 +33,9 @@ class OfertaLaboral
         $this->tipoContrato = $tipoContrato;
         $this->nivelExperiencia = $nivelExperiencia;
         $this->beneficios = $beneficios;
+        $this->imagen1 = $imagen1;
+        $this->imagen2 = $imagen2;
+        $this->imagen3 = $imagen3;
     }
 
     public function create()
@@ -37,7 +43,7 @@ class OfertaLaboral
         $bd = new Conexion();
         $consultaExistencia = "SHOW TABLES LIKE 'ofertas_laborales'";
         $resultado = $bd->query($consultaExistencia);
-        $sql = "INSERT INTO ofertas_laborales (TITULO, DESCRIPCION, UBICACION, SALARIO, REQUISITOS, FECHA_PUBLICACION, FECHA_EXPIRACION, EMPRESA, TIPO_CONTRATO, NIVEL_EXPERIENCIA, BENEFICIOS) VALUES ('{$this->titulo}','{$this->descripcion}','{$this->ubicacion}','{$this->salario}','{$this->requisitos}','{$this->fechaPublicacion}','{$this->fechaExpiracion}','{$this->empresa}','{$this->tipoContrato}','{$this->nivelExperiencia}','{$this->beneficios}')";
+        $sql = "INSERT INTO ofertas_laborales (TITULO, DESCRIPCION, UBICACION, SALARIO, REQUISITOS, FECHA_PUBLICACION, FECHA_EXPIRACION, EMPRESA, TIPO_CONTRATO, NIVEL_EXPERIENCIA, BENEFICIOS, IMAGEN1, IMAGEN2, IMAGEN3) VALUES ('{$this->titulo}','{$this->descripcion}','{$this->ubicacion}','{$this->salario}','{$this->requisitos}','{$this->fechaPublicacion}','{$this->fechaExpiracion}','{$this->empresa}','{$this->tipoContrato}','{$this->nivelExperiencia}','{$this->beneficios}','{$this->imagen1}','{$this->imagen2}','{$this->imagen3}')";
 
         if ($resultado->num_rows < 1) {
             $crearTabla = "CREATE TABLE ofertas_laborales (
@@ -52,7 +58,10 @@ class OfertaLaboral
                 EMPRESA VARCHAR(255),
                 TIPO_CONTRATO VARCHAR(50),
                 NIVEL_EXPERIENCIA VARCHAR(50),
-                BENEFICIOS TEXT
+                BENEFICIOS TEXT,
+                IMAGEN1 VARCHAR(255),
+                IMAGEN2 VARCHAR(255),
+                IMAGEN3 VARCHAR(255)
             )";
 
             $bd->query($crearTabla);
@@ -76,7 +85,7 @@ class OfertaLaboral
     public function update()
     {
         $bd = new Conexion();
-        $sql = "UPDATE ofertas_laborales SET TITULO = '{$this->titulo}', DESCRIPCION = '{$this->descripcion}', UBICACION = '{$this->ubicacion}', SALARIO = '{$this->salario}', REQUISITOS = '{$this->requisitos}', FECHA_PUBLICACION = '{$this->fechaPublicacion}', FECHA_EXPIRACION = '{$this->fechaExpiracion}', EMPRESA = '{$this->empresa}', TIPO_CONTRATO = '{$this->tipoContrato}', NIVEL_EXPERIENCIA = '{$this->nivelExperiencia}', BENEFICIOS = '{$this->beneficios}' WHERE ID = '{$this->id}'";
+        $sql = "UPDATE ofertas_laborales SET TITULO = '{$this->titulo}', DESCRIPCION = '{$this->descripcion}', UBICACION = '{$this->ubicacion}', SALARIO = '{$this->salario}', REQUISITOS = '{$this->requisitos}', FECHA_PUBLICACION = '{$this->fechaPublicacion}', FECHA_EXPIRACION = '{$this->fechaExpiracion}', EMPRESA = '{$this->empresa}', TIPO_CONTRATO = '{$this->tipoContrato}', NIVEL_EXPERIENCIA = '{$this->nivelExperiencia}', BENEFICIOS = '{$this->beneficios}', IMAGEN1 = '{$this->imagen1}', IMAGEN2 = '{$this->imagen2}', IMAGEN3 = '{$this->imagen3}' WHERE ID = '{$this->id}'";
         return $bd->query($sql);
     }
 }
