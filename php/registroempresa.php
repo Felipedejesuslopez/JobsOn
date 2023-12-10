@@ -24,42 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_POST['psw']
     );
 
-    $action = $_POST['action'];
-
-    if ($action === 'create') {
-        $empresa->create();
-        mostrarMensaje("Empresa creada con éxito.");
-    } elseif ($action === 'read') {
-        $id = !empty($_POST['id']) ? $_POST['id'] : null;
-        $result = $empresa->read($id);
-
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                mostrarMensaje("Empresa encontrada:<br>" . print_r($row, true));
-            }
-        } else {
-            mostrarMensaje("No se encontró ninguna empresa con el ID proporcionado.", 'error');
-        }
-    } elseif ($action === 'update') {
-        $id = !empty($_POST['id']) ? $_POST['id'] : null;
-        $dataToUpdate = [
-            'nombre' => $_POST['nombre'],
-            'direccion' => $_POST['direccion'],
-            'telefono' => $_POST['telefono'],
-            'descripcion' => $_POST['descripcion'],
-            'sector' => $_POST['sector'],
-            'contactoNombre' => $_POST['contactoNombre'],
-            'contactoCorreo' => $_POST['contactoCorreo'],
-            'sitioWeb' => $_POST['sitioWeb'],
-            'correo' => $_POST['correo'],
-            'psw' => $_POST['psw']
-        ];
-
-        $empresa->update($id, $dataToUpdate);
-        mostrarMensaje("Empresa actualizada con éxito.");
-    } elseif ($action === 'delete') {
-        $id = !empty($_POST['id']) ? $_POST['id'] : null;
-        $empresa->delete($id);
-        mostrarMensaje("Empresa eliminada con éxito.");
-    }
+    $empresa->create();
+    mostrarMensaje("Empresa creada con éxito.");
 }
