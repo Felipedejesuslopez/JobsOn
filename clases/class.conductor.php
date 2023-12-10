@@ -122,7 +122,7 @@ class conductor
     public function login()
 {
     $bd = new Conexion();
-    $sql = "SELECT * FROM conductores WHERE (USER = ? OR EMAIL = ? OR TELEFONO = ?) AND PASSWORD = ?";
+    $sql = "SELECT * FROM conductores WHERE (USER = ? OR EMAIL = ? OR T1 = ?) AND PASSWORD = ?";
     
     // Utilizar una consulta preparada
     $stmt = $bd->prepare($sql);

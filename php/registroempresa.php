@@ -1,8 +1,8 @@
 <?php
-ini_set("display_errors",1);
+ini_set("display_errors", 1);
 error_reporting(E_ALL);
-require_once '../clases/class.conexion.php';  
-require_once '../clases/class.empresa.php';  
+require_once '../clases/class.conexion.php';
+require_once '../clases/class.empresa.php';
 
 function mostrarMensaje($mensaje, $tipo = 'success')
 {
@@ -63,4 +63,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         mostrarMensaje("Empresa eliminada con éxito.");
     }
 }
-?>

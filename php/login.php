@@ -1,6 +1,7 @@
 <?php
 ini_set('display_errors',1);
 error_reporting(E_ALL);
+
 include '../clases/class.conexion.php';
 include '../clases/class.usuariopostulante.php';
 

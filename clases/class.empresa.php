@@ -34,7 +34,7 @@ class Empresa
     {
         $bd = new Conexion();
         $nombreTabla = 'empresa';
-
+        $query = "INSERT INTO ";
         $consultaExistencia = "SHOW TABLES LIKE '$nombreTabla'";
         $resultado = $bd->query($consultaExistencia);
 
@@ -50,17 +50,23 @@ class Empresa
                 CONTACTO_CORREO VARCHAR(255),
                 SITIO_WEB VARCHAR(255),
                 CORREO VARCHAR(50),
-                PSW VARCHAR(20)
+                PSW VARCHAR(255)
             )";
-
-            if ($bd->query($crearTabla)) {
-                echo "Tabla creada con éxito.<br>";
-            } else {
-                echo "Error al crear la tabla: " . $bd->error . "<br>";
-            }
-        } else {
-            echo "La tabla ya existe.<br>";
+            $bd->query($crearTabla);
         }
+        $sql = "INSERT INTO $nombreTabla 
+        (NOMBRE, DIRECCION, TELEFONO, DESCRIPCION, SECTOR, CONTACTO_NOMBRE, CONTACTO_CORREO, SITIO_WEB, CORREO, PSW) 
+        VALUES 
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        // Utilizar una consulta preparada
+        $stmt = $bd->prepare($sql);
+
+        // Vincular parámetros
+        $stmt->bind_param("ssssssssss", $this->nombre, $this->direccion, $this->telefono, $this->descripcion, $this->sector, $this->contactoNombre, $this->contactoCorreo, $this->sitioWeb, $this->correo, $this->psw);
+
+        // Ejecutar la consulta
+        $stmt->execute();
     }
 
 
@@ -68,11 +74,11 @@ class Empresa
     {
 
         $bd = new Conexion();
-        $sql = "SELECT * FROM empresa WHERE (TELEFONO = ? OR SITIO_WEB = ? OR CONTACTO_CORREO = ?) AND PSW = ?";
+        $sql = "SELECT * FROM empresa WHERE (TELEFONO = ? OR SITIO_WEB = ? OR CONTACTO_CORREO = ? OR CORREO = ?) AND PSW = ?";
 
         // Utilizar una consulta preparada
         $stmt = $bd->prepare($sql);
-        $stmt->bind_param("ssss", $this->sitioWeb, $this->correo, $this->telefono, $this->psw);
+        $stmt->bind_param("sssss", $this->sitioWeb, $this->correo, $this->telefono,$this->correo, $this->psw);
 
         // Ejecutar la consulta
         $stmt->execute();
