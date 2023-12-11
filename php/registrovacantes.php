@@ -42,11 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_POST['empresa'],
         $_POST['tipoContrato'],
         $_POST['nivelExperiencia'],
-        $_POST['beneficios'],
-        $rutaImagen1,
-        $rutaImagen2,
-        $rutaImagen3
-    );
+        $_POST['beneficios']);
+    
 
     $resultado = $oferta->create();
 
