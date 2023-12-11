@@ -5,7 +5,7 @@
                 <div class="row">
                  
                     <div class="col-8">
-                        <img src="img/JobsOn.png" id="logo">
+                        <img src="img/JobsOnGreen.png" id="logo">
                         <h7><br>
                             Hola, <b>
                                 <?php echo $user['NOMBRE'] ?>
@@ -23,7 +23,7 @@
                     <div class="input-group">
                         <input type="text" class="form-control search-input" placeholder="Buscar" aria-label="Buscar" aria-describedby="search-addon" />
                       
-                        <button type="button" class="btn btn-primary search-btn">
+                        <button type="button" class="btn btn-success search-btn" style="background-color:#00bd3f;">
                             <i class="fas fa-search search-icon"></i>
                         </button>
                     </div>
@@ -41,6 +41,7 @@
                         </a>
                     </div>
                     <br><br><br>
+                    <div class="col-sm-3"></div>
                     <div class="col-6">
                         <a class="botonmenu" href="empresa/vacantes//">
                             <img class="botonmenu" src="img/Menu/Empresa/emvacantes.png" alt="">

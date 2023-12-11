@@ -66,6 +66,8 @@ class OfertaLaboral
         $bd = new Conexion();
         if (isset($this->id) && $this->id != "") {
             $sql = "SELECT * FROM ofertas_laborales WHERE ID = '{$this->id}'";
+        }else if(isset($this->empresa) && $this->empresa != ''){
+            $sql = "SELECT * FROM ofertas_laborales WHERE EMPRESA = '{$this->empresa}' ORDER BY SALARIO DESC";
         } else {
             $sql = "SELECT * FROM ofertas_laborales ORDER BY TITULO ASC";
         }

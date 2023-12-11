@@ -70,7 +70,7 @@ if (isset($_SESSION["ID"])) {
                         break;
 
                     case 3:
-                        include 'components/menu.empresa.php';
+                        include 'empresa/vacantes/detalles/';
                         break;
 
                     case 4:
