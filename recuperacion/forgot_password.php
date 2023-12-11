@@ -1,51 +1,52 @@
 <?php
+require_once 'PHPMailer/src/PHPMailer.php';
+require_once 'PHPMailer/src/Exception.php';
+require_once 'PHPMailer/src/SMTP.php';
+require_once 'funciones.php';
 
-require_once '../clases/class.conexion.php';
-
-$conexion = new conexion() ;
-
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST["forgotEmail"];
 
-    $email = $_POST["email"];
-
-
-    if ($conexion->connect_error) {
-        die("Error de conexión: " . $conexion->connect_error);
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "Formato de correo electrónico inválido.";
+        exit();
     }
 
-    $sql = "SELECT * FROM usuarios WHERE email = ?";
-    $stmt = $conexion->prepare($sql);
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows > 0) {
-
-    // Generar un token único sin almacenarlo en la base de datos
-    $token = bin2hex(random_bytes(32));
-
-    // Envía el correo electrónico con el enlace para restablecer la contraseña
-    $subject = "Recuperación de Contraseña JobsOn";
-    $message = "Hola, $user, Para restablecer tu contraseña, haz clic en el siguiente enlace:\n\n";
-    $message .= "http://localhost/JobsOn-main/recuperacion/reset_password_form.php?token=$token&email=$email\n\n";
-    $message .= "Este enlace expirará en 1 hora. \n\n";
-    $message .= "Si no has solicitado restablecer tu contraseña, puedes ignorar este correo.";
-
-    $headers = "From: 19040107@alumno.utc.edu.mx";
-
-    mail($email, $subject, $message, $headers);
-
-    echo "Se ha enviado un enlace de recuperación a tu correo electrónico.";
-    } else {
-    echo "El correo electrónico no está registrado en nuestro sistema.";
+    if (!emailExists($email)) {
+        echo "El correo electrónico no está registrado.";
+        exit();
     }
 
-    $stmt->close();
-    $conexion->close();
-}else {
-    header("Location: ../index.php");
+    $token = generateToken();
+
+    session_start();
+    $_SESSION['reset_token'] = $token;
+    $_SESSION['reset_email'] = $email;
+
+    try {
+        $mail = new PHPMailer(true);
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = '19040107@alumno.utc.edu.mx';
+        $mail->Password = 'Alertarcp724';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 587;
+        $mail->setFrom('19040107@alumno.utc.edu.mx', 'JobsOn');
+        $mail->addAddress($email);
+        $mail->Subject = 'Recuperación de Contraseña JobsOn';
+        $mail->Body = "Para restablecer tu contraseña, haz clic en el siguiente enlace:\n\nhttp://localhost/JobsOn-main/recuperacion/reset_password_form.php?token=$token\n\nEste enlace expirará en 1 hora.";
+
+        $mail->send();
+        echo "Se ha enviado un enlace de recuperación a tu correo electrónico.";
+    } catch (Exception $e) {
+        echo "Error al enviar el correo electrónico: {$mail->ErrorInfo}";
+    }
+} else {
+    header("Location: index.html");
     exit();
 }
-    
 ?>
