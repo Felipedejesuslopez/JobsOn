@@ -31,18 +31,18 @@
 
                 <div class="row" class>
                     <div class="col-6">
-                        <a class="botonmenu" href="ParaTi/">
+                        <a class="botonmenu" href="empresa/citas/">
                             <img src="img/Menu/Empresa/emcitas.png" class="botonmenu">
                         </a>
                     </div>
                     <div class="col-6">
-                        <a class="botonmenu" href="Mensajes/">
+                        <a class="botonmenu" href="empresa/seguimiento/">
                             <img class="botonmenu" src="img/Menu/Empresa/emseguimiento.png" alt="">
                         </a>
                     </div>
                     <br><br><br>
                     <div class="col-6">
-                        <a class="botonmenu" href="Curriculum/">
+                        <a class="botonmenu" href="empresa/vacantes//">
                             <img class="botonmenu" src="img/Menu/Empresa/emvacantes.png" alt="">
                         </a>
                     </div>

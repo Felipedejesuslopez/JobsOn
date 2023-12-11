@@ -57,7 +57,7 @@ if (isset($_SESSION["ID"])) {
     </div>
     <div class="container" id="content">
         <div id="main">
-            <div class="container">
+            
 
                 <?php
                 switch ($_SESSION['tipo']) {
@@ -86,7 +86,7 @@ if (isset($_SESSION["ID"])) {
                         break;
                 }
                 ?>
-            </div>
+            
         </div>
     </div>
 </body>

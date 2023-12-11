@@ -13,6 +13,7 @@
     overflow: hidden;
     transition: transform 0.3s ease;
     /* Agregamos una transición a la propiedad transform */
+    cursor: pointer;
 }
 
 .cuadrado:hover {
@@ -20,18 +21,50 @@
     /* Hacemos el cuadrado un 20% más grande al pasar el cursor sobre él */
 }
 
-.contenido {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 10%;
-}
-
 @media screen and (max-width: 767px) {
     /* Estilos específicos para pantallas pequeñas */
     .col-sm-4 {
         margin-top: 10%;
+    }
+    .contenido {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 15%;
+        color: black;
+    }
+    p {
+        font-size: 15pt;
+    }
+    .titulo {
+        font-size: 18pt;
+        font-style: italic;
+    }
+    .details {
+        font-size: 16pt;
+        font-weight: bold;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .contenido {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 10%;
+        color: black;
+    }
+    p {
+        font-size: 9pt;
+    }
+    .titulo {
+        font-size: 12pt;
+    }
+    .details {
+        font-size: 11pt;
     }
 }

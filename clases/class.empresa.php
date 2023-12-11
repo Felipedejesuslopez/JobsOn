@@ -96,4 +96,15 @@ class Empresa
             return 0;
         }
     }
+
+    public function read(){
+        $bd = new Conexion();
+        if(isset($this->id) && $this->id != ''){
+            $query = "SELECT * FROM empresa WHERE ID = '{$this->id}'";
+        }else{
+            $query = "SELECT * FROM empresa ORDER BY ID DESC";
+        }
+        $res = $bd->query($query);
+        return $res;
+    }
 }
