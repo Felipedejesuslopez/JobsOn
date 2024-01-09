@@ -113,7 +113,7 @@ class admin
 
         // Obtener el resultado
         $result = $stmt->get_result();
-
+        
         // Verificar si hay al menos una fila en el resultado
         if ($result->num_rows > 0) {
             // Iniciar sesión y almacenar los datos del usuario en la sesión
@@ -124,4 +124,5 @@ class admin
             return 0;
         }
     }
+
 }

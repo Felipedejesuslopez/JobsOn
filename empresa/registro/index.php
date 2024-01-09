@@ -1,16 +1,7 @@
+<h1>FORMULARIO PARA EMPRESAS</h1>
+    <form method="post" action="php/registroempresa.php">
 
-    <form method="post" action="../../php/registroempresa.php">
-        <select name="action" id="action">
-            <option value="create">Crear Empresa</option>
-            <option value="read">Buscar Empresa por ID</option>
-            <option value="update">Actualizar Empresa por ID</option>
-            <option value="delete">Eliminar Empresa por ID</option>
-        </select>
-        <br>
-
-        <label for="id">ID:</label>
-        <input type="text" name="id">
-        <br>
+        <input type="hidden" name="action" value="create">
 
         <label for="nombre">Nombre:</label>
         <input type="text" name="nombre">

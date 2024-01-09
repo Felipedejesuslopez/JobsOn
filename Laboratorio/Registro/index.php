@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,62 +7,53 @@
 </head>
 <body>
 
-    <form method="post" action="../../php/registrolaboratorio.php">
-        <label for="action">Acción:</label>
-        <select name="action" id="action">
-            <option value="create">Crear Laboratorio</option>
-            <option value="read">Buscar Laboratorio por ID</option>
-            <option value="update">Actualizar Laboratorio por ID</option>
-            <option value="delete">Eliminar Laboratorio por ID</option>
-        </select>
-        <br>
-    
-        <label for="id">ID:</label>
-        <input type="text" name="id">
-        <br>
-    
+<h1>FORMULARIO PARA LABORATORIOS</h1>
+    <form method="post" action="php/registrolaboratorio.php">
+
+        <input type="hidden" name="action" value="create">
+
         <label for="user">Usuario:</label>
-        <input type="text" name="user">
+        <input type="text" id="user" name="user" required>
         <br>
     
         <label for="email">Correo Electrónico:</label>
-        <input type="email" name="email">
+        <input type="email" id="email" name="email" required>
         <br>
     
         <label for="password">Contraseña:</label>
-        <input type="password" name="password">
+        <input type="password" id="password" name="password" required>
         <br>
     
         <label for="name">Nombre:</label>
-        <input type="text" name="name">
+        <input type="text" id="name" name="name" required>
         <br>
     
         <label for="direccion">Dirección:</label>
-        <input type="text" name="direccion">
+        <input type="text" id="direccion" name="direccion" required>
         <br>
     
         <label for="horario">Horario:</label>
-        <input type="text" name="horario">
+        <input type="text" id="horario" name="horario" required>
         <br>
     
         <label for="telefono">Teléfono:</label>
-        <input type="text" name="telefono">
+        <input type="text" id="telefono" name="telefono" required>
         <br>
     
         <label for="estatus">Estatus:</label>
-        <input type="text" name="estatus">
+        <input type="text" id="estatus" name="estatus" required>
         <br>
     
         <label for="op1">Opción 1:</label>
-        <input type="text" name="op1">
+        <input type="text" id="op1" name="op1" required>
         <br>
     
         <label for="op2">Opción 2:</label>
-        <input type="text" name="op2">
+        <input type="text" id="op2" name="op2" required>
         <br>
     
         <label for="op3">Opción 3:</label>
-        <input type="text" name="op3">
+        <input type="text" id="op3" name="op3" required>
         <br>
     
       

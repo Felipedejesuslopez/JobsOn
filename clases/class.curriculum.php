@@ -63,7 +63,7 @@ class curriculum
                 EXPERIENCIA VARCHAR(255),
                 ESTADOCIVIL VARCHAR(255),
                 ESTUDIOS VARCHAR(255),
-                CERTIFICACIONES VARCHAR(255),-
+                CERTIFICACIONES VARCHAR(255),
                 TELEFONO VARCHAR(255),
                 CORREO VARCHAR(255),
                 REFERENCIAS VARCHAR(255),

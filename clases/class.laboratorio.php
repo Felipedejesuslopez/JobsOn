@@ -19,7 +19,7 @@ class Laboratorio
         $this->id = $id;
         $this->user = $user;
         $this->email = $email;
-        $this->password = $password;
+        $this->password = md5($password);
         $this->name = $name;
         $this->direccion = $direccion;
         $this->horario = $horario;

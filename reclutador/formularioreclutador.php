@@ -2,7 +2,7 @@
 session_start();
 if(isset($_SESSION["ID"])){
     //$id = $_SESSION["ID"];
-}else{
+} else {
     ?>
     <script>
         window.location = "../../login/";
@@ -17,44 +17,67 @@ if(isset($_SESSION["ID"])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jobs0n</title>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="scriptreclutador.js"></script>
 </head>
 <body> 
-<form method="post" action="create" id="formulario">
-        <label for="user">USER:</label>
-        <input type="text" id="nombre" name="nombre" required>
-   
-        <label for="email">EMAIL:</label>
-        <input type="email" id="nombre" name="nombre" required>
-    
-        <label for="password">PASSWORD:</label>
-        <input type="password" id="edad" name="edad" required>
+    <h1>FORMULARIO PARA RECLUTADORES</h1>
+    <form method="post" action="php/registroreclutador.php" enctype="multipart/form-data">
 
-        <label for="cedula">CEDULA:</label>
-        <input type="text" id="edad" name="edad" required>
+        <input type="hidden" name="action" value="create">
 
-        <label for="name">NAME:</label>
-        <input type="text" id="edad" name="edad" required>
+        <div>
+            <label for="user">USER:</label>
+            <input type="text" id="user" name="user" required>
+        </div>
 
-        <label for="telefono">telefono:</label>
-        <input type="date" id="edad" name="edad" required>
+        <div>
+            <label for="email">EMAIL:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
 
-        <label for="foto">FOTO:</label>
-        <input type="file" id="foto" name="foto" required>
+        <div>
+            <label for="password">PASSWORD:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
 
-        <label for="nacimiento">FECHA NACIMIENTO:</label>
-        <input type="text" id="nacimiento" name="nacimieto" required>
+        <div>
+            <label for="cedula">CEDULA:</label>
+            <input type="text" id="cedula" name="cedula" required>
+        </div>
 
-        <label for="ingreso">INGRESO:</label>
-        <input type="text" id="ingreso" name="ingreso" required>
-       
-        <label for="estatus">ESTATUS:</label>
-        <input type="text" id="estatus" name="estatus" required>
+        <div>
+            <label for="name">NAME:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
 
-        <input type="submit" value="Enviar">
+        <div>
+            <label for="telefono">telefono:</label>
+            <input type="text" id="telefono" name="telefono" required>
+        </div>
+
+        <div>
+            <label for="foto">FOTO:</label>
+            <input type="file" id="foto" name="foto" accept="image/*" required>
+        </div>
+
+        <div>
+            <label for="nacimiento">NACIMIENTO:</label>
+            <input type="date" id="nacimiento" name="nacimiento" required>
+        </div>
+
+        <div>
+            <label for="ingreso">INGRESO:</label>
+            <input type="text" id="ingreso" name="ingreso" required>
+        </div>
+
+        <div>
+            <label for="estatus">ESTATUS:</label>
+            <input type="text" id="estatus" name="estatus" required>
+        </div>
+
+        <div>
+            <input type="submit" value="Enviar">
+        </div>
     </form>
-
-    <div id="resultado"></div>
 </body>
 </html>
+
