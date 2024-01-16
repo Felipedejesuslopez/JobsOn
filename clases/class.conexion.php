@@ -5,9 +5,9 @@
 class Conexion extends mysqli
 {
     private $host = 'localhost';
-    private $user = 'root';
-    private $psw = '';
-    private $database = 'Jobson';
+    private $user = 'pma';
+    private $psw = 'asdf159357.';
+    private $database = 'JobsOn';
 
     public function __construct()
     {

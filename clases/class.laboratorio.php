@@ -19,7 +19,7 @@ class Laboratorio
         $this->id = $id;
         $this->user = $user;
         $this->email = $email;
-        $this->password = md5($password);
+        $this->password = $password;
         $this->name = $name;
         $this->direccion = $direccion;
         $this->horario = $horario;
@@ -131,6 +131,17 @@ class Laboratorio
             $_SESSION = $result->fetch_assoc();
             return 1;
         } else {
+            return 0;
+        }
+    }
+
+    public function checkemail(){
+        $bd = new Conexion();
+        $query = "SELECT * FROM laboratorios WHERE USER = '{$this->user}' OR EMAIL = '{$this->email}'";
+        $res = $bd->query($query);
+        if($res->fetch_array()){
+            return 1;
+        }else{
             return 0;
         }
     }

@@ -10,6 +10,7 @@ class reclutador
     protected $telefono;
     protected $foto;
     protected $nacimiento;
+
     protected $ingreso;
     protected $estatus;
 
@@ -18,7 +19,7 @@ class reclutador
         $this->id = $id;
         $this->user = $user;
         $this->email = $email;
-        $this->password = md5($password);
+        $this->password = $password;
         $this->cedula = $cedula;
         $this->name = $name;
         $this->telefono = $telefono;
@@ -58,7 +59,6 @@ class reclutador
         }
 
         $bd->query($sql);
-        return $bd->insert_id;
     }
 
     public function read($id = null)
@@ -109,27 +109,37 @@ class reclutador
 
     public function login()
     {
-
         $bd = new Conexion();
-        $sql = "SELECT * FROM reclutadores WHERE (USER = ? OR EMAIL = ? OR TELEFONO = ?) AND PASSWORD = ?";
 
-        // Utilizar una consulta preparada
-        $stmt = $bd->prepare($sql);
-        $stmt->bind_param("ssss", $this->user, $this->email, $this->telefono, $this->password);
+        $credential = $this->email; // Asume que el correo es la credencial por defecto
+        if ($this->user !== null) {
+            $credential = $this->user;
+        } elseif ($this->telefono !== null) {
+            $credential = $this->telefono;
+        }
 
-        // Ejecutar la consulta
-        $stmt->execute();
+        $sql = "SELECT * FROM reclutadores WHERE EMAIL = '{$credential}'";
 
-        // Obtener el resultado
-        $result = $stmt->get_result();
+        $result = $bd->query($sql);
 
-        // Verificar si hay al menos una fila en el resultado
         if ($result->num_rows > 0) {
-            // Iniciar sesión y almacenar los datos del usuario en la sesión
-            session_start();
-            $_SESSION = $result->fetch_assoc();
+            $reclutador = $result->fetch_assoc();
+            // Verifica si la contraseña proporcionada coincide
+            if (password_verify($this->password, $reclutador['PASSWORD'])) {
+                return $reclutador; // Devuelve el reclutador si las credenciales son correctas
+            }
+        }
+
+        return null; // Devuelve null si las credenciales son incorrectas
+    }
+
+    public function checkemail(){
+        $bd = new Conexion();
+        $query = "SELECT * FROM reclutadores WHERE USER = '{$this->user}' OR EMAIL = '{$this->email}'";
+        $res = $bd->query($query);
+        if($res->fetch_array()){
             return 1;
-        } else {
+        }else{
             return 0;
         }
     }

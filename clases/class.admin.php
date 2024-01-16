@@ -113,7 +113,7 @@ class admin
 
         // Obtener el resultado
         $result = $stmt->get_result();
-        
+
         // Verificar si hay al menos una fila en el resultado
         if ($result->num_rows > 0) {
             // Iniciar sesión y almacenar los datos del usuario en la sesión
@@ -125,4 +125,15 @@ class admin
         }
     }
 
+    public function checkuser()
+    {
+        $bd = new Conexion();
+        $query = "SELECT * FROM admins WHERE USERNAME = '{$this->username}' OR EMAIL = '{$this->email}'";
+        $ch = $bd->query($query);
+        if ($ch->fetch_array()) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 }

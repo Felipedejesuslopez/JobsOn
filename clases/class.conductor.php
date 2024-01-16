@@ -22,7 +22,7 @@ class conductor
         $this->id = $id;
         $this->user = $user;
         $this->email = $email;
-        $this->password = md5($password);
+        $this->password = $password;
         $this->name = $name;
         $this->licencia = $licencia;
         $this->ine = $ine;
@@ -42,7 +42,7 @@ class conductor
         $ct = "SHOW TABLES LIKE 'conductores'";
         $h = $bd->query($ct);
         if ($h->num_rows > 0) {
-            $sql = "INSERT INTO conductores (USER, EMAIL, PASSWORD, NAME, LICENCIA, INE, FOTO, NACIMIENTO, INGRESO, COMPLETADOS, CANCELADOS, ESTATUS, TELEFONO, T2) 
+            $sql = "INSERT INTO conductores (USER, EMAIL, PASSWORD, NAME, LICENCIA, INE, FOTO, NACIMIENTO, INGRESO, COMPLETADOS, CANCELADOS, ESTATUS, T1, T2) 
             VALUES ('{$this->user}', '{$this->email}', '{$this->password}', '{$this->name}', '{$this->licencia}', '{$this->ine}', '{$this->foto}', '{$this->nacimiento}', '{$this->ingreso}', '{$this->completados}', '{$this->cancelados}', '{$this->estatus}', '{$this->telefono}', '{$this->opt2}')";
         } else {
             // La tabla 'conductores' no existe, crea la tabla y luego realiza la inserción
@@ -56,22 +56,21 @@ class conductor
                         INE VARCHAR(255),
                         FOTO VARCHAR(255),
                         NACIMIENTO DATE,
-                        INGRESO text,
+                        INGRESO DATE,
                         COMPLETADOS INT,
                         CANCELADOS INT,
                         ESTATUS VARCHAR(50),
-                        TELEFONO VARCHAR(255),
+                        T1 VARCHAR(255),
                         T2 VARCHAR(255)
                       )";
 
             $bd->query($sqlCreateTable);
 
             // Ahora, realiza la inserción
-            $sql = "INSERT INTO conductores (USER, EMAIL, PASSWORD, NAME, LICENCIA, INE, FOTO, NACIMIENTO, INGRESO, COMPLETADOS, CANCELADOS, ESTATUS, TELEFONO, T2) 
+            $sql = "INSERT INTO conductores (USER, EMAIL, PASSWORD, NAME, LICENCIA, INE, FOTO, NACIMIENTO, INGRESO, COMPLETADOS, CANCELADOS, ESTATUS, T1, T2) 
             VALUES ('{$this->user}', '{$this->email}', '{$this->password}', '{$this->name}', '{$this->licencia}', '{$this->ine}', '{$this->foto}', '{$this->nacimiento}', '{$this->ingreso}', '{$this->completados}', '{$this->cancelados}', '{$this->estatus}', '{$this->telefono}', '{$this->opt2}')";
         }
         $bd->query($sql);
-        return $bd->insert_id;
     }
 
     public function read($id = null)
@@ -122,12 +121,18 @@ class conductor
 
     public function login()
     {
-
         $bd = new Conexion();
-        $sql = "SELECT * FROM conductores WHERE (USER = ? OR EMAIL = ? OR TELEFONO = ?) AND PASSWORD = ?";
+        $sql = "SELECT * FROM conductores WHERE (USER = ? OR EMAIL = ? OR T1 = ?) AND PASSWORD = ?";
 
         // Utilizar una consulta preparada
         $stmt = $bd->prepare($sql);
+
+        // Verificar si la preparación fue exitosa
+        if (!$stmt) {
+            die("Error en la preparación de la consulta: " . $bd->error);
+        }
+
+        // Vincular los parámetros
         $stmt->bind_param("ssss", $this->user, $this->email, $this->telefono, $this->password);
 
         // Ejecutar la consulta
@@ -147,4 +152,15 @@ class conductor
         }
     }
 
+    public function checkemail()
+    {
+        $bd = new Conexion();
+        $query = "SELECT * FROM conductores WHERE USER = '{$this->user}' OR EMAIL = '{$this->email}'";
+        $res = $bd->query($query);
+        if ($res->fetch_array()) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 }

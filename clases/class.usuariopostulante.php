@@ -127,6 +127,24 @@ class usuariopostulante
             return 0;
         }
     }
-    
+
+    public function checkuser(){
+        $bd = new Conexion();
+        $query = "SELECT * FROM usuarios WHERE USUARIO = '{$this->user}' OR EMAIL = '{$this->email}'";
+        $res = $bd->query($query);
+        if($res->fetch_array()){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
+    public function ultimo(){
+        $bd = new Conexion();
+        $query = "SELECT * FROM usuarios ORDER BY ID DESC LIMIT 1";
+        $r = $bd->query($query)->fetch_array();
+        $res = intval($r['ID']);
+        return $res;
+    }
     
 }

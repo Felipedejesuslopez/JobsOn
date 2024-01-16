@@ -46,7 +46,7 @@ class mensaje
                 CORREO_USUARIO VARCHAR(255),
                 CONTENIDO_MENSAJE VARCHAR(255),
                 NOMBRE_RECEPTOR VARCHAR(255),
-                CORREO_RECEPTOR VARCHAR(255),
+                CORREO_RECEPTOR VARCHAR(255)
                 FECHA VARCHAR(255),
                 HORA TIME)";
                 

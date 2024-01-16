@@ -81,5 +81,13 @@ class OfertaLaboral
         $sql = "UPDATE ofertas_laborales SET TITULO = '{$this->titulo}', DESCRIPCION = '{$this->descripcion}', UBICACION = '{$this->ubicacion}', SALARIO = '{$this->salario}', REQUISITOS = '{$this->requisitos}', FECHA_PUBLICACION = '{$this->fechaPublicacion}', FECHA_EXPIRACION = '{$this->fechaExpiracion}', EMPRESA = '{$this->empresa}', TIPO_CONTRATO = '{$this->tipoContrato}', NIVEL_EXPERIENCIA = '{$this->nivelExperiencia}', BENEFICIOS = '{$this->beneficios}' WHERE ID = '{$this->id}'";
         return $bd->query($sql);
     }
+
+    public function lastid(){
+        $bd = new Conexion();
+        $query = "SELECT * FROM ofertas_laborales ORDER BY ID DESC LIMIT 1";
+        $r = $bd->query($query);
+        $res = $r->fetch_array();
+        return $res['ID'];
+    }
 }
 ?>
