@@ -1,4 +1,9 @@
-<h1>FORMULARIO PARA EMPRESAS</h1>
+<div class="container">
+
+    <center>
+        <h1>FORMULARIO PARA EMPRESAS</h1>
+    </center>
+
     <form method="post" action="php/registroempresa.php">
 
         <input type="hidden" name="action" value="create">
@@ -45,3 +50,4 @@
 
         <input type="submit" value="Enviar">
     </form>
+</div>

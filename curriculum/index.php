@@ -1,0 +1,1 @@
+<button onclick="window.open('curriculum/pdf/','_blank')" class="btn btn-outline-danger" style="width:100%;">Ver CV pdf <i class="far fa-file-pdf"></i></button>

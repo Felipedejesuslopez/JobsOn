@@ -22,6 +22,8 @@
 
 <!-- Bootstrap 4 JS -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+
 
 <!-- FontAwesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -51,12 +53,10 @@ if ($_SESSION['TEMA'] == 'D') {
             }
         }
 
-        #body {
+        body {
 
             background-color: black;
             color: white;
-
-            background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.9)), url('img/fastitwallpaper.png');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-position: center;
@@ -89,17 +89,10 @@ if ($_SESSION['TEMA'] == 'D') {
 
 
         #main {
-
-            background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.9)), url('img/fastitwallpaper.png');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-position: center;
             background-size: contain;
-            color: white;
-        }
-
-        .dropdown-item {
-            background-color: gray;
             color: white;
         }
 
@@ -142,16 +135,778 @@ if ($_SESSION['TEMA'] == 'D') {
             color: gray;
             text-align: justify;
         }
+
+        #sidebarMenu {
+            color: white;
+            background-color: black;
+        }
+
+        #menuToggle {
+            background-color: rgba(0, 0, 0, 0);
+            border-color: rgba(0, 0, 0, 0);
+            color: white;
+            position: fixed;
+            top: 2%;
+            left: 2%;
+            font-size: 24px;
+            z-index: 1;
+        }
+
+        .form-control {
+            background-color: rgba(0, 0, 0, 0.2);
+            color: white;
+
+        }
+
+        .form-control:disabled {
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+    </style>
+<?php
+} else if ($_SESSION['TEMA'] == 'G') {
+?>
+    <style>
+        /* Estilos para ocultar el texto en dispositivos pequeños */
+        @media (max-width: 991.98px) {
+            .navbar-brand-text {
+                display: none;
+            }
+        }
+
+        body {
+            background-color: #303030;
+            /* Gris oscuro */
+            color: white;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: contain;
+        }
+
+        /* Estilo para la barra de desplazamiento en tema gris oscuro */
+        ::-webkit-scrollbar {
+            width: 6px;
+            background-color: #222;
+            /* Gris más oscuro */
+            border-radius: 3px;
+        }
+
+        /* Estilo para la barra de desplazamiento en tema gris oscuro cuando se desplaza */
+        ::-webkit-scrollbar-thumb {
+            background-color: #444;
+            /* Gris oscuro */
+            border-radius: 3px;
+        }
+
+        /* Estilo para el botón de desplazamiento hacia arriba y hacia abajo */
+        ::-webkit-scrollbar-button {
+            display: none;
+        }
+
+        #main {
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: contain;
+            color: white;
+        }
+
+        .card {
+            background-color: rgba(0, 0, 0, 0.2);
+            color: white;
+            border: 1px solid gray;
+        }
+
+        @media (max-width: 767px) {
+            .card {
+                margin-bottom: 5%;
+            }
+        }
+
+        .card-header {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+        }
+
+        .card-header img {
+            width: 100%;
+        }
+
+        .card-body {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+        }
+
+        .card-body span {
+            text-align: right;
+            color: aqua;
+        }
+
+        .card-body p {
+            font-size: 8pt;
+            color: gray;
+            text-align: justify;
+        }
+
+        #sidebarMenu {
+            color: white;
+            background-color: #303030;
+            /* Gris oscuro */
+        }
+
+        #menuToggle {
+            background-color: rgba(0, 0, 0, 0);
+            border-color: rgba(0, 0, 0, 0);
+            color: white;
+            position: fixed;
+            top: 5%;
+            left: 5%;
+            font-size: 24px;
+            z-index: 0;
+        }
+
+        .form-control {
+            background-color: rgba(0, 0, 0, 0.2);
+            color: white;
+
+        }
+
+        .form-control:disabled {
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+    </style>
+<?php } else if ($_SESSION['TEMA'] == 'N') {
+?>
+    <style>
+        /* Estilos para ocultar el texto en dispositivos pequeños */
+        @media (max-width: 991.98px) {
+            .navbar-brand-text {
+                display: none;
+            }
+        }
+
+        body {
+            background-color: black;
+            color: #1eff00;
+            /* Verde neon */
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: contain;
+        }
+
+        /* Estilo para la barra de desplazamiento en tema neon */
+        ::-webkit-scrollbar {
+            width: 6px;
+            background-color: #000;
+            border-radius: 3px;
+        }
+
+        /* Estilo para la barra de desplazamiento en tema neon cuando se desplaza */
+        ::-webkit-scrollbar-thumb {
+            background-color: #1eff00;
+            /* Verde neon */
+            border-radius: 3px;
+        }
+
+        /* Estilo para el botón de desplazamiento hacia arriba y hacia abajo */
+        ::-webkit-scrollbar-button {
+            display: none;
+        }
+
+        #main {
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: contain;
+            color: #1eff00;
+            /* Verde neon */
+        }
+
+        .card {
+            background-color: rgba(0, 0, 0, 0.2);
+            color: #1eff00;
+            /* Verde neon */
+            border: 1px solid gray;
+        }
+
+        @media (max-width: 767px) {
+            .card {
+                margin-bottom: 5%;
+            }
+        }
+
+        .card-header {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #1eff00;
+            /* Verde neon */
+        }
+
+        .card-header img {
+            width: 100%;
+        }
+
+        .card-body {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #1eff00;
+            /* Verde neon */
+        }
+
+        .card-body span {
+            text-align: right;
+            color: aqua;
+        }
+
+        .card-body p {
+            font-size: 8pt;
+            color: gray;
+            text-align: justify;
+        }
+
+        #sidebarMenu {
+            color: #1eff00;
+            /* Verde neon */
+            background-color: black;
+        }
+
+        #menuToggle {
+            background-color: rgba(0, 0, 0, 0);
+            border-color: rgba(0, 0, 0, 0);
+            color: #1eff00;
+            position: fixed;
+            top: 2%;
+            left: 2%;
+            font-size: 24px;
+            z-index: 1;
+        }
+
+        .form-control {
+            background-color: rgba(0, 0, 0, 0.2);
+            color: white;
+
+        }
+
+        .form-control:disabled {
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+    </style>
+<?php
+} else if ($_SESSION['TEMA'] == 'GL') {
+?>
+    <style>
+        /* Estilos para ocultar el texto en dispositivos pequeños */
+        @media (max-width: 991.98px) {
+            .navbar-brand-text {
+                display: none;
+            }
+        }
+
+        body {
+            background-color: #333;
+            /* Gris oscuro */
+            color: #ccc;
+            /* Gris claro */
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: contain;
+        }
+
+        /* Estilo para la barra de desplazamiento en tema gris */
+        ::-webkit-scrollbar {
+            width: 6px;
+            background-color: #555;
+            /* Gris medio */
+            border-radius: 3px;
+        }
+
+        /* Estilo para la barra de desplazamiento en tema gris cuando se desplaza */
+        ::-webkit-scrollbar-thumb {
+            background-color: #999;
+            /* Gris claro */
+            border-radius: 3px;
+        }
+
+        /* Estilo para el botón de desplazamiento hacia arriba y hacia abajo */
+        ::-webkit-scrollbar-button {
+            display: none;
+        }
+
+        #main {
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: contain;
+            color: #ccc;
+            /* Gris claro */
+        }
+
+        .card {
+            background-color: #444;
+            /* Gris oscuro medio */
+            color: #ccc;
+            /* Gris claro */
+            border: 1px solid #666;
+            /* Gris claro medio */
+        }
+
+        @media (max-width: 767px) {
+            .card {
+                margin-bottom: 5%;
+            }
+        }
+
+        .card-header {
+            background-color: #222;
+            /* Gris oscuro */
+            color: #ccc;
+            /* Gris claro */
+        }
+
+        .card-header img {
+            width: 100%;
+        }
+
+        .card-body {
+            background-color: #333;
+            /* Gris oscuro medio */
+            color: #ccc;
+            /* Gris claro */
+        }
+
+        .card-body span {
+            text-align: right;
+            color: #66c2ff;
+            /* Azul claro */
+        }
+
+        .card-body p {
+            font-size: 8pt;
+            color: #999;
+            /* Gris claro medio */
+            text-align: justify;
+        }
+
+        #sidebarMenu {
+            color: #ccc;
+            /* Gris claro */
+            background-color: #222;
+            /* Gris oscuro */
+        }
+
+        #menuToggle {
+            background-color: rgba(0, 0, 0, 0);
+            border-color: rgba(0, 0, 0, 0);
+            color: #ccc;
+            /* Gris claro */
+            position: fixed;
+            top: 2%;
+            left: 2%;
+            font-size: 24px;
+            z-index: 1;
+        }
+
+        .form-control {
+            background-color: rgba(0, 0, 0, 0.2);
+            color: white;
+
+        }
+
+        .form-control:disabled {
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+
+        #menuToggle {
+            background-color: rgba(0, 0, 0, 0);
+            border-color: rgba(0, 0, 0, 0);
+            color: black;
+            position: fixed;
+            top: 2%;
+            left: 2%;
+            font-size: 24px;
+            z-index: 1;
+        }
+    </style>
+<?php
+} else if ($_SESSION['TEMA'] == 'A') {
+?>
+    <style>
+        /* Estilos para ocultar el texto en dispositivos pequeños */
+        @media (max-width: 991.98px) {
+            .navbar-brand-text {
+                display: none;
+            }
+        }
+
+        body {
+            background-color: #0a0813;
+            /* Gris oscuro */
+            color: #b3e0ff;
+            /* Azul claro */
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: contain;
+        }
+
+        /* Estilo para la barra de desplazamiento en tema azul */
+        ::-webkit-scrollbar {
+            width: 6px;
+            background-color: #333;
+            /* Gris oscuro */
+            border-radius: 3px;
+        }
+
+        /* Estilo para la barra de desplazamiento en tema azul cuando se desplaza */
+        ::-webkit-scrollbar-thumb {
+            background-color: #66c2ff;
+            /* Azul claro */
+            border-radius: 3px;
+        }
+
+        /* Estilo para el botón de desplazamiento hacia arriba y hacia abajo */
+        ::-webkit-scrollbar-button {
+            display: none;
+        }
+
+        #main {
+            background-color: #0a0813;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: contain;
+            color: #b3e0ff;
+            /* Azul claro */
+        }
+
+        .card {
+            background-color: #333;
+            /* Gris oscuro */
+            color: #b3e0ff;
+            /* Azul claro */
+            border: 1px solid #666;
+            /* Gris claro medio */
+        }
+
+        @media (max-width: 767px) {
+            .card {
+                margin-bottom: 5%;
+            }
+        }
+
+        .card-header {
+            background-color: #1a1a1a;
+            /* Gris oscuro */
+            color: #b3e0ff;
+            /* Azul claro */
+        }
+
+        .card-header img {
+            width: 100%;
+        }
+
+        .card-body {
+            background-color: #333;
+            /* Gris oscuro */
+            color: #b3e0ff;
+            /* Azul claro */
+        }
+
+        .card-body span {
+            text-align: right;
+            color: #80bfff;
+            /* Azul más oscuro */
+        }
+
+        .card-body p {
+            font-size: 8pt;
+            color: #999;
+            /* Gris claro medio */
+            text-align: justify;
+        }
+
+        #sidebarMenu {
+            color: #b3e0ff;
+            /* Azul claro */
+            background-color: #162B4E;
+            /* Gris oscuro */
+        }
+
+        #menuToggle {
+            background-color: rgba(0, 0, 0, 0);
+            border-color: rgba(0, 0, 0, 0);
+            color: #b3e0ff;
+            /* Azul claro */
+            position: fixed;
+            top: 2%;
+            left: 2%;
+            font-size: 24px;
+            z-index: 1;
+        }
+    </style>
+<?php
+} else if ($_SESSION['TEMA'] == 'R') {
+?>
+    <style>
+        /* Estilos para ocultar el texto en dispositivos pequeños */
+        @media (max-width: 991.98px) {
+            .navbar-brand-text {
+                display: none;
+            }
+        }
+
+        body {
+            background-color: #ff99b3;
+            /* Rosa claro */
+            color: #4d004d;
+            /* Púrpura oscuro */
+
+            /* Imagen que se diseñe de marca de agua */
+            /* background-image: linear-gradient(rgba(255, 153, 179, 1), rgba(255, 153, 179, 0.9)), url('img/fastitwallpaper.png');
+                        background-repeat: no-repeat;
+                        background-attachment: fixed;
+                        background-position: center;
+                        background-size: contain; */
+        }
+
+        /* Estilo para la barra de desplazamiento en tema rosa */
+        ::-webkit-scrollbar {
+            width: 6px;
+            background-color: #cc99b3;
+            /* Rosa medio */
+            border-radius: 3px;
+        }
+
+        /* Estilo para la barra de desplazamiento en tema rosa cuando se desplaza */
+        ::-webkit-scrollbar-thumb {
+            background-color: #ff1a8c;
+            /* Rosa oscuro */
+            border-radius: 3px;
+        }
+
+        /* Estilo para el botón de desplazamiento hacia arriba y hacia abajo */
+        ::-webkit-scrollbar-button {
+            display: none;
+        }
+
+        #main {
+            /* background-image: linear-gradient(rgba(255, 153, 179, 1), rgba(255, 153, 179, 0.9)), url('img/fastitwallpaper.png');
+                        background-repeat: no-repeat;
+                        background-attachment: fixed;
+                        background-position: center;
+                        background-size: contain; */
+            background-color: #ff99b3;
+            /* Rosa claro */
+            color: #4d004d;
+            /* Púrpura oscuro */
+        }
+
+        .card {
+            background-color: #cc99b3;
+            /* Rosa medio */
+            color: #4d004d;
+            /* Púrpura oscuro */
+            border: 1px solid #993366;
+            /* Púrpura oscuro medio */
+        }
+
+        @media (max-width: 767px) {
+            .card {
+                margin-bottom: 5%;
+            }
+        }
+
+        .card-header {
+            background-color: #ff1a8c;
+            /* Rosa oscuro */
+            color: #4d004d;
+            /* Púrpura oscuro */
+        }
+
+        .card-header img {
+            width: 100%;
+        }
+
+        .card-body {
+            background-color: #cc99b3;
+            /* Rosa medio */
+            color: #4d004d;
+            /* Púrpura oscuro */
+        }
+
+        .card-body span {
+            text-align: right;
+            color: #ff66b2;
+            /* Rosa más claro */
+        }
+
+        .card-body p {
+            font-size: 8pt;
+            color: #993366;
+            /* Púrpura oscuro medio */
+            text-align: justify;
+        }
+
+        .form-control {
+            background-color: #ffccf2;
+            /* Rosa claro */
+            color: #4d004d;
+            /* Púrpura oscuro */
+        }
+
+        .form-control:disabled {
+            background-color: #ffccf2;
+            /* Rosa claro */
+            color: #4d004d;
+            /* Púrpura oscuro */
+        }
+
+        #menuToggle {
+            background-color: rgba(0, 0, 0, 0);
+            border-color: rgba(0, 0, 0, 0);
+            color: black;
+            position: fixed;
+            top: 2%;
+            left: 2%;
+            font-size: 24px;
+            z-index: 1;
+        }
+    </style>
+<?php
+} else if ($_SESSION['TEMA'] == 'RM') {
+?>
+    <style>
+        /* Estilos para ocultar el texto en dispositivos pequeños */
+        @media (max-width: 991.98px) {
+            .navbar-brand-text {
+                display: none;
+            }
+        }
+
+        body {
+            background-color: #ffffff;
+            /* Blanco */
+            color: #0b1440;
+            /* Azul oscuro */
+
+            /* En su lugar va a ir la imagen que se diseñe de marca de agua */
+            /* background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.9)), url('img/fastitwallpaper.png');
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-position: center;
+                background-size: contain; */
+        }
+
+        /* Estilo para la barra de desplazamiento en tema blanco */
+        ::-webkit-scrollbar {
+            width: 6px;
+            /* Ancho inicial de la barra de desplazamiento */
+            background-color: #f0f0f0;
+            /* Blanco */
+            border-radius: 3px;
+            /* Bordes redondeados */
+        }
+
+        /* Estilo para la barra de desplazamiento en tema blanco cuando se desplaza */
+        ::-webkit-scrollbar-thumb {
+            background-color: #0b1440;
+            /* Azul oscuro */
+            /* Color del track de la barra al hacer scroll */
+            border-radius: 3px;
+            /* Bordes redondeados */
+        }
+
+        /* Estilo para el botón de desplazamiento hacia arriba y hacia abajo */
+        ::-webkit-scrollbar-button {
+            display: none;
+            /* Oculta el botón de desplazamiento */
+        }
+
+        #main {
+            /* background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.9)), url('img/fastitwallpaper.png');
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-position: center;
+                background-size: contain; */
+            background-color: #ffffff;
+            /* Blanco */
+            color: #0b1440;
+            /* Azul oscuro */
+        }
+
+        .card {
+            background-color: #f0f0f0;
+            /* Gris claro */
+            color: #0b1440;
+            /* Azul oscuro */
+            border: 1px solid #d9d9d9;
+            /* Gris claro medio */
+        }
+
+        @media (max-width: 767px) {
+            .card {
+                margin-bottom: 5%;
+                /* Ajusta el valor del margen según tus necesidades */
+            }
+        }
+
+        .card-header {
+            background-color: #0b1440;
+            /* Azul oscuro */
+            color: #ffffff;
+            /* Blanco */
+        }
+
+        .card-header img {
+            width: 100%;
+        }
+
+        .card-body {
+            background-color: #d9d9d9;
+            /* Gris claro medio */
+            color: #0b1440;
+            /* Azul oscuro */
+        }
+
+        .card-body span {
+            text-align: right;
+            color: #004080;
+            /* Azul medio */
+        }
+
+        .card-body p {
+            font-size: 8pt;
+            color: #666666;
+            /* Gris oscuro medio */
+            text-align: justify;
+        }
+
+
+        #menuToggle {
+            background-color: rgba(0, 0, 0, 0);
+            border-color: rgba(0, 0, 0, 0);
+            color: black;
+            position: fixed;
+            top: 2%;
+            left: 2%;
+            font-size: 24px;
+            z-index: 1;
+        }
     </style>
 <?php
 } else {
 ?>
     <style>
-        #body {
-
+        body {
+            background-image: url(img/background.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
             background-color: white;
             color: black;
-            background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2)), url('img/fastitwallpaper.png');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-position: center;
@@ -225,6 +980,17 @@ if ($_SESSION['TEMA'] == 'D') {
             color: gray;
             text-align: justify;
         }
+
+        #menuToggle {
+            background-color: rgba(0, 0, 0, 0);
+            border-color: rgba(0, 0, 0, 0);
+            color: darkblue;
+            position: fixed;
+            top: 2%;
+            left: 2%;
+            font-size: 24px;
+            z-index: 1;
+        }
     </style>
 <?php
 }
@@ -259,7 +1025,7 @@ if ($_SESSION['TEMA'] == 'D') {
     .resaltar-div:hover {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         /* Cambia la sombra del div */
-        z-index: 999;
+        z-index: 0;
         /* Asegura que el div esté por encima de otros elementos */
     }
 
@@ -444,6 +1210,7 @@ if ($_SESSION['TEMA'] == 'D') {
     }
 
     body {
+
         -webkit-user-select: none;
         /* Otras propiedades para otros navegadores (opcional) */
         -moz-user-select: none;
@@ -477,6 +1244,38 @@ if ($_SESSION['TEMA'] == 'D') {
         /* Tamaño del loader (10% del ancho de la pantalla) */
         animation: spin 2s linear infinite;
         /* Animación de giro */
+    }
+
+    @keyframes slideInFromRight {
+        0% {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    .slide-in {
+        animation: slideInFromRight 0.5s ease-out;
+    }
+
+    @keyframes slideInFromLeft {
+        0% {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    .slide-in-back {
+        animation: slideInFromLeft 0.5s ease-out;
     }
 
     @keyframes spin {

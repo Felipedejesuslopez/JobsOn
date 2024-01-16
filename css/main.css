@@ -5,13 +5,19 @@
 
 @media screen and (max-width: 767px) {
     /* Estilos específicos para pantallas pequeñas */
+    #btnpc {
+        display: none;
+    }
 }
 
 
 /* Estilos para pantallas con un ancho mínimo de 768px y un máximo de 991px (pantallas medianas como tabletas) */
 
-@media screen and (min-width: 768px) and (max-width: 991px) {
+@media screen and (min-width: 768px) {
     /* Estilos específicos para pantallas medianas */
+    #btnc {
+        display: none;
+    }
 }
 
 

@@ -1,0 +1,12 @@
+body {
+    padding: 20px;
+}
+
+.form-part:not(.active) {
+    display: none;
+}
+
+.progress-bar {
+    width: 0;
+    transition: width 0.3s;
+}
