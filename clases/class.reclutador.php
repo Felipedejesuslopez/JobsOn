@@ -128,9 +128,9 @@ class reclutador
             if (password_verify($this->password, $reclutador['PASSWORD'])) {
                 return $reclutador; // Devuelve el reclutador si las credenciales son correctas
             }
+        }else{
+            return 0;
         }
-
-        return null; // Devuelve null si las credenciales son incorrectas
     }
 
     public function checkemail(){
