@@ -27,14 +27,24 @@ $list = $vacante->read();
 
             $emp = new Empresa($oferta['EMPRESA'], '', '', '', '', '', '', '', '', '', '');
             $empresa = $emp->read()->fetch_array();
+            if (is_dir('../imagenes_vacantes/' . $oferta['ID'] . '/')) {
+                $archivos = scandir('../imagenes_vacantes/' . $oferta['ID'] . '/');
+            } else {
+                $archivos = scandir('imagenes_vacantes/' . $oferta['ID'] . '/');
+            }
 
+            // Filtrar los archivos y directorios especiales (., ..)
+            $archivos = array_diff($archivos, array('..', '.'));
+            foreach ($archivos as $archivo) {
+                $img = $archivo;
+            }
         ?>
             <div class="col-sm-4">
                 <div class="contenedor">
-                    <div class="cuadrado">
+                    <div class="cuadrado" style="background-image:url('imagenes_vacantes/<?php echo $oferta['ID']; ?>/<?php echo $img; ?>')">
                         <a href="vacantes/detalles/?id=<?php echo $oferta['ID']; ?>">
                             <div class="contenido">
-                                <div class="container">
+                                <div class="container" style="background-color:rgba(255,255,255,0.2); color:black;">
                                     <br>
                                     <center>
                                         <b class="titulo">
@@ -45,7 +55,6 @@ $list = $vacante->read();
                                         <?php echo substr($oferta['DESCRIPCION'], 0, 50); ?>...
                                     </p>
                                     <div class="details">
-
                                         $<?php echo $oferta['SALARIO']; ?><br>
                                         <?php echo $empresa['NOMBRE']; ?><br>
                                     </div>

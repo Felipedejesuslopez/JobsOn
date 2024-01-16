@@ -137,3 +137,7 @@ input:focus {
     border-color: #05a5ff;
     outline: none;
 }
+
+.error {
+    border: 1px solid red;
+}
