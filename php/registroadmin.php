@@ -8,8 +8,8 @@ require_once '../clases/class.admin.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $admin = new admin(
-        isset($_POST['id']) ? $_POST['id'] : null,
-        $_POST['nombre'],
+        '',
+        $_POST['username'],
         $_POST['password'],
         $_POST['email'],
         $_POST['name'],
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_POST['respaldo']
     );
 
-    $action = isset($_POST['action']) ? $_POST['action'] : '';
+    $action = $_POST['action'];
 
     if ($action === 'create') {
         $admin->create();
@@ -31,11 +31,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                return "Administrador encontrado.". print_r($row, true);
+                echo "Administrador encontrado.". print_r($row, true);
             }
         } else {
-            return "No se encontraron coincidencias.";
+            echo "No se encontraron coincidencias.";
         }
 
     } 
+    
 }
+?>

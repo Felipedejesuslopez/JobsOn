@@ -2,8 +2,8 @@
 ini_set("display_errors",1);
 error_reporting (E_ALL);
 
-require_once '../clases/class.conexion.php';
-require_once '../clases/class.conductor.php';
+include '../clases/class.conexion.php';
+include '../clases/class.conductor.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     

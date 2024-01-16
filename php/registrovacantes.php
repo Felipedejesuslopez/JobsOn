@@ -1,15 +1,16 @@
 <?php
 ini_set("display_errors", 1);
 error_reporting(E_ALL);
-
 require_once '../clases/class.conexion.php';
 require_once '../clases/class.ofertalaboral.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $of = new OfertaLaboral('','','','','','','','','','','','');
+    $ids = $of->lastid();
     $fechaPublicacion = date('Y-m-d');
-    $usuarioID = obtenerUsuarioID();
+    $ID = intval($ids) + 1;
 
-    $directorioImagenes = "../imagenes_vacantes/{$usuarioID}/";
+    $directorioImagenes = "../imagenes_vacantes/{$ID}/";
 
     if (!file_exists($directorioImagenes)) {
         mkdir($directorioImagenes, 0777, true);
@@ -52,16 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "<p style='color: green;'>Oferta registrada con éxito.</p>";
     } else {
         echo "<p style='color: red;'>Error al registrar la oferta.</p>";
-    }
-}
-
-function obtenerUsuarioID() {
-    session_start();
-
-    if (isset($_SESSION['usuario_id'])) {
-        return $_SESSION['usuario_id'];
-    } else {
-        return 1;
     }
 }
 ?>
