@@ -1,10 +1,3 @@
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Formulario de Laboratorios</title>
-</head>
 <body>
 
 <h1>FORMULARIO PARA LABORATORIOS</h1>
@@ -61,4 +54,3 @@
     </form>
     
     </body>
-    </html>
