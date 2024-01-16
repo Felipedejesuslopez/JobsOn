@@ -8,7 +8,7 @@
                     <img src="img/Menu/Admin/JobsOn.png" id="logo">
                     <h7><br>
                         Hola, <b>
-                            <?php echo $user['NOMBRE'] ?>
+                            <?php echo $user['NAME'] ?>
                         </b>
                     </h7>
                 </div>
