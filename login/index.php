@@ -16,13 +16,13 @@ if (isset($_SESSION["ID"])) {
     <?php include '../css/bts.php'; ?>
     <link rel="stylesheet" href="../css/login.css">
     <title>Iniciar Sesión</title>
-    <script src="main.js"></script>
+    <script src="mein.js"></script>
 </head>
 
 <body>
 
     <br><br>
-    <div class="container">
+    <div class="container" id="main">
         <div class="row">
             <div class="col-sm-4"></div>
             <div class="col-sm-4" class="login">
