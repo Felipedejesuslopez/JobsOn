@@ -49,6 +49,7 @@ if ($tusuario == 1) {
                     $treclutador = $reclutador->login();
                     if($treclutador == 1){
                         $_SESSION['tipo'] = 6;
+                        echo 1;
                     }else{
                         echo 0;
                     }
