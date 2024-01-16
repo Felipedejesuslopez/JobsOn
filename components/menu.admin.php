@@ -29,30 +29,55 @@
                 </div>
             </div>
 
-            <!--<div class="row">
+            <div class="row">
                 <div class="col-6">
-                    <a class="botonmenu" href="ParaTi/">
-                        <img src="img/Menu/Admin/adpostulantes.png" class="botonmenu">
+                    <a class="botonmenu" href="vacantes/">
+                        <img src="img/Menu/Admin/Vacantes.png" class="botonmenu">
                     </a>
                 </div>
                 <div class="col-6">
-                    <a class="botonmenu" href="Mensajes/">
-                        <img class="botonmenu" src="img/Menu/Admin/adreclutados.png" alt="">
+                    <a class="botonmenu" href="Postulantes/">
+                        <img class="botonmenu" src="img/Menu/Admin/Usuarios.png" alt="">
+                    </a>
+                </div><br><br>
+                <div class="col-6">
+                    <a class="botonmenu" href="Curriculum/">
+                        <img class="botonmenu" src="img/Menu/Admin/Empresas.png" alt="">
                     </a>
                 </div>
-                <br><br><br>
+                <div class="col-6">
+                    <a class="botonmenu" href="reclutador/">
+                        <img class="botonmenu" src="img/Menu/Admin/Reclutadores.png" alt="">
+                    </a>
+                </div>
+                <br><br>
+                <div class="col-6">
+                    <a class="botonmenu" href="Curriculum/">
+                        <img class="botonmenu" src="img/Menu/Admin/Conductores.png" alt="">
+                    </a>
+                </div>
+                <div class="col-6">
+                    <a class="botonmenu" href="Curriculum/">
+                        <img class="botonmenu" src="img/Menu/Admin/Laboratorios.png" alt="">
+                    </a>
+                </div>
+                <br><br>
                 <div class="col-3"></div>
                 <div class="col-6">
                     <a class="botonmenu" href="Curriculum/">
-                        <img class="botonmenu" src="img/Menu/Admin/advacantes.png" alt="">
+                        <img class="botonmenu" src="img/Menu/Admin/Reuniones.png" alt="">
                     </a>
                 </div>
-            </div>-->
-            <br><br><br>
+            </div>
+            <br>
             <div class="od">
                 <center>
                     <a href="Settings/" class="botonopt">
                         <img src="img/Menu/Admin/Settings.png" class="botonopt">
+                    </a>
+                    <br><br>
+                    <a href="php/logout.php" class="botonopt">
+                        <img src="img/Menu/Admin/AppSettings.png" class="botonopt">
                     </a>
                     <br><br>
                     <a href="php/logout.php" class="botonopt">

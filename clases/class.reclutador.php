@@ -19,7 +19,7 @@ class reclutador
         $this->id = $id;
         $this->user = $user;
         $this->email = $email;
-        $this->password = $password;
+        $this->password = md5($password);
         $this->cedula = $cedula;
         $this->name = $name;
         $this->telefono = $telefono;
@@ -118,9 +118,15 @@ class reclutador
             $credential = $this->telefono;
         }
 
-        $sql = "SELECT * FROM reclutadores WHERE EMAIL = '{$credential}'";
+        $sql = "SELECT * FROM reclutadores WHERE (USER = ? OR EMAIL = ? OR TELEFONO = ?) AND PASSWORD = ?";
+        $stmt = $bd->prepare($sql);
+        $stmt->bind_param("ssss", $credential, $credential, $credential, $this->password);
 
-        $result = $bd->query($sql);
+        // Ejecutar la consulta
+        $stmt->execute();
+
+        // Obtener el resultado
+        $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
             $reclutador = $result->fetch_assoc();

@@ -1,4 +1,4 @@
-<nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white" id="sidebarMenu">
+<nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse" id="sidebarMenu">
     <div class="position-sticky">
 
         <div class="container menu" style="margin-top:-15%;">
@@ -15,7 +15,7 @@
 
                 <div class="col-4" id="mad">
                     <br>
-                    <img src="img/profile.png" id="profile" alt="">
+                    <img src="img/profile/<?php echo $_SESSION['ID']; ?>.png" id="profile" style="border-radius:50%;">
                 </div>
             </div>
 
@@ -42,7 +42,7 @@
                 </div>
                 <br><br><br>
                 <div class="col-6">
-                    <a class="botonmenu" href="Curriculum/">
+                    <a class="botonmenu" href="curriculum/">
                         <img class="botonmenu" src="img/Menu/User/3.png" alt="">
                     </a>
                 </div>
@@ -58,7 +58,7 @@
                     </a>
                 </div>
                 <div class="col-6">
-                    <a class="botonmenu" href="Informacion/">
+                    <a class="botonmenu" href="Postulantes/Informacion/">
                         <img class="botonmenu" src="img/Menu/User/6.png" alt="">
                     </a>
                 </div>

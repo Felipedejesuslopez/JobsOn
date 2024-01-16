@@ -2,6 +2,7 @@
 session_start();
 if (isset($_SESSION["ID"])) {
     include 'css/bts.php';
+    include 'modals/modalavisos.php';
     $user = $_SESSION;
 } else {
 ?>
@@ -25,6 +26,10 @@ if (isset($_SESSION["ID"])) {
 </head>
 
 <body>
+    <!-- Botón de menú para dispositivos pequeños -->
+    <button class="btn btn-primary d-lg-none" id="menuToggle" onclick="onSwipeRight()">
+        <i class="fas fa-bars"></i>
+    </button>
     <div>
         <?php
         switch ($_SESSION['tipo']) {
@@ -57,36 +62,34 @@ if (isset($_SESSION["ID"])) {
     </div>
     <div class="container" id="content">
         <div id="main">
-            
+            <?php
+            switch ($_SESSION['tipo']) {
+                case 1:
+                    include 'vacantes/index.php';
+                    break;
 
-                <?php
-                switch ($_SESSION['tipo']) {
-                    case 1:
-                        include 'vacantes/index.php';
-                        break;
+                case 2:
+                    include 'components/menu.admin.php';
+                    break;
 
-                    case 2:
-                        include 'components/menu.admin.php';
-                        break;
+                case 3:
+                    include 'empresa/vacantes/detalles/';
+                    break;
 
-                    case 3:
-                        include 'empresa/vacantes/detalles/';
-                        break;
+                case 4:
+                    include 'components/menu.laboratorio.php';
+                    break;
 
-                    case 4:
-                        include 'components/menu.laboratorio.php';
-                        break;
+                case 5:
+                    include 'components/menu.conductor.php';
+                    break;
 
-                    case 5:
-                        include 'components/menu.conductor.php';
-                        break;
+                case 6:
+                    include 'components/menu.reclutador.php';
+                    break;
+            }
+            ?>
 
-                    case 6:
-                        include 'components/menu.reclutador.php';
-                        break;
-                }
-                ?>
-            
         </div>
     </div>
 </body>
