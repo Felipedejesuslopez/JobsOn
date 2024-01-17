@@ -60,7 +60,7 @@ if ($oferta = $of->read()->fetch_array()) {
     }
 }
 session_start();
-$_SESSION['TEMA'] = 'RM';
+//$_SESSION['TEMA'] = 'D';
 
 $emp = new Empresa($oferta['EMPRESA'], '', '', '', '', '', '', '', '', '', '');
 $empresa = $emp->read()->fetch_array();
@@ -83,10 +83,40 @@ $empresa = $em->read()->fetch_array();
 
 ?>
 <link rel="stylesheet" href="css/detallesvacante.css">
-
+<style>
+    .options:hover{
+        transform: scale(1.5);
+    }
+</style>
 <div class="container" id="tarjetavacante" style="background-image: url('imagenes_vacantes/<?php echo $oferta['ID']; ?>/<?php echo $img; ?>'); background-repeat: no-repeat; background-size: cover; margin-top:-5%;">
     <script src="vacantes/detalles/main.js"></script>
     <div id="espacio" style="height:85%; text-align:right;">
+    </div>
+    <div id="btnpc" style="margin-top: -30%; color: aqua; z-index: 2; text-align: right;">
+        <div class="row">
+            <div class="col-1">
+                <button class="btn btn-outline-primary">
+                    < </button>
+            </div>
+            <div class="col-10"></div>
+            <div class="col-1">
+                <button class="btn btn-outline-primary">></button>
+            </div>
+        </div><br><br>
+        <div class="row">
+            <div class="col-10"></div>
+            <div class="col-2">
+                <img src="img/vacantes/postulate.png" style="width:40%; cursor: pointer;" class="options" id="postulatepc" onclick="postulate()">
+                <br><br>
+                <img src="img/vacantes/love.png" style="width:40%; cursor: pointer;" class="options">
+                <br>
+                <img src="img/vacantes/reject.png" style="width:40%; cursor: pointer;" class="options">
+                <br>
+                <img src="img/vacantes/share.png" style="width:40%; cursor: pointer;" class="options">
+                <br>
+                <img src="img/vacantes/details.png" style="width:40%; cursor: pointer;" class="options" onclick="$('#detalles').show(); bajar();">
+            </div>
+        </div>
     </div>
     <div id="datos" style="background-color: rgba(255,255,255,0.5); color:black;">
         <center>
@@ -101,20 +131,20 @@ $empresa = $em->read()->fetch_array();
     <br>
     <div class="row" id="btnc">
         <div class="col-2">
-            <img src="img/vacantes/postulate.png" style="width:100%;">
+            <img src="img/vacantes/postulate.png" style="width:100%;" class="options" id="postulatec" onclick="postulate()">
         </div>
         <div class="col-2"></div>
         <div class="col-2">
-            <img src="img/vacantes/love.png" style="width:100%;">
+            <img src="img/vacantes/love.png" style="width:100%;" class="options">
         </div>
         <div class="col-2">
-            <img src="img/vacantes/reject.png" style="width:100%;">
+            <img src="img/vacantes/reject.png" style="width:100%;" class="options">
         </div>
         <div class="col-2">
-            <img src="img/vacantes/share.png" style="width:100%;">
+            <img src="img/vacantes/share.png" style="width:100%;" class="options">
         </div>
         <div class="col-2">
-            <img src="img/vacantes/details.png" style="width:100%;">
+            <img src="img/vacantes/details.png" style="width:100%;" class="options" onclick="$('#detalles').show(); bajar();">
         </div>
     </div>
 </div>

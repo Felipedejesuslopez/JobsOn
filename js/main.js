@@ -43,6 +43,28 @@ function loadContent(url) {
         });
 }
 
+function postulate(user, vacant) {
+    $.ajax({
+        url: 'php/postular.php',
+        method: 'post',
+        data: {
+            'usuario': user,
+            'vacante': vacant
+        }
+    }).done(function(msg) {
+        $("#aviso").html(msg);
+        $("#modalavisos").modal("show");
+
+    }).fail(function(e) {
+        $("#aviso").html(e);
+        $("#modalavisos").modal("show");
+    });
+}
+
+function bajar() {
+    $("html, body").animate({ scrollTop: $(document).height() }, "slow");
+}
+
 function cvacante(w) {
     var vac = parseInt($("#idvac").val());
 
@@ -152,11 +174,9 @@ $(document).ready(function() {
                 });
         });
 
-    $("#main")
-        .off("click", "a")
-        .on("click", "a", function(e) {
-            e.preventDefault();
-            var url = $(this).attr("href");
-            loadContent(url);
-        });
+    $("#main").off("click", "a").on("click", "a", function(e) {
+        e.preventDefault();
+        var url = $(this).attr("href");
+        loadContent(url);
+    });
 });

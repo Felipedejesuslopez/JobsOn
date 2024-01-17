@@ -15,7 +15,7 @@
 
                 <div class="col-4" id="mad">
                     <br>
-                    <img src="img/profile.png" id="profile" alt="">
+                    <img src="imagenes_reclutador/<?php echo $user['FOTO']; ?>" alt="img/profile.png" id="profile">
                 </div>
             </div>
 
