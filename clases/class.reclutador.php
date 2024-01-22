@@ -131,21 +131,22 @@ class reclutador
         if ($result->num_rows > 0) {
             $reclutador = $result->fetch_assoc();
             // Verifica si la contraseña proporcionada coincide
-            if (password_verify($this->password, $reclutador['PASSWORD'])) {
-                return $reclutador; // Devuelve el reclutador si las credenciales son correctas
-            }
-        }else{
+            session_start();
+            $_SESSION = $reclutador;
+            return 1;
+        } else {
             return 0;
         }
     }
 
-    public function checkemail(){
+    public function checkemail()
+    {
         $bd = new Conexion();
         $query = "SELECT * FROM reclutadores WHERE USER = '{$this->user}' OR EMAIL = '{$this->email}'";
         $res = $bd->query($query);
-        if($res->fetch_array()){
+        if ($res->fetch_array()) {
             return 1;
-        }else{
+        } else {
             return 0;
         }
     }

@@ -86,6 +86,7 @@ $empresa = $em->read()->fetch_array();
 <style>
     .options:hover{
         transform: scale(1.5);
+        z-index: 5;
     }
 </style>
 <div class="container" id="tarjetavacante" style="background-image: url('imagenes_vacantes/<?php echo $oferta['ID']; ?>/<?php echo $img; ?>'); background-repeat: no-repeat; background-size: cover; margin-top:-5%;">
@@ -168,19 +169,19 @@ $empresa = $em->read()->fetch_array();
             $<?php echo $oferta['SALARIO']; ?>
         </div>
     </div>
-    <p style="text-align:justify; font-size:10pt;"><?php echo utf8_encode($oferta['DESCRIPCION']); ?></p>
+    <p style="text-align:justify; font-size:10pt;"><?php echo $oferta['DESCRIPCION']; ?></p>
     <div class="row">
         <div class="col-sm-6">
             <b>Requisitos:</b>
-            <p style="text-align:justify; font-size:10pt;"><?php echo utf8_encode($oferta['REQUISITOS']); ?></p>
+            <p style="text-align:justify; font-size:10pt;"><?php echo $oferta['REQUISITOS']; ?></p>
         </div>
         <div class="col-sm-6">
             <b>Beneficios:</b>
-            <p style="text-align:justify; font-size:10pt;"><?php echo utf8_encode($oferta['BENEFICIOS']); ?></p><br>
+            <p style="text-align:justify; font-size:10pt;"><?php echo $oferta['BENEFICIOS']; ?></p><br>
             <b>Nivel de Experiencia:</b>
-            <p style="text-align:justify; font-size:10pt;"><?php echo utf8_encode($oferta['NIVEL_EXPERIENCIA']); ?></p>
+            <p style="text-align:justify; font-size:10pt;"><?php echo $oferta['NIVEL_EXPERIENCIA']; ?></p>
         </div>
     </div>
 
-    <button class="btn btn-primary" style="width:100%;">Postularme</button>
+    <button class="btn btn-primary" style="width:100%;">Postularme</button><br>
 </div>
