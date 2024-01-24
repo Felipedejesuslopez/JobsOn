@@ -24,7 +24,7 @@ if ($tusuario == 1) {
         echo 1;
     } else {
         include '../clases/class.empresa.php';
-        $empresa = new empresa('', '', '', $user, '', '', '', '', $user, $user, $psw);
+        $empresa = new empresa('', $user, '', $user, '', '', '', '', $user, $user, $psw);
         $tempresa = $empresa->login();
         if ($tempresa == 1) {
             $_SESSION['tipo'] = 3;

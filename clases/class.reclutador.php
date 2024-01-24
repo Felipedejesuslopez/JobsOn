@@ -111,16 +111,11 @@ class reclutador
     {
         $bd = new Conexion();
 
-        $credential = $this->email; // Asume que el correo es la credencial por defecto
-        if ($this->user !== null) {
-            $credential = $this->user;
-        } elseif ($this->telefono !== null) {
-            $credential = $this->telefono;
-        }
+        
 
         $sql = "SELECT * FROM reclutadores WHERE (USER = ? OR EMAIL = ? OR TELEFONO = ?) AND PASSWORD = ?";
         $stmt = $bd->prepare($sql);
-        $stmt->bind_param("ssss", $credential, $credential, $credential, $this->password);
+        $stmt->bind_param("ssss", $this->user, $this->email, $this->telefono, $this->password);
 
         // Ejecutar la consulta
         $stmt->execute();

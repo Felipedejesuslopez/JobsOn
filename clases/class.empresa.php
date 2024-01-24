@@ -74,11 +74,11 @@ class Empresa
     {
 
         $bd = new Conexion();
-        $sql = "SELECT * FROM empresa WHERE (TELEFONO = ? OR SITIO_WEB = ? OR CONTACTO_CORREO = ? OR CORREO = ?) AND PSW = ?";
+        $sql = "SELECT * FROM empresa WHERE (NOMBRE = ? OR TELEFONO = ? OR SITIO_WEB = ? OR CONTACTO_CORREO = ? OR CORREO = ?) AND PSW = ?";
 
         // Utilizar una consulta preparada
         $stmt = $bd->prepare($sql);
-        $stmt->bind_param("sssss", $this->sitioWeb, $this->correo, $this->telefono, $this->correo, $this->psw);
+        $stmt->bind_param("ssssss", $this->nombre, $this->sitioWeb, $this->correo, $this->telefono, $this->correo, $this->psw);
 
         // Ejecutar la consulta
         $stmt->execute();
