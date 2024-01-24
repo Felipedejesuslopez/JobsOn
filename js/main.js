@@ -26,24 +26,21 @@ function loadContent(url) {
     $("#loader").show();
 
     $.ajax({
-            url: url,
-            method: "POST",
-        })
-        .done(function(msg) {
-            // Ajustar la altura de #main al nuevo contenido
-            $("#main").html("");
-            var newContentHeight = $("#main").height();
-            $("#main").height(newContentHeight);
-            $("#main").html(msg);
-        })
-        .fail(function(e) {
-            $("#main").html(
-                '<div class="alert alert-danger">Revise su conexión a internet, parece que no hay</div>'
-            );
-        });
+        url: url,
+        method: "POST",
+    }).done(function(msg) {
+        // Ajustar la altura de #main al nuevo contenido
+        $("#main").html("");
+        var newContentHeight = $("#main").height();
+        $("#main").height(newContentHeight);
+        $("#main").html(msg);
+    }).fail(function(e) {
+        $("#main").html('<div class="alert alert-danger">Revise su conexión a internet, parece que no hay</div>');
+    });
+
 }
 
-function postulate(user, vacant) {
+function postulate(vacant, user) {
     $.ajax({
         url: 'php/postular.php',
         method: 'post',
@@ -54,7 +51,8 @@ function postulate(user, vacant) {
     }).done(function(msg) {
         $("#aviso").html(msg);
         $("#modalavisos").modal("show");
-
+        $('#postulatepc').attr("src", "img/vacantes/postulado.png");
+        $('#postulatec').attr("src", "img/vacantes/postulado.png");
     }).fail(function(e) {
         $("#aviso").html(e);
         $("#modalavisos").modal("show");
@@ -99,6 +97,7 @@ function cvacante(w) {
                     $("#main").removeClass("slide-in-back");
                 }, 500);
             }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         })
         .fail(function(e) {
             $("#aviso").html(e);
@@ -120,63 +119,60 @@ $(document).ready(function() {
                 }
             });
 
-        $(document)
-            .off("swipeleft swiperight", "#tarjetavacante")
-            .on("swipeleft swiperight", "#tarjetavacante", function(event) {
-                if (event.type === "swipeleft") {
-                    cvacante("n");
-                }
-                if (event.type === "swiperight") {
-                    cvacante("l");
-                }
-            });
+        $(document).off("swipeleft swiperight", "#tarjetavacante").on("swipeleft swiperight", "#tarjetavacante", function(event) {
+            if (event.type === "swipeleft") {
+                cvacante("n");
+            }
+            if (event.type === "swiperight") {
+                cvacante("l");
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     }
 
-    $("a")
-        .off("click")
-        .on("click", function(e) {
-            e.preventDefault();
-            var url = $(this).attr("href");
-            $("a").removeClass("active");
-            $(this).addClass("active");
-            if ($(window).width() <= 768) {
-                onSwipeLeft();
-            }
-            loadContent(url);
-        });
+    $("a").off("click").on("click", function(e) {
+        e.preventDefault();
+        var url = $(this).attr("href");
+        $("a").removeClass("active");
+        $(this).addClass("active");
+        if ($(window).width() <= 768) {
+            onSwipeLeft();
+        }
+        loadContent(url);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
-    $("#main")
-        .off("submit", "form")
-        .on("submit", "form", function(e) {
-            e.preventDefault();
-            var form = $(this);
-            var url = form.attr("action");
-            var formData = new FormData(form[0]);
+    $("#main").off("submit", "form").on("submit", "form", function(e) {
+        e.preventDefault();
+        var form = $(this);
+        var url = form.attr("action");
+        var formData = new FormData(form[0]);
 
-            $.ajax({
-                    url: url,
-                    method: "POST",
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                })
-                .done(function(msg) {
-                    $("#aviso").html(msg);
-                    $("#modalavisos").modal("show");
-                    setTimeout(function() {
-                        location.reload();
-                    }, 5000);
-                    console.log(msg);
-                })
-                .fail(function(e) {
-                    $("#aviso").html(msg);
-                    $("#modalavisos").modal("show");
-                });
-        });
+        $.ajax({
+                url: url,
+                method: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+            })
+            .done(function(msg) {
+                $("#aviso").html(msg);
+                $("#modalavisos").modal("show");
+                setTimeout(function() {
+                    location.reload();
+                }, 5000);
+                console.log(msg);
+            })
+            .fail(function(e) {
+                $("#aviso").html(msg);
+                $("#modalavisos").modal("show");
+            });
+    });
 
     $("#main").off("click", "a").on("click", "a", function(e) {
         e.preventDefault();
         var url = $(this).attr("href");
         loadContent(url);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 });

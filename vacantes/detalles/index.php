@@ -107,7 +107,7 @@ $empresa = $em->read()->fetch_array();
         <div class="row">
             <div class="col-10"></div>
             <div class="col-2">
-                <img src="img/vacantes/postulate.png" style="width:40%; cursor: pointer;" class="options" id="postulatepc" onclick="postulate()">
+                <img src="img/vacantes/postulate.png" style="width:40%; cursor: pointer;" class="options" id="postulatepc" onclick="postulate('<?php echo $oferta['ID'] ?>','<?php echo $_SESSION['ID'] ?>')">
                 <br><br>
                 <img src="img/vacantes/love.png" style="width:40%; cursor: pointer;" class="options">
                 <br>
@@ -132,7 +132,7 @@ $empresa = $em->read()->fetch_array();
     <br>
     <div class="row" id="btnc">
         <div class="col-2">
-            <img src="img/vacantes/postulate.png" style="width:100%;" class="options" id="postulatec" onclick="postulate()">
+            <img src="img/vacantes/postulate.png" style="width:100%;" class="options" id="postulatec" onclick="postulate('<?php echo $oferta['ID'] ?>','<?php echo $_SESSION['ID']; ?>')">
         </div>
         <div class="col-2"></div>
         <div class="col-2">
