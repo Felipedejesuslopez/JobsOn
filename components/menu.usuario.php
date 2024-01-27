@@ -53,7 +53,7 @@
                 </div>
                 <br><br><br>
                 <div class="col-6">
-                    <a class="botonmenu" href="Postulaciones/">
+                    <a class="botonmenu" href="Postulado/">
                         <img class="botonmenu" src="img/Menu/User/5.png" alt="">
                     </a>
                 </div>
