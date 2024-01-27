@@ -902,7 +902,6 @@ if ($_SESSION['TEMA'] == 'D') {
 ?>
     <style>
         body {
-            background-image: url(img/background.jpg);
             background-repeat: no-repeat;
             background-size: cover;
             background-color: white;
@@ -1385,11 +1384,19 @@ if ($_SESSION['TEMA'] == 'D') {
         /* Scrollable contents if viewport is shorter than content. */
     }
 
-    .card.zoom-on-hover:hover {
+    .card .zoom-on-hover:hover {
         /* Escala del 105% al pasar el cursor por encima */
         transform: scale(1.05);
         /* Transiciones suaves para una animación más fluida */
         transition: transform 0.3s ease;
+    }
+
+    .zoom-on-hover:hover{
+        transform: scale(1.05);
+        /* Transiciones suaves para una animación más fluida */
+        transition: transform 0.3s ease;
+        z-index: 3;
+        cursor: pointer;
     }
 
     /* Estilo para ocultar los radio buttons */

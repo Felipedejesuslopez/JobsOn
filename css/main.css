@@ -18,6 +18,13 @@
     #btnc {
         display: none;
     }
+    #btnpc {
+        margin-top: -50%;
+        color: aqua;
+        z-index: 2;
+        text-align: right;
+        cursor: pointer;
+    }
 }
 
 

@@ -6,7 +6,7 @@ include '../clases/class.usuariopostulante.php';
 include '../clases/class.ofertalaboral.php';
 include '../clases/class.postulacion.php';
 
-$postulacion = new postulacion('', $_POST['usuario'], $_POST['vacante'], date('Y-m-d'), 'POSTULADO', '');
+$postulacion = new postulacion('', $_POST['vacante'], $_POST['usuario'], date('Y-m-d'), 'POSTULADO', '');
 $postulacion->create();
 ?>
 <div style="background-image: url('img/Alertas/register.png'); background-repeat:no-repeat; background-size:100% 100%;">
