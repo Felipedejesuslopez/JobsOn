@@ -1,4 +1,4 @@
-<nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white" id="sidebarMenu">
+<nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse" id="sidebarMenu">
         <div class="position-sticky">
 
             <div class="container menu" style="margin-top:-15%;">

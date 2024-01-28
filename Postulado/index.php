@@ -15,13 +15,39 @@ $posts = $postulacion->read();
         $vacante = new OfertaLaboral($postus['VACANTE'], '', '', '', '', '', '', '', '', '', '', '');
         $vac = $vacante->read()->fetch_array();
     ?>
+        <a href="Postulado/Detalles/?id=<?php echo $postus['ID']; ?>">
+            <div class="card zoom-on-hover" style="width:100%;">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-2">
+                            <?php
+                            if (is_dir('../imagenes_vacantes/' . $vac['ID'] . '/')) {
+                                $archivos = scandir('../imagenes_vacantes/' . $vac['ID'] . '/');
+                            } else {
+                                $archivos = scandir('imagenes_vacantes/' . $vac['ID'] . '/');
+                            }
 
-        <div class="card" style="width:100%;">
-            <div class="col-6">
-                <h3><?php echo $vac['TITULO']; ?></h3>
+                            // Filtrar los archivos y directorios especiales (., ..)
+                            $archivos = array_diff($archivos, array('..', '.'));
+                            foreach ($archivos as $archivo) {
+                                $img = $archivo;
+                            }
+                            ?>
+                            <img src="imagenes_vacantes/<?php echo $vac['ID']; ?>/<?php echo $img; ?>" style="width:75%;">
+                        </div>
+                        <div class="col-7">
+                            <h5><?php echo $vac['TITULO']; ?></h5>
+                        </div>
+                        <div class="col-3">
+                            <p>
+                                <?php echo $postus['ESTATUS']; ?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-6"></div>
-        </div>
+        </a>
+
     <?php
 
     }
