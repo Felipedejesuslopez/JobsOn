@@ -1,8 +1,11 @@
 <?php
 session_start();
 if (isset($_SESSION["ID"])) {
-    header("Location: ../");
-    exit();
+    ?>
+<script>
+    window.location="../";
+</script>
+    <?php
 }
 ?>
 <!DOCTYPE html>

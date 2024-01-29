@@ -43,6 +43,8 @@
 
 
 <?php
+error_reporting(0);
+
 if ($_SESSION['TEMA'] == 'D') {
 ?>
     <style>
@@ -1391,7 +1393,7 @@ if ($_SESSION['TEMA'] == 'D') {
         transition: transform 0.3s ease;
     }
 
-    .zoom-on-hover:hover{
+    .zoom-on-hover:hover {
         transform: scale(1.05);
         /* Transiciones suaves para una animación más fluida */
         transition: transform 0.3s ease;
@@ -1422,5 +1424,57 @@ if ($_SESSION['TEMA'] == 'D') {
     .form-check-input[type="radio"]:checked+.form-check-label {
         background-color: #007bff;
         color: white;
+    }
+
+    #dropzone {
+        background: repeating-linear-gradient(135deg, rgba(0, 0, 0, 0) 20px, rgba(0, 0, 0, 0) 40px, rgba(20, 43, 126, 0.12) 40px, rgba(20, 43, 126, 0.12) 60px);
+        position: relative;
+        border: 10px dotted rgba(0, 100, 0, 0.9);
+        ;
+        border-radius: 20px;
+        color: black;
+        height: 250px;
+        margin: 30px;
+        text-align: center;
+        vertical-align: center;
+        width: 95%;
+        font-size: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #dropzone.hover {
+        border: 10px solid #FE5;
+        color: #FE5;
+        background-color: rgba(255, 255, 255, 1);
+    }
+
+    #dropzone.dropped {
+        background-color: rgb(255, 255, 255);
+        border: 10px solid blue;
+    }
+
+    #dropzone div {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+
+    #dropzone img {
+        border-radius: 10px;
+        vertical-align: middle;
+        max-width: 95%;
+        max-height: 95%;
+    }
+
+    #dropzone [type="file"] {
+        cursor: pointer;
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
     }
 </style>

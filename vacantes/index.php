@@ -24,9 +24,9 @@ $list = $vacante->read();
     <div class="row">
         <?php
         while ($oferta = $list->fetch_array()) {
-
             $emp = new Empresa($oferta['EMPRESA'], '', '', '', '', '', '', '', '', '', '');
             $empresa = $emp->read()->fetch_array();
+            
             if (is_dir('../imagenes_vacantes/' . $oferta['ID'] . '/')) {
                 $archivos = scandir('../imagenes_vacantes/' . $oferta['ID'] . '/');
             } else {

@@ -1,12 +1,12 @@
 <link rel="stylesheet" href="css/vacanteregistro.css">
 <script src="vacantes/registro/main.js"></script>
 
-<div class="container">
-    <center>
-        <h1>
-            Agregar Vacante
-        </h1>
-    </center>
+<center>
+    <h1>
+        Agregar Vacante
+    </h1>
+</center>
+<div class="container" id="formulario">
     <p>Por favor rellena la información de la forma más completa posible</p>
     <div id="progress" class="progress">
         <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
@@ -17,30 +17,83 @@
         <div class="form-part active">
             <h4>Información Básica</h4>
             <div class="form-group">
-                <label for="titulo">Título:</label>
+                <label for="titulo">Título: *</label>
                 <input type="text" id="titulo" name="titulo" class="form-control" required>
             </div>
 
             <div class="form-group">
-                <label for="descripcion">Descripción:</label>
+                <label for="titulores">Titulo al que responde el cargo:</label>
+                <input type="text" name="tresponde" id="titulores" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="descripcion">Descripción: *</label>
                 <textarea id="descripcion" name="descripcion" rows="4" class="form-control" required></textarea>
             </div>
 
             <div class="form-group">
-                <label for="ubicacion">Ubicación:</label>
+                <label for="planta">Planta:</label>
+                <input type="text" name="planta" id="planta" class="form-control">
+            </div>
+        </div>
+        <div class="form-part">
+            <div class="form-group">
+                <label for="ubicacion">Ubicación: *</label>
                 <input type="text" id="ubicacion" name="ubicacion" class="form-control" required>
             </div>
 
             <div class="form-group">
-                <label for="salario">Salario:</label>
+                <label for="departamento">Departamento:</label>
+                <input type="text" name="departamento" id="departamento" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="salario">Salario: *</label>
                 <input type="text" id="salario" name="salario" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contactos">Contactos con quien tendrá relación interna:</label>
+                <input type="text" name="contactos" id="contactos" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="problemas">Problemas y decisiones a los que se enfrentará en el cargo:</label>
+                <input type="text" name="problemas" id="problemas" class="form-control">
             </div>
         </div>
 
         <div class="form-part">
             <h4>Requisitos y Experiencia</h4>
             <div class="form-group">
-                <label for="requisitos">Requisitos:</label>
+                <label for="estudios">Nivel de estudios requeridos</label><br>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="estudios" id="preparatoria" value="Preparatoria">
+                    <label class="form-check-label" for="preparatoria" style="width: 100px;">Preparatoria</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="estudios" id="profTrunca" value="Profesional trunca">
+                    <label class="form-check-label" for="profTrunca" style="width: 150px;">Profesional trunca</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="estudios" id="profesional" value="Profesional">
+                    <label class="form-check-label" for="profesional" style="width: 100px;">Profesional</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="estudios" id="maestria" value="Maestría">
+                    <label class="form-check-label" for="maestria" style="width: 100px;">Maestría</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="especialidad">Especialidad:</label>
+                <input type="text" name="especialidad" id="especialidad" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="requisitos">Requisitos: *</label>
                 <textarea id="requisitos" name="requisitos" rows="4" class="form-control" required></textarea>
             </div>
 
@@ -54,37 +107,58 @@
             <input type="hidden" id="empresa" name="empresa" value="<?php session_start();
                                                                     echo $_SESSION['ID'] ?>">
 
+
             <div class="form-group">
-                <label for="tipoContrato">Tipo de Contrato:</label>
-                <input type="text" id="tipoContrato" name="tipoContrato" class="form-control" required>
+                <label for="experiencia">Experiencia necesaria</label>
+                <input type="text" name="experiencia" id="experiencia" class="form-control">
             </div>
 
             <div class="form-group">
-                <label for="nivelExperiencia">Nivel de Experiencia:</label>
+                <label for="nivelExperiencia">Nivel de Experiencia: *</label>
                 <input type="text" id="nivelExperiencia" name="nivelExperiencia" class="form-control" required>
             </div>
         </div>
+        <div class="form-part">
+            <div class="form-group">
+                <label for="alcance">Alcances del puesto</label>
+                <textarea type="text" name="alcance" id="alcance" class="form-control"></textarea>
+            </div>
 
+            <div class="form-group">
+                <label for="idiomas">Idiomas necesarios y su % (ej. Inglés 70%)</label>
+                <input type="text" name="idiomas" id="idiomas" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="habilidades">Conocimientos/Habilidades necesarios para el puesto</label>
+                <input type="text" name="habilidades" id="habilidades" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="tipoContrato">Tipo de Contrato: *</label>
+                <input type="text" id="tipoContrato" name="tipoContrato" class="form-control" required>
+            </div>
+        </div>
         <div class="form-part">
             <h4>Beneficios e Imágenes</h4>
             <div class="form-group">
-                <label for="beneficios">Beneficios:</label>
+                <label for="beneficios">Beneficios: *</label>
                 <textarea id="beneficios" name="beneficios" rows="4" class="form-control" required></textarea>
             </div>
 
             <div class="form-group dropzone" id="dropzone1">
-                <label for="imagen1">Imagen 1:</label>
+                <label for="imagen1">Imagen 1: *</label>
                 <input type="file" id="imagen1" name="imagen1" accept="image/*" class="form-control-file" required>
             </div>
 
             <div class="form-group dropzone" id="dropzone2">
                 <label for="imagen2">Imagen 2:</label>
-                <input type="file" id="imagen2" name="imagen2" accept="image/*" class="form-control-file" required>
+                <input type="file" id="imagen2" name="imagen2" accept="image/*" class="form-control-file">
             </div>
 
             <div class="form-group dropzone" id="dropzone3">
                 <label for="imagen3">Imagen 3:</label>
-                <input type="file" id="imagen3" name="imagen3" accept="image/*" class="form-control-file" required>
+                <input type="file" id="imagen3" name="imagen3" accept="image/*" class="form-control-file">
             </div>
 
         </div>
@@ -93,4 +167,54 @@
         <button type="button" id="nextBtn" class="btn btn-primary" onclick="changeFormPart(1)">Siguiente</button>
         <button type="submit" id="submitBtn" class="btn btn-success" style="display: none;">Registrar Oferta Laboral</button>
     </form>
+    <br>
+    <div class="container">
+        <center>
+            <button class="btn btn-success" onclick="mosexcel()">
+                Usar registro masivo
+            </button>
+        </center>
+    </div>
 </div>
+<div id="excel" style="display: none;">
+    <center>
+        Para el registro masivo es necesario llenar la:
+        <button class="btn btn-primary" onclick="descargarPlantilla()">Plantilla</button><br>
+
+        <div id="dropzone">
+            <div><br>
+                <img src="img/icon1.png" alt="MDN">
+                <center>
+                    <p id="res"> Arrastra aquí tu logo</p>
+                </center>
+            </div>
+            <input type="file" id="file1" name="registro">
+        </div>
+
+        <button class="btn btn-success" onclick="mosform()">Registro por formulario</button>
+    </center>
+</div>
+
+<script>
+    function mosexcel() {
+        $('#excel').show();
+        $('#formulario').hide();
+    }
+
+    function mosform() {
+        $('#excel').hide();
+        $('#formulario').show();
+    }
+
+    function descargarPlantilla() {
+        // Crear un elemento <a> temporal
+        var link = document.createElement('a');
+
+        // Configurar el enlace con el archivo xlsx y nombre de descarga
+        link.href = 'docs/Plantilla_vacante_JobsOn.xlsx';
+        link.download = 'Plantilla_vacante_JobsOn.xlsx';
+
+        // Simular un clic en el enlace para iniciar la descarga
+        link.click();
+    }
+</script>
