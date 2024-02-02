@@ -1,5 +1,7 @@
+<?php
+session_start();
+ ?>
 <link rel="stylesheet" href="css/vacanteregistro.css">
-<script src="vacantes/registro/main.js"></script>
 
 <center>
     <h1>
@@ -104,8 +106,8 @@
                 <input type="date" id="fechaExpiracion" name="fechaExpiracion" class="form-control">
             </div>
 
-            <input type="hidden" id="empresa" name="empresa" value="<?php session_start();
-                                                                    echo $_SESSION['ID'] ?>">
+            <input type="text" id="empresa" name="empresa" value="<?php 
+                                                                    echo $_SESSION['ID']; ?>" style="display: none;">
 
 
             <div class="form-group">
@@ -179,17 +181,18 @@
 <div id="excel" style="display: none;">
     <center>
         Para el registro masivo es necesario llenar la:
-        <button class="btn btn-primary" onclick="descargarPlantilla()">Plantilla</button><br>
-
-        <div id="dropzone">
-            <div><br>
-                <img src="img/icon1.png" alt="MDN">
-                <center>
-                    <p id="res"> Arrastra aquí tu logo</p>
-                </center>
+        <button class="btn btn-primary" onclick="descargarPlantillap1()">Plantilla</button><br>
+        <form action="php/vacantesmasiv.php" method="post" enctype="multipart/form-data" id="plantilla">
+            <div id="dropzone">
+                <div><br>
+                    <i class="far fa-file-excel" style="font-size:50pt; color:green;"></i>
+                    <center>
+                        <p id="res"> Arrastra aquí el formato</p>
+                    </center>
+                </div>
+                <input type="file" id="file" name="archivo" onchange="enviare()">
             </div>
-            <input type="file" id="file1" name="registro">
-        </div>
+        </form>
 
         <button class="btn btn-success" onclick="mosform()">Registro por formulario</button>
     </center>
@@ -206,6 +209,11 @@
         $('#formulario').show();
     }
 
+    function descargarPlantillap1() {
+        $('#aviso').html('<center><h1>Información importante</h1></center><center><p style="text-align:justify;">Al rellenar esta plantilla es importante que considere los siguientes puntos:<br>-<b>Los campos amarillos son campos necesarios para el registro</b>, si no rellena uno de estos campos marcados su vacante NO será registrada y se saltará a la siguiente<br>-<b>No elimine ningun campo</b> Ya que sus registros serán leídos de manera automatizada, conservar todos los campos es importante para una correcta lectura, si no completará un campo opcional, simplemente déjelo vacío.<br>-<b>Máximo 100 registros por vez</b>. Para evitar sobrecarga en el registro de las vacantes por favor ingrese no más de 100 vacanes por cada vez que suba el formato, según la cantidad el tiempo de espera podrá aumentar.</p><button class="btn btn-primary" onclick="descargarPlantilla()">Aceptar y Descargar</button></center>');
+        $("#modalavisos").modal("show");
+    }
+
     function descargarPlantilla() {
         // Crear un elemento <a> temporal
         var link = document.createElement('a');
@@ -217,4 +225,73 @@
         // Simular un clic en el enlace para iniciar la descarga
         link.click();
     }
+
+    function enviare() {
+        $.ajax({
+            url: 'php/vacantesmasiv.php ',
+            method: 'post',
+            data: new FormData($('#plantilla')[0]), // Usar FormData para enviar datos de formulario con archivos
+            contentType: false,
+            processData: false,
+            cache: false,
+        }).done(function(msg) {
+            $('#aviso').html(msg);
+            $("#modalavisos").modal("show");
+        }).fail(function(e) {
+
+        });
+    }
+
+    var currentStep = 0;
+    const formParts = document.querySelectorAll('.form-part');
+    const progressBar = document.querySelector('.progress-bar');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const submitBtn = document.getElementById('submitBtn');
+
+    function changeFormPart(n) {
+        if (currentStep >= 0 && currentStep < formParts.length) {
+            formParts[currentStep].classList.remove('active');
+            currentStep += n;
+            if (currentStep < 0) {
+                currentStep = 0;
+            } else if (currentStep >= formParts.length) {
+                currentStep = formParts.length - 1;
+            }
+            formParts[currentStep].classList.add('active');
+
+            progressBar.style.width = (currentStep / (formParts.length - 1)) * 100 + '%';
+
+            prevBtn.disabled = currentStep === 0;
+            nextBtn.disabled = currentStep === formParts.length - 1;
+
+            if (currentStep === formParts.length - 1) {
+                nextBtn.style.display = 'none';
+                submitBtn.style.display = 'inline-block';
+            } else {
+                nextBtn.style.display = 'inline-block';
+                submitBtn.style.display = 'none';
+            }
+        }
+    }
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Tu código de inicialización aquí
+        var currentStep = 0;
+        const formParts = document.querySelectorAll('.form-part');
+        const progressBar = document.querySelector('.progress-bar');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const submitBtn = document.getElementById('submitBtn');
+
+        function changeFormPart(n) {
+
+        }
+
+        // Asigna los eventos
+        prevBtn.addEventListener('click', changeFormPart);
+        nextBtn.addEventListener('click', changeFormPart);
+        submitBtn.addEventListener('click', handleSubmitClick);
+    });
 </script>

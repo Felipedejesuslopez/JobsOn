@@ -35,11 +35,20 @@ class OfertaLaboral
     public function create()
     {
         $bd = new Conexion();
-        $consultaExistencia = "SHOW TABLES LIKE 'ofertas_laborales'";
-        $resultado = $bd->query($consultaExistencia);
-        $sql = "INSERT INTO ofertas_laborales (TITULO, DESCRIPCION, UBICACION, SALARIO, REQUISITOS, FECHA_PUBLICACION, FECHA_EXPIRACION, EMPRESA, TIPO_CONTRATO, NIVEL_EXPERIENCIA, BENEFICIOS) VALUES ('{$this->titulo}','{$this->descripcion}','{$this->ubicacion}','{$this->salario}','{$this->requisitos}','{$this->fechaPublicacion}','{$this->fechaExpiracion}','{$this->empresa}','{$this->tipoContrato}','{$this->nivelExperiencia}','{$this->beneficios}')";
 
-        if ($resultado->num_rows < 1) {
+        // Verificar la existencia de la tabla
+        $consultaExistencia = "SHOW TABLES LIKE 'ofertas_laborales'";
+        $resultadoExistencia = $bd->query($consultaExistencia);
+
+        // Manejar errores en la consulta de existencia
+        if (!$resultadoExistencia) {
+            echo "Error al verificar la existencia de la tabla: " . $bd->error;
+            $bd->close();
+            return false;
+        }
+
+        // Si la tabla no existe, crearla
+        if ($resultadoExistencia->num_rows < 1) {
             $crearTabla = "CREATE TABLE ofertas_laborales (
                 ID INT AUTO_INCREMENT PRIMARY KEY,
                 TITULO VARCHAR(255) NOT NULL,
@@ -55,18 +64,59 @@ class OfertaLaboral
                 BENEFICIOS TEXT
             )";
 
-            $bd->query($crearTabla);
+            // Manejar errores en la creación de la tabla
+            if (!$bd->query($crearTabla)) {
+                echo "Error al crear la tabla: " . $bd->error;
+                $bd->close();
+                return false;
+            }
         }
 
-        return $bd->query($sql);
+        // Consulta de inserción
+        $sql = "INSERT INTO ofertas_laborales (TITULO, DESCRIPCION, UBICACION, SALARIO, REQUISITOS, FECHA_PUBLICACION, FECHA_EXPIRACION, EMPRESA, TIPO_CONTRATO, NIVEL_EXPERIENCIA, BENEFICIOS) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        // Preparar la consulta
+        $statement = $bd->prepare($sql);
+
+        // Manejar errores en la preparación de la consulta
+        if (!$statement) {
+            echo "Error al preparar la consulta: " . $bd->error;
+            $bd->close();
+            return false;
+        }
+
+        // Asignar valores a los parámetros
+        $statement->bind_param('sssssssssss', $this->titulo, $this->descripcion, $this->ubicacion, $this->salario, $this->requisitos, $this->fechaPublicacion, $this->fechaExpiracion, $this->empresa, $this->tipoContrato, $this->nivelExperiencia, $this->beneficios);
+
+        // Ejecutar la consulta INSERT
+        $resultInsert = $statement->execute();
+
+        // Manejar errores en la ejecución de la consulta
+        if (!$resultInsert) {
+            echo "Error al insertar datos: " . $bd->error;
+            $statement->close();
+            $bd->close();
+            return false;
+        }
+
+        // Obtener el último ID insertado
+        $ultimoId = $bd->insert_id;
+
+        // Cerrar la conexión y el statement
+        $statement->close();
+        $bd->close();
+
+        // Devolver el último ID insertado
+        return $ultimoId;
     }
+
 
     public function read()
     {
         $bd = new Conexion();
         if (isset($this->id) && $this->id != "") {
             $sql = "SELECT * FROM ofertas_laborales WHERE ID = '{$this->id}'";
-        }else if(isset($this->empresa) && $this->empresa != ''){
+        } else if (isset($this->empresa) && $this->empresa != '') {
             $sql = "SELECT * FROM ofertas_laborales WHERE EMPRESA = '{$this->empresa}' ORDER BY SALARIO DESC";
         } else {
             $sql = "SELECT * FROM ofertas_laborales ORDER BY TITULO ASC";
@@ -82,7 +132,8 @@ class OfertaLaboral
         return $bd->query($sql);
     }
 
-    public function lastid(){
+    public function lastid()
+    {
         $bd = new Conexion();
         $query = "SELECT * FROM ofertas_laborales ORDER BY ID DESC LIMIT 1";
         $r = $bd->query($query);
@@ -90,4 +141,3 @@ class OfertaLaboral
         return $res['ID'];
     }
 }
-?>
