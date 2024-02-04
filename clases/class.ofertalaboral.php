@@ -140,4 +140,46 @@ class OfertaLaboral
         $res = $r->fetch_array();
         return $res['ID'];
     }
+
+        public function buscarOfertasSimilares(usuariopostulante $usuario, Curriculum $curriculum)
+    {
+        $bd = new Conexion();
+        $prioridades = array('ubicacion', 'experiencia', 'estudios', 'trabajoPrevio', 'titulo');
+    
+        $campoMapeoUsuario = array(
+            'ubicacion' => 'UBICACION',
+        );
+    
+        $campoMapeoCurriculum = array(
+            'estudios' => 'ESTUDIOS',
+        );
+    
+        $campoMapeoOfertaLaboral = array(
+            'titulo' => 'TITULO',
+        );
+    
+        $sql = "SELECT * FROM ofertas_laborales WHERE 1=1";
+    
+        foreach ($prioridades as $campo) {
+            if (property_exists($usuario, $campo) && !empty($usuario->$campo) && isset($campoMapeoUsuario[$campo])) {
+                $valorUsuario = $usuario->$campo;
+                $sql .= " AND {$campoMapeoUsuario[$campo]} = '{$valorUsuario}'";
+            }
+
+            if (property_exists($curriculum, $campo) && !empty($curriculum->$campo) && isset($campoMapeoCurriculum[$campo])) {
+                $valorCurriculum = $curriculum->$campo;
+                $sql .= " AND {$campoMapeoCurriculum[$campo]} = '{$valorCurriculum}'";
+            }
+
+            if (property_exists($this, $campo) && !empty($this->$campo) && isset($campoMapeoOfertaLaboral[$campo])) {
+                $valorOfertaLaboral = $this->$campo;
+                $sql .= " AND {$campoMapeoOfertaLaboral[$campo]} = '{$valorOfertaLaboral}'";
+            }
+        }
+
+        $sql .= " ORDER BY UBICACION DESC, TITULO DESC";
+        $res = $bd->query($sql);
+    
+        return $res;
+    }
 }
