@@ -121,18 +121,18 @@ class conductor
 
     public function login()
     {
+
         $bd = new Conexion();
-        $sql = "SELECT * FROM conductores WHERE (USER = ? OR EMAIL = ? OR T1 = ?) AND PASSWORD = ?";
+        $sql = "SELECT * FROM conductores WHERE (USER = ? OR EMAIL = ? OR TELEFONO = ?) AND PASSWORD = ?";
 
         // Utilizar una consulta preparada
         $stmt = $bd->prepare($sql);
-
-        // Verificar si la preparación fue exitosa
-        if (!$stmt) {
+        
+           // Verificar si la preparación fue exitosa
+           if (!$stmt) {
             die("Error en la preparación de la consulta: " . $bd->error);
         }
 
-        // Vincular los parámetros
         $stmt->bind_param("ssss", $this->user, $this->email, $this->telefono, $this->password);
 
         // Ejecutar la consulta
