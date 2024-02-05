@@ -38,10 +38,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //Se registran los campos de la vacante (los básicos)
     $oferta = new OfertaLaboral(null, $_POST['titulo'], $_POST['descripcion'], $_POST['ubicacion'], $_POST['salario'], $_POST['requisitos'], $fechaPublicacion, $_POST['fechaExpiracion'], $_POST['empresa'], $_POST['tipoContrato'], $_POST['nivelExperiencia'], $_POST['beneficios']);
     $resultado = $oferta->create();
+    
     //Se registran los detalles de la vacante
     $vacante = new vacantes($resultado,$_POST['titulores'],$_POST['planta'],$_POST['departamento'],$_POST['contactos'], $_POST['problemas'],$_POST['estudios'],$_POST['especialidad'],$_POST['experiencia'],$_post['alcance'],$_POST['idiomas'],$_POST['habilidades']);
     $vacante->create();
-
 
     if ($resultado) {
         echo "<p style='color: green;'>Oferta registrada con éxito.</p>";

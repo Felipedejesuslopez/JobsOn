@@ -66,8 +66,10 @@ $emp = new Empresa($oferta['EMPRESA'], '', '', '', '', '', '', '', '', '', '');
 $empresa = $emp->read()->fetch_array();
 if (is_dir('../../imagenes_vacantes/' . $oferta['ID'] . '/')) {
     $archivos = scandir('../../imagenes_vacantes/' . $oferta['ID'] . '/');
-} else {
+} else if(is_dir('imagenes_vacantes/' . $oferta['ID'] . '/')){
     $archivos = scandir('imagenes_vacantes/' . $oferta['ID'] . '/');
+}else{
+    $archivos = [];
 }
 // Filtrar los archivos y directorios especiales (., ..)
 $archivos = array_diff($archivos, array('..', '.'));

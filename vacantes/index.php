@@ -28,9 +28,11 @@ $list = $vacante->read();
             $empresa = $emp->read()->fetch_array();
             
             if (is_dir('../imagenes_vacantes/' . $oferta['ID'] . '/')) {
+                $archivos = scandir('../imagenes_vacantes/' . $oferta['ID'] . '/');
+            } else if(is_dir('imagenes_vacantes/' . $oferta['ID'] . '/')){
                 $archivos = scandir('imagenes_vacantes/' . $oferta['ID'] . '/');
-            } else {
-                $archivos = scandir('imagenes_vacantes/' . $oferta['ID'] . '/');
+            }else{
+                
             }
 
             // Filtrar los archivos y directorios especiales (., ..)

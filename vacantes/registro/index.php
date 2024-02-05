@@ -275,23 +275,4 @@ session_start();
         }
     }
 
-
-    document.addEventListener('DOMContentLoaded', function() {
-        // Tu código de inicialización aquí
-        var currentStep = 0;
-        const formParts = document.querySelectorAll('.form-part');
-        const progressBar = document.querySelector('.progress-bar');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const submitBtn = document.getElementById('submitBtn');
-
-        function changeFormPart(n) {
-
-        }
-
-        // Asigna los eventos
-        prevBtn.addEventListener('click', changeFormPart);
-        nextBtn.addEventListener('click', changeFormPart);
-        submitBtn.addEventListener('click', handleSubmitClick);
-    });
 </script>
