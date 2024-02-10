@@ -31,7 +31,7 @@
 
             <div class="row" class>
                 <div class="col-6">
-                    <a class="botonmenu" href="ParaTi/">
+                    <a class="botonmenu" href="postulado/Reclutador/entrevistas.php">
                         <img src="img/Menu/Reclutador/reentrevistas.png" class="botonmenu">
                     </a>
                 </div>
@@ -42,19 +42,19 @@
                 </div>
                 <br><br><br>
                 <div class="col-6">
-                    <a class="botonmenu" href="Curriculum/">
+                    <a class="botonmenu" href="curriculum/">
                         <img class="botonmenu" src="img/Menu/Reclutador/repostulantes.png" alt="">
                     </a>
                 </div>
                 <div class="col-6">
-                    <a class="botonmenu" href="Curriculum/">
+                    <a class="botonmenu" href="postulado/Reclutador/postulaciones_tomadas.php">
                         <img class="botonmenu" src="img/Menu/Reclutador/rereclutados.png" alt="">
                     </a>
                 </div>
                 <br><br><br>
                 <div class="col-3"></div>
                 <div class="col-6">
-                    <a class="botonmenu" href="Curriculum/">
+                    <a class="botonmenu" href="postulado/Reclutador/postulaciones_disponibles.php">
                         <img class="botonmenu" src="img/Menu/Reclutador/revacantes.png" alt="">
                     </a>
                 </div>
