@@ -182,4 +182,10 @@ class OfertaLaboral
     
         return $res;
     }
+
+    public function getTitulo()
+    {
+        return $this->titulo;
+    }
+
 }
