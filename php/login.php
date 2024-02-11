@@ -40,7 +40,7 @@ if ($tusuario == 1) {
                 include '../clases/class.conductor.php';
                 $conductor = new Conductor('', $user, $user,$psw,'','','','','','','','','',$user,'');
                 $tconductor = $conductor->login();
-                if($tlaboratorio == 1){
+                if($tconductor == 1){
                     $_SESSION['tipo'] = 5;
                     echo 1;
                 }else{
