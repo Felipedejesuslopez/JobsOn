@@ -1,53 +1,127 @@
-<div class="container">
+<script>
+function segundo() {
+    $('#pimero').hide();
+    $('#segundo').show();
+}
 
-    <center>
-        <h1>FORMULARIO PARA EMPRESAS</h1>
-    </center>
+function tercero() {
+    $('#segundo').hide();
+    $('#tecero').show();
+}
 
-    <form method="post" action="php/registroempresa.php">
+function cuato() {
+    $('#tecero').hide();
+    $('#cuato').show();
+}
+</script>
 
-        <input type="hidden" name="action" value="create">
+<?php include '../../modals/modalavisos.php'; ?>
+<link rel="stylesheet" href="../css/registro.css">
 
-        <label for="nombre">Nombre:</label>
-        <input type="text" name="nombre">
-        <br>
+    <form action="php/registroempresa.php" method="post">
+    <div class="container" style="vertical-align:center;" id="pimero">
+    <div class="card" style="background-color:rgba(255,255,255,0.7); z-index:0;">
 
-        <label for="direccion">Dirección:</label>
-        <input type="text" name="direccion">
-        <br>
+    <div class="card-body">
+    <div class="row">
+        
+        <div class="col-sm-6">  
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre" required>
+        </div>
 
-        <label for="telefono">Teléfono:</label>
-        <input type="text" name="telefono">
-        <br>
+        <div class="col-sm-6">
+        <label for="direccion">Dirección:</label><br>
+        <input type="text" id="direccion" name="direccion">
+        </div>
 
-        <label for="descripcion">Descripción:</label>
-        <textarea name="descripcion"></textarea>
-        <br>
+        <div class="col-sm-6">
+        <label for="telefono">Teléfono:</label><br>
+        <input type="text" id="telefono" name="telefono">
+        </div>
 
-        <label for="sector">Sector:</label>
-        <input type="text" name="sector">
-        <br>
+        <div class="col-sm-6">
+        <label for="descripcion">Descripción:</label><br>
+        <textarea id="descripcion" name="descripcion"></textarea>
+        </div>
 
-        <label for="contactoNombre">Contacto Nombre:</label>
-        <input type="text" name="contactoNombre">
-        <br>
-
-        <label for="contactoCorreo">Contacto Correo:</label>
-        <input type="email" name="contactoCorreo">
-        <br>
-
-        <label for="sitioWeb">Sitio Web:</label>
-        <input type="text" name="sitioWeb">
-        <br>
-
-        <label for="correo">Correo:</label>
-        <input type="email" name="correo">
-        <br>
-
-        <label for="psw">Contraseña:</label>
-        <input type="password" name="psw">
-        <br>
-
-        <input type="submit" value="Enviar">
-    </form>
+        </div>
 </div>
+</div>
+
+
+        <button type="button" onclick="segundo()" id="fi" class="btn btn-success" style="z-index:2; font-size:15pt; margin-left:95%; margin-top:0%; text-align:right; border-radius:50%;">
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </button>
+        </div>
+
+
+    <div class="container" id="segundo" style="display: none;">
+    <div class="card" style="background-color:rgba(255,255,255,0.7); z-index:0;">
+
+    <div class="card-body">
+    <div class="row">
+
+
+        <div class="col-sm-6">
+        <label for="sector">Sector:</label><br>
+        <input type="text" id="sector" name="sector">
+        </div>
+
+        <div class="col-sm-6">
+        <label for="contactoNombre">Nombre de Contacto:</label><br>
+        <input type="text" id="contactoNombre" name="contactoNombre">
+        </div>
+
+        <div class="col-sm-6">
+        <label for="contactoCorreo">Correo de Contacto:</label><br>
+        <input type="email" id="contactoCorreo" name="contactoCorreo">
+        </div>
+
+        <div class="col-sm-6">
+        <label for="sitioWeb">Sitio Web:</label><br>
+        <input type="text" id="sitioWeb" name="sitioWeb">
+        </div>
+
+
+        </div>
+</div>
+</div>
+
+
+    <button type="button" id="terc" onclick="tercero()" class="btn btn-success" style="z-index:2; font-size:15pt; margin-left:95%; margin-top:0%; text-align:right; border-radius:50%;">
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <div class="container" id="tecero" style="display: none;">
+    <div class="card" style="background-color:rgba(255,255,255,0.7); z-index:0;">
+    
+    <div class="card-body">
+    <div class="row">
+
+        <div class="col-sm-6">
+        <label for="correo">Correo Electrónico:</label><br>
+        <input type="email" id="correo" name="correo">
+        </div>
+
+        <div class="col-sm-6">
+        <label for="psw">Contraseña:</label><br>
+        <input type="password" id="psw" name="psw">
+        </div>
+
+        </div>
+</div>
+</div>
+
+<button type="submit" class="btn btn-primary" style="z-index:2; font-size:20pt; margin-left:95%; margin-top:0%; text-align:right; border-radius:50%;">
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    </form>
+    
+    </div>
+
+
+

@@ -1,8 +1,6 @@
+
 <link rel="stylesheet" href="css/vacantes.css">
-<?php 
-ini_set('display_errors', '1');
-error_reporting(E_ALL);
-session_start();
+<?php session_start();
 if (is_file('../../clases/class.conexion.php')) {
     include '../../clases/class.conexion.php';
     include '../../clases/class.empresa.php';
@@ -27,28 +25,13 @@ $vacant = $vac->read();
     <div class="row">
         <?php
         while ($oferta = $vacant->fetch_array()) {
-            $emp = new Empresa($oferta['EMPRESA'], '', '', '', '', '', '', '', '', '', '');
-            $empresa = $emp->read()->fetch_array();
-            if (is_dir('../../imagenes_vacantes/' . $oferta['ID'] . '/')) {
-                $archivos = scandir('../../imagenes_vacantes/' . $oferta['ID'] . '/');
-            } else if(is_dir('../imagenes_vacantes/' . $oferta['ID'] . '/')) {
-                $archivos = scandir('../imagenes_vacantes/' . $oferta['ID'] . '/');
-            }else{
-                $archivos = [];
-            }
-
-            // Filtrar los archivos y directorios especiales (., ..)
-            $archivos = array_diff($archivos, array('..', '.'));
-            foreach ($archivos as $archivo) {
-                $img = $archivo;
-            }
         ?>
-            <div class="col-sm-4">
-                <div class="contenedor">
-                    <div class="cuadrado" style="background-image:url('imagenes_vacantes/<?php echo $oferta['ID']; ?>/<?php echo $img; ?>')">
+        <div class="col-sm-4">
+        <div class="contenedor">
+                    <div class="cuadrado">
                         <a href="empresa/vacantes/detalles/?id=<?php echo $oferta['ID']; ?>">
                             <div class="contenido">
-                            <div class="container" style="background-color:rgba(255,255,255,0.2); color:black;">
+                                <div class="container">
                                     <br>
                                     <center>
                                         <b class="titulo">
@@ -69,7 +52,7 @@ $vacant = $vac->read();
                         </a>
                     </div>
                 </div>
-            </div>
+        </div>
         <?php
         }
         ?>
