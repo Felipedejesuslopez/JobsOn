@@ -36,12 +36,12 @@
                     </a>
                 </div>
                 <div class="col-6">
-                    <a class="botonmenu" href="Postulantes/">
+                    <a class="botonmenu" href="Usuarios/">
                         <img class="botonmenu" src="img/Menu/Admin/Usuarios.png" alt="">
                     </a>
                 </div><br><br>
                 <div class="col-6">
-                    <a class="botonmenu" href="Curriculum/">
+                    <a class="botonmenu" href="empresa/">
                         <img class="botonmenu" src="img/Menu/Admin/Empresas.png" alt="">
                     </a>
                 </div>
@@ -52,12 +52,12 @@
                 </div>
                 <br><br>
                 <div class="col-6">
-                    <a class="botonmenu" href="Curriculum/">
+                    <a class="botonmenu" href="conductor/">
                         <img class="botonmenu" src="img/Menu/Admin/Conductores.png" alt="">
                     </a>
                 </div>
                 <div class="col-6">
-                    <a class="botonmenu" href="Curriculum/">
+                    <a class="botonmenu" href="Laboratorio/">
                         <img class="botonmenu" src="img/Menu/Admin/Laboratorios.png" alt="">
                     </a>
                 </div>
