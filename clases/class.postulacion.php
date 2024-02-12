@@ -35,6 +35,7 @@ class postulacion
                 USUARIO VARCHAR(255) DEFAULT NULL,
                 FECHA DATE DEFAULT NULL,
                 ESTATUS VARCHAR(255) DEFAULT NULL,
+                TOMADA BOOLEAN DEFAULT FALSE,
                 FIN DATE DEFAULT NULL
             );";
             $bd->query($creart);

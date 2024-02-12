@@ -1,87 +1,84 @@
 <?php
 session_start();
 include '../../clases/class.conexion.php';
-include '../../clases/class.postulacion.php';
 include '../../clases/class.ofertalaboral.php';
 include '../../clases/class.reclutador.php';
+include '../../clases/class.seguimiento.php';
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-if (!isset($_SESSION['ID']) || !isset($_SESSION['USER'])) {
-    header('Location: ../../login.php');
-    exit();
-}
+$reclutador = new reclutador($_SESSION['ID'], $_SESSION['USER'], $_SESSION['EMAIL'], '', '', '', '', '', '', '', '');
+$reclutador = $reclutador->read()->fetch_array();
 
-$reclutador = new Reclutador($_SESSION['ID'], $_SESSION['USER'], $_SESSION['EMAIL'], '', '', '', '', '', '', '', '');
-$postulacion = new Postulacion('', '', '', '', '', '');
-$postulacionesTomadas = $postulacion->readTomadasByReclutador($reclutador);
+$ofertas = new OfertaLaboral('', '', '', '', '', '', '', '', '', '', '', '');
+$vac = $ofertas->read();
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Postulaciones Tomadas por el Reclutador</title>
+    <title>Postulaciones Disponibles</title>
 </head>
+
 <body>
     <div class="container">
         <center>
-            <h1>Postulaciones Tomadas por el Reclutador <?php echo $reclutador->getUser(); ?></h1>
+            <h1>Vacantes Disponibles para el Reclutador <?php echo $reclutador['NAME']; ?></h1>
         </center>
-        <?php
-        while ($postulacionTomada = $postulacionesTomadas->fetch_array()) {
-            $vacante = new OfertaLaboral($postulacionTomada['VACANTE'], null, null, null, null, null, null, null, null, null, null, null);
-        ?>
-            <div class="card zoom-on-hover" style="width:100%;">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-3">
-                            <p>Vacante: <?php echo $vacante->getTitulo(); ?></p>
-                        </div>
-                        <div class="col-3">
-                            <p>Usuario: <?php echo $postulacionTomada['USUARIO']; ?></p>
-                        </div>
-                        <div class="col-3">
-                            <p>Estatus: <?php echo $postulacionTomada['ESTATUS']; ?></p>
-                        </div>
-                        <div class="col-3">
-                            <form id="formAgendarCita_<?php echo $postulacionTomada['ID']; ?>" method="post">
-                                <input type="hidden" name="postulacionId" value="<?php echo $postulacionTomada['ID']; ?>">
-                                <label for="fechaCita">Fecha de la Cita:</label>
-                                <input type="date" id="fechaCita_<?php echo $postulacionTomada['ID']; ?>" name="fechaCita" required>
-                                <button type="button" onclick="agendarCita(<?php echo $postulacionTomada['ID']; ?>)">Agendar Cita</button>
-                            </form>
+        <form id="formTomarPostulaciones">
+            <?php
+            while ($vacante = $vac->fetch_array()) {
+                $seg = new seguimiento(null, $vacante['ID'], $_SESSION['ID'], null, null, null);
+                $si = $seg->read();
+                //vamos a ocultar si aparece porque significa que ya está en seguimiento
+                if ($si->num_rows >= 1) {
+                    $oc = "display: block;";
+                } else {
+                    $oc = "display: none;";
+                }
+            ?>
+                <div class="card zoom-on-hover" style="width:100%; <?php echo $oc; ?> margin-bottom:3%;">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-2">
+                                <?php
+                                echo $vacante['ID'];
+                                if (is_dir('../../imagenes_vacantes/' . $vacante['ID'] . '/')) {
+                                    $archivos = scandir('../../imagenes_vacantes/' . $vacante['ID'] . '/');
+                                } else if (is_dir('../imagenes_vacantes/' . $vacante['ID'] . '/')) {
+                                    $archivos = scandir('../imagenes_vacantes/' . $vacante['ID'] . '/');
+                                } else {
+                                    $archivos = [];
+                                }
+
+                                $archivos = array_diff($archivos, array('..', '.'));
+                                foreach ($archivos as $archivo) {
+                                    $img = $archivo;
+                                }
+                                ?>
+                                <img src="imagenes_vacantes/<?php echo $vacante['ID']; ?>/<?php echo $img; ?>" style="width:75%;">
+                            </div>
+                            <div class="col-7">
+                                <h5><?php echo $vacante['TITULO']; ?></h5>
+                            </div>
+                            <div class="col-2">
+
+                            </div>
+                            <div class="col-1">
+                                <input type="checkbox" name="postulacionesSeleccionadas[]" value="<?php echo $vacante['ID']; ?>">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        <?php
-        }
-        ?>
+
+            <?php } ?>
+
+        </form>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-    function agendarCita(postulacionId) {
-        var fechaCita = $('#fechaCita_' + postulacionId).val();
-
-        $.ajax({
-            type: 'POST',
-            url: '../../jobsOn7/php/entrevista_guardar.php',
-            data: {
-                postulacionId: postulacionId,
-                fechaCita: fechaCita
-            },
-            success: function(response) {
-
-                alert('La cita se genero correctamente');
-            },
-            error: function(xhr, status, error) {
-
-                console.error(error);
-                alert('Error al agendar la cita. Por favor, inténtalo de nuevo más tarde.');
-            }
-        });
-    }
-    </script>
 </body>
+
 </html>
