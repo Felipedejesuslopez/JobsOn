@@ -6,11 +6,6 @@ include '../../clases/class.postulacion.php';
 include '../../clases/class.ofertalaboral.php';
 include '../../clases/class.reclutador.php';
 
-if (!isset($_SESSION['ID']) || !isset($_SESSION['USER'])) {
-    header('Location: ../../index.php');
-    exit();
-}
-
 $reclutador = new reclutador($_SESSION['ID'], $_SESSION['USER'], $_SESSION['EMAIL'], '', '', '', '', '', '', '', '');
 $postulacion = new postulacion('', '', '', '', '', '');
 $postulacionesDisponibles = $postulacion->readNoTomadas();

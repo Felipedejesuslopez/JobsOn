@@ -2,11 +2,6 @@
 session_start();
 include '../../clases/class.conexion.php';
 include '../../clases/class.cita.php';
-
-if (!isset($_SESSION['ID']) || !isset($_SESSION['USER'])) {
-    header('Location: ../../login.php');
-    exit();
-}
 ?>
 
 <!DOCTYPE html>
