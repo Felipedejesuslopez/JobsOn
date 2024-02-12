@@ -12,10 +12,10 @@ class Empresa
     protected $contactoNombre;
     protected $contactoCorreo;
     protected $sitioWeb;
-    protected $email;
-    protected $password;
+    protected $correo;
+    protected $psw;
 
-    public function __construct($id, $nombre, $direccion, $telefono, $descripcion, $sector, $contactoNombre, $contactoCorreo, $sitioWeb, $email, $password)
+    public function __construct($id, $nombre, $direccion, $telefono, $descripcion, $sector, $contactoNombre, $contactoCorreo, $sitioWeb, $correo, $psw)
     {
         $this->id = $id;
         $this->nombre = $nombre;
@@ -26,8 +26,8 @@ class Empresa
         $this->contactoNombre = $contactoNombre;
         $this->contactoCorreo = $contactoCorreo;
         $this->sitioWeb = $sitioWeb;
-        $this->email = $email;
-        $this->password = md5($password);
+        $this->correo = $correo;
+        $this->psw = md5($psw);
     }
 
     public function create()
@@ -49,13 +49,13 @@ class Empresa
                 CONTACTO_NOMBRE VARCHAR(255),
                 CONTACTO_CORREO VARCHAR(255),
                 SITIO_WEB VARCHAR(255),
-                EMAIL VARCHAR(50),
-                PASSWORD VARCHAR(255)
+                CORREO VARCHAR(50),
+                PSW VARCHAR(255)
             )";
             $bd->query($crearTabla);
         }
         $sql = "INSERT INTO $nombreTabla 
-        (NOMBRE, DIRECCION, TELEFONO, DESCRIPCION, SECTOR, CONTACTO_NOMBRE, CONTACTO_CORREO, SITIO_WEB, EMAIL, PASSWORD) 
+        (NOMBRE, DIRECCION, TELEFONO, DESCRIPCION, SECTOR, CONTACTO_NOMBRE, CONTACTO_CORREO, SITIO_WEB, CORREO, PSW) 
         VALUES 
         (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -63,22 +63,32 @@ class Empresa
         $stmt = $bd->prepare($sql);
 
         // Vincular parámetros
-        $stmt->bind_param("ssssssssss", $this->nombre, $this->direccion, $this->telefono, $this->descripcion, $this->sector, $this->contactoNombre, $this->contactoCorreo, $this->sitioWeb, $this->email, $this->password);
+        $stmt->bind_param("ssssssssss", $this->nombre, $this->direccion, $this->telefono, $this->descripcion, $this->sector, $this->contactoNombre, $this->contactoCorreo, $this->sitioWeb, $this->correo, $this->psw);
 
         // Ejecutar la consulta
         $stmt->execute();
     }
+
+    public function delete($id)
+    {
+        $bd = new Conexion();
+        $sql = "DELETE FROM empresa WHERE ID = {$id}";
+
+        $bd->query($sql);
+
+    }
+
 
 
     public function login()
     {
 
         $bd = new Conexion();
-        $sql = "SELECT * FROM empresa WHERE (NOMBRE = ? OR TELEFONO = ? OR SITIO_WEB = ? OR CONTACTO_CORREO = ? OR email = ?) AND PASSWORD = ?";
+        $sql = "SELECT * FROM empresa WHERE (NOMBRE = ? OR TELEFONO = ? OR SITIO_WEB = ? OR CONTACTO_CORREO = ? OR CORREO = ?) AND PSW = ?";
 
         // Utilizar una consulta preparada
         $stmt = $bd->prepare($sql);
-        $stmt->bind_param("ssssss", $this->nombre, $this->sitioWeb, $this->contactoCorreo, $this->telefono, $this->email, $this->password);
+        $stmt->bind_param("ssssss", $this->nombre, $this->sitioWeb, $this->correo, $this->telefono, $this->correo, $this->psw);
 
         // Ejecutar la consulta
         $stmt->execute();
@@ -112,7 +122,7 @@ class Empresa
     public function checkemail()
     {
         $bd = new Conexion();
-        $query = "SELECT * FROM empresa WHERE NOMBRE = '{$this->nombre}' OR CORREO = '{$this->email}'";
+        $query = "SELECT * FROM empresa WHERE NOMBRE = '{$this->nombre}' OR CORREO = '{$this->correo}'";
         $res = $bd->query($query);
         if ($res->fetch_array()) {
             return 1;

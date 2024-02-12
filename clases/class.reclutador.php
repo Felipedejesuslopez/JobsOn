@@ -1,5 +1,5 @@
 <?php
-class reclutador
+class Reclutador
 {
     protected $id;
     protected $user;
