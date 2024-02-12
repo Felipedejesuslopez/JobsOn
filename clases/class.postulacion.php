@@ -1,12 +1,4 @@
 <?php
-/*
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require '../recuperacion/PHPMailer/src/PHPMailer';
-require '../recuperacion/PHPMailer/src/Exception';
-require '../recuperacion/PHPMailer/src/SMTP.php';
-*/
 class postulacion
 {
     protected $id;
@@ -17,7 +9,6 @@ class postulacion
     protected $fin;
     protected $tomada;
     protected $idReclutador;
-
     public function __construct($id, $vacante = '', $usuario = '', $fecha = '', $estatus = '', $fin = '', $tomada = false, $idReclutador = null)
     {
         $this->id = $id;
@@ -29,14 +20,14 @@ class postulacion
         $this->tomada = $tomada;
         $this->idReclutador = $idReclutador;
     }
-    
+
 
     public function create()
     {
         $bd = new Conexion();
         $c = "SHOW TABLES LIKE 'postulaciones'";
         $resultado = $bd->query($c);
-    
+
         if ($resultado->num_rows < 1) {
             $creart = "CREATE TABLE postulaciones (
                 ID INT PRIMARY KEY AUTO_INCREMENT,
@@ -44,20 +35,16 @@ class postulacion
                 USUARIO VARCHAR(255) DEFAULT NULL,
                 FECHA DATE DEFAULT NULL,
                 ESTATUS VARCHAR(255) DEFAULT NULL,
-                FIN DATE DEFAULT NULL,
-                TOMADA BOOLEAN DEFAULT FALSE,
-                ID_RECLUTADOR INT DEFAULT NULL
+                FIN DATE DEFAULT NULL
             );";
             $bd->query($creart);
         }
-    
-        $sql = "INSERT INTO postulaciones (VACANTE, USUARIO, FECHA, ESTATUS) VALUES (?, ?, ?, ?)";
-        $stmt = $bd->prepare($sql);
-        $stmt->bind_param("ssss", $this->vacante, $this->usuario, $this->fecha, $this->estatus);
-        $stmt->execute();
-        $stmt->close();
+
+        $sql = "INSERT INTO postulaciones (VACANTE, USUARIO, FECHA, ESTATUS) VALUES ('{$this->vacante}', '{$this->usuario}', '{$this->fecha}', '{$this->estatus}')";
+        $bd->query($sql);
     }
-    
+
+
     /*
     private function enviarCorreoUsuario()
     {
@@ -100,7 +87,7 @@ class postulacion
         $res = $bd->query($sql);
         return $res;
     }
-    
+
 
     public function updateTomadaByReclutador()
     {
@@ -132,13 +119,16 @@ class postulacion
     public function read()
     {
         $bd = new Conexion();
-        
-        if(isset($this->usuario) && $this->usuario != ''){
+
+        if (isset($this->usuario) && $this->usuario != '') {
             $sql = "SELECT * FROM postulaciones WHERE USUARIO = '{$this->usuario}'";
-            $res = $bd->query($sql);
-            return $res;
+        } else if (isset($this->vacante) && $this->vacante != null) {
+            $sql = "SELECT * FROM postulaciones WHERE VACANTE = '{$this->vacante}'";
+        } else {
+            $sql = "SELECT * FROM postulaciones";
         }
-        
-        return null;
+
+        $res = $bd->query($sql);
+        return $res;
     }
 }

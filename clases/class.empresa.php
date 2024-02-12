@@ -69,16 +69,6 @@ class Empresa
         $stmt->execute();
     }
 
-    public function delete($id)
-    {
-        $bd = new Conexion();
-        $sql = "DELETE FROM empresa WHERE ID = {$id}";
-
-        $bd->query($sql);
-
-    }
-
-
 
     public function login()
     {
@@ -118,6 +108,16 @@ class Empresa
         $res = $bd->query($query);
         return $res;
     }
+
+    public function delete($id)
+    {
+        $bd = new Conexion();
+        $sql = "DELETE FROM empresa WHERE ID = {$id}";
+
+        $bd->query($sql);
+
+    }
+
 
     public function checkemail()
     {

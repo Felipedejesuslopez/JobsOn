@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 if (isset($_SESSION["ID"])) {
     include 'css/bts.php';
     include 'modals/modalavisos.php';
@@ -62,7 +63,9 @@ if (isset($_SESSION["ID"])) {
     </div>
     <div class="container" id="content">
         <div id="main">
+            
             <?php
+            error_reporting(0);
             switch ($_SESSION['tipo']) {
                 case 1:
                     include 'vacantes/index.php';
@@ -89,7 +92,7 @@ if (isset($_SESSION["ID"])) {
                     break;
             }
             ?>
-
+            
         </div>
     </div>
 </body>

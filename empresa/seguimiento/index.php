@@ -12,6 +12,7 @@ session_start();
 $oferta = new OfertaLaboral(null, null, null, null, null, null, null, null, $_SESSION['ID'], null, null, null);
 $ol = $oferta->read();
 while ($oflaboral = $ol->fetch_array()) {
+    
     if (is_dir('../../imagenes_vacantes/' . $oflaboral['ID'] . '/')) {
         $archivos = scandir('../../imagenes_vacantes/' . $oflaboral['ID'] . '/');
     } else if (is_dir('../imagenes_vacantes/' . $oflaboral['ID'] . '/')) {
@@ -26,8 +27,8 @@ while ($oflaboral = $ol->fetch_array()) {
     }
 
     $postu = new postulacion(null, $oflaboral['ID'], null, null, null, null);
-    $postulacion = $postu->read()->fetch_array();
-    if (isset($postulacion['ESTATUS'])) {
+    $postulacion = $postu->read();
+    if ($postulacion = $postulacion->fetch_array()) {
         $noshow = "";
     } else {
         $noshow = "display: none;";

@@ -38,20 +38,20 @@ class vacantes
 
         if ($rev->num_rows < 1) {
             $ct = "CREATE TABLE vacantes (
-                 CREATE TABLE vacantes (
+                 
                     ID INT PRIMARY KEY,
                     TITULO VARCHAR(255) DEFAULT NULL,
                     PLANTA VARCHAR(255) DEFAULT NULL,
                     DEPARTAMENTO VARCHAR(255) DEFAULT NULL,
                     CONTACTOS VARCHAR(255) DEFAULT NULL,
-                    PROBLEMAS VARCHAR(255) DEFAULT NULL,
+                    PROBLEMAS VARCHAR(1255) DEFAULT NULL,
                     ESTUDIOS VARCHAR(255) DEFAULT NULL,
                     ESPECIALIDAD VARCHAR(255) DEFAULT NULL,
-                    EXPERIENCIA VARCHAR(255) DEFAULT NULL,
+                    EXPERIENCIA VARCHAR(1255) DEFAULT NULL,
                     ALCANCES TEXT DEFAULT NULL,
-                    IDIOMAS VARCHAR(255) DEFAULT NULL,
-                    ONOCIMIENTOS VARCHAR(255) DEFAULT NULL
-                );
+                    IDIOMAS VARCHAR(1255) DEFAULT NULL,
+                    CONOCIMIENTOS VARCHAR(1255) DEFAULT NULL
+                
             );";
             $bd->query($ct);
         }
@@ -69,7 +69,7 @@ class vacantes
             '{$this->idiomas}',
             '{$this->conocimientos}'
         )";
-        
+
         $bd->query($sql);
     }
 }
