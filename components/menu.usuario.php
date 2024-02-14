@@ -36,7 +36,7 @@
                     </a>
                 </div>
                 <div class="col-6">
-                    <a class="botonmenu" href="Mensajes/">
+                    <a class="botonmenu" href="mensajes/postulante/">
                         <img class="botonmenu" src="img/Menu/User/2.png" alt="">
                     </a>
                 </div>

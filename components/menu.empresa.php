@@ -15,7 +15,7 @@
                     
                     <div class="col-4" id="mad">
                         <br>
-                        <img src="img/profile.png" id="profile" alt="">
+                        <img src="img/empresas/<?php echo $_SESSION['ID']; ?>.jpg" id="profile" alt="">
                     </div>
                 </div>
 

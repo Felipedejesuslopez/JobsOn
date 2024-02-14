@@ -105,6 +105,26 @@ function cvacante(w) {
         });
 }
 
+
+function sendmessage() {
+    var mensaje = $('#mensaje').serialize();
+    $.ajax({
+        url: 'php/sendmessage.php',
+        method: 'post',
+        data: mensaje
+    }).done(function(msg) {
+        console.log(msg);
+        loadContent('mensajes/' + $('#ROL_EMISOR').val() + '/chat/?ie=' + $('#ID_EMISOR').val() + '&ir=' + $('#ID_RECEPTOR').val() + '&re=' + $('#ROL_EMISOR').val() + '&rr=' + $('#ROL_RECEPTOR').val());
+        // Obtener el elemento chat
+        var chat = document.querySelector('.chat');
+
+        // Hacer scroll hasta abajo al cargar la página
+        chat.scrollTop = chat.scrollHeight;
+    }).fail(function(e) {
+        console.log(e);
+    })
+}
+
 $(document).ready(function() {
     document.addEventListener("touchstart", { passive: false });
     document.addEventListener("touchmove", { passive: false });

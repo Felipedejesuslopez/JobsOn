@@ -4,6 +4,7 @@ include '../../clases/class.conexion.php';
 include '../../clases/class.ofertalaboral.php';
 include '../../clases/class.reclutador.php';
 include '../../clases/class.seguimiento.php';
+include '../../clases/class.postulacion.php';
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
@@ -14,33 +15,29 @@ $ofertas = new OfertaLaboral('', '', '', '', '', '', '', '', '', '', '', '');
 $vac = $ofertas->read();
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
+<div class="container">
+    <center>
+        <h1>Vacantes Disponibles para el Reclutador <?php echo $reclutador['NAME']; ?></h1>
+    </center>
+    <form id="formTomarPostulaciones">
+        <?php
+        while ($vacante = $vac->fetch_array()) {
+            $seg = new seguimiento(null, $vacante['ID'], $_SESSION['ID'], null, null, null);
+            $si = $seg->read();
+            $postulacion = new postulacion(null,$vacante['ID'],null,null,null,null,null,null);
+            $postulaciones = $postulacion->read();
+            $cantidad = mysqli_num_rows($postulaciones);
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Postulaciones Disponibles</title>
-</head>
+            //vamos a ocultar si aparece porque significa que ya está en seguimiento
+            if ($si->num_rows >= 1) {
+                $oc = "display: block;";
+            } else {
+                $oc = "display: none;";
+            }
+        ?>
+            <div class="card zoom-on-hover" style="width:100%; <?php echo $oc; ?> margin-bottom:3%;">
+                <a href="seguimiento/?id=<?php echo $vacante['ID']; ?>">
 
-<body>
-    <div class="container">
-        <center>
-            <h1>Vacantes Disponibles para el Reclutador <?php echo $reclutador['NAME']; ?></h1>
-        </center>
-        <form id="formTomarPostulaciones">
-            <?php
-            while ($vacante = $vac->fetch_array()) {
-                $seg = new seguimiento(null, $vacante['ID'], $_SESSION['ID'], null, null, null);
-                $si = $seg->read();
-                //vamos a ocultar si aparece porque significa que ya está en seguimiento
-                if ($si->num_rows >= 1) {
-                    $oc = "display: block;";
-                } else {
-                    $oc = "display: none;";
-                }
-            ?>
-                <div class="card zoom-on-hover" style="width:100%; <?php echo $oc; ?> margin-bottom:3%;">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-2">
@@ -68,17 +65,14 @@ $vac = $ofertas->read();
 
                             </div>
                             <div class="col-1">
-                                <input type="checkbox" name="postulacionesSeleccionadas[]" value="<?php echo $vacante['ID']; ?>">
+                                <?php echo $cantidad; ?>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
+            </div>
 
-            <?php } ?>
+        <?php } ?>
 
-        </form>
-    </div>
-
-</body>
-
-</html>
+    </form>
+</div>

@@ -148,10 +148,10 @@ if ($_SESSION['TEMA'] == 'D') {
             border-color: rgba(0, 0, 0, 0);
             color: white;
             position: fixed;
-            top: 2%;
+            top: 1%;
             left: 2%;
             font-size: 24px;
-            z-index: 1;
+            z-index: 10;
         }
 
         .form-control {
@@ -163,6 +163,45 @@ if ($_SESSION['TEMA'] == 'D') {
         .form-control:disabled {
             background-color: rgba(255, 255, 255, 0.3);
             color: white;
+        }
+
+        .message-sent {
+            background-color: #6c757d;
+            /* Gris oscuro */
+            color: #fff;
+            /* Texto blanco */
+            border-radius: 10px;
+            /* Bordes redondeados */
+            padding: 8px 12px;
+            /* Espaciado interno */
+            margin: 5px 0;
+            /* Margen entre mensajes */
+            max-width: 70%;
+            /* Ancho máximo del mensaje */
+            align-self: flex-end;
+            /* Alineado a la derecha */
+            margin-left: 30%;
+            /* Empujar hacia la derecha */
+
+            text-align: right;
+
+        }
+
+        .message-received {
+            background-color: #495057;
+            /* Gris más oscuro */
+            color: #fff;
+            /* Texto blanco */
+            border-radius: 10px;
+            /* Bordes redondeados */
+            padding: 8px 12px;
+            /* Espaciado interno */
+            margin: 5px 0;
+            /* Margen entre mensajes */
+            max-width: 70%;
+            /* Ancho máximo del mensaje */
+            align-self: flex-start;
+            /* Alineado a la izquierda */
         }
     </style>
 <?php
@@ -262,8 +301,8 @@ if ($_SESSION['TEMA'] == 'D') {
             border-color: rgba(0, 0, 0, 0);
             color: white;
             position: fixed;
-            top: 5%;
-            left: 5%;
+            top: 1%;
+            left: 2%;
             font-size: 24px;
             z-index: 0;
         }
@@ -277,6 +316,46 @@ if ($_SESSION['TEMA'] == 'D') {
         .form-control:disabled {
             background-color: rgba(255, 255, 255, 0.3);
             color: white;
+        }
+
+        .message-sent {
+            background-color: #DCF8C6;
+            /* Verde claro para mensajes enviados */
+            color: #333;
+            /* Color de texto para mensajes enviados */
+            margin-left: auto;
+            /* Para alinear a la derecha */
+            margin-right: 10px;
+            /* Margen derecho para separar del borde */
+            padding: 10px;
+            /* Espaciado interno */
+            border-radius: 10px;
+            /* Bordes redondeados */
+            max-width: 70%;
+            /* Ancho máximo del mensaje */
+            word-wrap: break-word;
+            /* Romper palabras largas */
+            margin-left: 30%;
+            text-align: right;
+        }
+
+        .message-received {
+            background-color: #EAEAEA;
+            /* Gris claro para mensajes recibidos */
+            color: #333;
+            /* Color de texto para mensajes recibidos */
+            margin-right: auto;
+            /* Para alinear a la izquierda */
+            margin-left: 10px;
+            /* Margen izquierdo para separar del borde */
+            padding: 10px;
+            /* Espaciado interno */
+            border-radius: 10px;
+            /* Bordes redondeados */
+            max-width: 70%;
+            /* Ancho máximo del mensaje */
+            word-wrap: break-word;
+            /* Romper palabras largas */
         }
     </style>
 <?php } else if ($_SESSION['TEMA'] == 'N') {
@@ -378,7 +457,7 @@ if ($_SESSION['TEMA'] == 'D') {
             border-color: rgba(0, 0, 0, 0);
             color: #1eff00;
             position: fixed;
-            top: 2%;
+            top: 1%;
             left: 2%;
             font-size: 24px;
             z-index: 1;
@@ -393,6 +472,42 @@ if ($_SESSION['TEMA'] == 'D') {
         .form-control:disabled {
             background-color: rgba(255, 255, 255, 0.3);
             color: white;
+        }
+
+        .message-sent {
+            background-color: #00ff00;
+            /* Verde neón */
+            color: #000;
+            /* Texto negro */
+            border-radius: 10px;
+            /* Bordes redondeados */
+            padding: 8px 12px;
+            /* Espaciado interno */
+            margin: 5px 0;
+            /* Margen entre mensajes */
+            max-width: 70%;
+            /* Ancho máximo del mensaje */
+            align-self: flex-end;
+            /* Alineado a la derecha */
+            margin-left: 30%;
+            text-align: right;
+        }
+
+        .message-received {
+            background-color: #ff00ff;
+            /* Rosa neón */
+            color: #000;
+            /* Texto negro */
+            border-radius: 10px;
+            /* Bordes redondeados */
+            padding: 8px 12px;
+            /* Espaciado interno */
+            margin: 5px 0;
+            /* Margen entre mensajes */
+            max-width: 70%;
+            /* Ancho máximo del mensaje */
+            align-self: flex-start;
+            /* Alineado a la izquierda */
         }
     </style>
 <?php
@@ -505,7 +620,7 @@ if ($_SESSION['TEMA'] == 'D') {
             color: #ccc;
             /* Gris claro */
             position: fixed;
-            top: 2%;
+            top: 1%;
             left: 2%;
             font-size: 24px;
             z-index: 1;
@@ -527,10 +642,46 @@ if ($_SESSION['TEMA'] == 'D') {
             border-color: rgba(0, 0, 0, 0);
             color: black;
             position: fixed;
-            top: 2%;
+            top: 1%;
             left: 2%;
             font-size: 24px;
             z-index: 1;
+        }
+
+        .message-sent {
+            background-color: #f0f0f0;
+            /* Gris claro */
+            color: #000;
+            /* Texto negro */
+            border-radius: 10px;
+            /* Bordes redondeados */
+            padding: 8px 12px;
+            /* Espaciado interno */
+            margin: 5px 0;
+            /* Margen entre mensajes */
+            max-width: 70%;
+            /* Ancho máximo del mensaje */
+            align-self: flex-end;
+            /* Alineado a la derecha */
+            margin-left: 30%;
+            text-align: right;
+        }
+
+        .message-received {
+            background-color: #eaeaea;
+            /* Gris más oscuro */
+            color: #000;
+            /* Texto negro */
+            border-radius: 10px;
+            /* Bordes redondeados */
+            padding: 8px 12px;
+            /* Espaciado interno */
+            margin: 5px 0;
+            /* Margen entre mensajes */
+            max-width: 70%;
+            /* Ancho máximo del mensaje */
+            align-self: flex-start;
+            /* Alineado a la izquierda */
         }
     </style>
 <?php
@@ -644,10 +795,46 @@ if ($_SESSION['TEMA'] == 'D') {
             color: #b3e0ff;
             /* Azul claro */
             position: fixed;
-            top: 2%;
+            top: 1%;
             left: 2%;
             font-size: 24px;
             z-index: 1;
+        }
+
+        .message-sent {
+            background-color: #3498db;
+            /* Azul */
+            color: #fff;
+            /* Texto blanco */
+            border-radius: 10px;
+            /* Bordes redondeados */
+            padding: 8px 12px;
+            /* Espaciado interno */
+            margin: 5px 0;
+            /* Margen entre mensajes */
+            max-width: 70%;
+            /* Ancho máximo del mensaje */
+            align-self: flex-end;
+            /* Alineado a la derecha */
+            margin-left: 30%;
+            text-align: right;
+        }
+
+        .message-received {
+            background-color: #2980b9;
+            /* Azul más oscuro */
+            color: #fff;
+            /* Texto blanco */
+            border-radius: 10px;
+            /* Bordes redondeados */
+            padding: 8px 12px;
+            /* Espaciado interno */
+            margin: 5px 0;
+            /* Margen entre mensajes */
+            max-width: 70%;
+            /* Ancho máximo del mensaje */
+            align-self: flex-start;
+            /* Alineado a la izquierda */
         }
     </style>
 <?php
@@ -772,10 +959,46 @@ if ($_SESSION['TEMA'] == 'D') {
             border-color: rgba(0, 0, 0, 0);
             color: black;
             position: fixed;
-            top: 2%;
+            top: 1%;
             left: 2%;
             font-size: 24px;
             z-index: 1;
+        }
+
+        .message-sent {
+            background-color: #f39c12;
+            /* Naranja */
+            color: #fff;
+            /* Texto blanco */
+            border-radius: 10px;
+            /* Bordes redondeados */
+            padding: 8px 12px;
+            /* Espaciado interno */
+            margin: 5px 0;
+            /* Margen entre mensajes */
+            max-width: 70%;
+            /* Ancho máximo del mensaje */
+            align-self: flex-end;
+            /* Alineado a la derecha */
+            margin-left: 30%;
+            text-align: right;
+        }
+
+        .message-received {
+            background-color: #e74c3c;
+            /* Rojo */
+            color: #fff;
+            /* Texto blanco */
+            border-radius: 10px;
+            /* Bordes redondeados */
+            padding: 8px 12px;
+            /* Espaciado interno */
+            margin: 5px 0;
+            /* Margen entre mensajes */
+            max-width: 70%;
+            /* Ancho máximo del mensaje */
+            align-self: flex-start;
+            /* Alineado a la izquierda */
         }
     </style>
 <?php
@@ -893,10 +1116,46 @@ if ($_SESSION['TEMA'] == 'D') {
             border-color: rgba(0, 0, 0, 0);
             color: black;
             position: fixed;
-            top: 2%;
+            top: 1%;
             left: 2%;
             font-size: 24px;
             z-index: 1;
+        }
+
+        .message-sent {
+            background-color: #00529F;
+            /* Azul oscuro */
+            color: #fff;
+            /* Texto blanco */
+            border-radius: 10px;
+            /* Bordes redondeados */
+            padding: 8px 12px;
+            /* Espaciado interno */
+            margin: 5px 0;
+            /* Margen entre mensajes */
+            max-width: 70%;
+            /* Ancho máximo del mensaje */
+            align-self: flex-end;
+            /* Alineado a la derecha */
+            margin-left: 30%;
+            text-align: right;
+        }
+
+        .message-received {
+            background-color: #FEBE10;
+            /* Amarillo */
+            color: #000;
+            /* Texto negro */
+            border-radius: 10px;
+            /* Bordes redondeados */
+            padding: 8px 12px;
+            /* Espaciado interno */
+            margin: 5px 0;
+            /* Margen entre mensajes */
+            max-width: 70%;
+            /* Ancho máximo del mensaje */
+            align-self: flex-start;
+            /* Alineado a la izquierda */
         }
     </style>
 <?php
@@ -987,10 +1246,46 @@ if ($_SESSION['TEMA'] == 'D') {
             border-color: rgba(0, 0, 0, 0);
             color: darkblue;
             position: fixed;
-            top: 2%;
+            top: 1%;
             left: 2%;
             font-size: 24px;
             z-index: 1;
+        }
+
+        .message-sent {
+            background-color: #DCF8C6;
+            /* Verde claro */
+            color: #000;
+            /* Texto negro */
+            border-radius: 10px;
+            /* Bordes redondeados */
+            padding: 8px 12px;
+            /* Espaciado interno */
+            margin: 5px 0;
+            /* Margen entre mensajes */
+            max-width: 70%;
+            /* Ancho máximo del mensaje */
+            align-self: flex-end;
+            /* Alineado a la derecha */
+            margin-left: 30%;
+            text-align: right;
+        }
+
+        .message-received {
+            background-color: #F3F3F3;
+            /* Gris claro */
+            color: #000;
+            /* Texto negro */
+            border-radius: 10px;
+            /* Bordes redondeados */
+            padding: 8px 12px;
+            /* Espaciado interno */
+            margin: 5px 0;
+            /* Margen entre mensajes */
+            max-width: 70%;
+            /* Ancho máximo del mensaje */
+            align-self: flex-start;
+            /* Alineado a la izquierda */
         }
     </style>
 <?php
@@ -1476,5 +1771,42 @@ if ($_SESSION['TEMA'] == 'D') {
         right: 0;
         bottom: 0;
         left: 0;
+    }
+
+    .encabezado {
+        margin-top: 0px;
+        background-color: rgba(150, 150, 220, 0.2);
+        border-radius: 70px;
+        border: 2px solid black;
+    
+        z-index: 1;
+        /* Para que esté por encima del resto del contenido */
+
+        position: sticky;
+        top: 0;
+        padding: 5px;
+    }
+
+    .chat {
+        height: 75vh;
+        /* Altura del chat */
+        overflow-y: auto;
+        /* Permitir desplazamiento vertical */
+        padding: 10px;
+    }
+
+    .mensaje {
+        position: sticky;
+        bottom: 0;
+        background-color: rgba(0, 100, 0, 0.2);
+        /* Color de fondo */
+        padding: 10px;
+    }
+
+    .mensaje input{
+        background-color: rgba(0, 100, 0, 0.2);
+    }
+    .chat p{
+        font-size: 8pt;
     }
 </style>
