@@ -1809,4 +1809,8 @@ if ($_SESSION['TEMA'] == 'D') {
     .chat p{
         font-size: 8pt;
     }
+
+    .progress1{
+        
+    }
 </style>
