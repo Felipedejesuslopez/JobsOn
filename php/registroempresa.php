@@ -1,29 +1,24 @@
 <?php
-ini_set("display_errors", 1);
-error_reporting(E_ALL);
-require_once '../clases/class.conexion.php';
-require_once '../clases/class.empresa.php';
+include '../clases/class.empresa.php';
+include '../clases/class.conexion.php';
 
-function mostrarMensaje($mensaje, $tipo = 'success')
-{
-    echo "<div style='color: " . ($tipo === 'success' ? 'green' : 'red') . "; margin-bottom: 10px;'>{$mensaje}</div>";
-}
+// Recopilar datos del formulario
+$nombre = $_POST['nombre'];
+$direccion = $_POST['direccion'];
+$telefono = $_POST['telefono'];
+$descripcion = $_POST['descripcion'];
+$sector = $_POST['sector'];
+$contactoNombre = $_POST['contactoNombre'];
+$contactoCorreo = $_POST['contactoCorreo'];
+$sitioWeb = $_POST['sitioWeb'];
+$correo = $_POST['correo'];
+$psw = $_POST['psw'];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $empresa = new Empresa(
-        $_POST['id'],
-        $_POST['nombre'],
-        $_POST['direccion'],
-        $_POST['telefono'],
-        $_POST['descripcion'],
-        $_POST['sector'],
-        $_POST['contactoNombre'],
-        $_POST['contactoCorreo'],
-        $_POST['sitioWeb'],
-        $_POST['correo'],
-        $_POST['psw']
-    );
+// Crear una instancia de la clase Empresa
+$empresa = new Empresa(null, $nombre, $direccion, $telefono, $descripcion, $sector, $contactoNombre, $contactoCorreo, $sitioWeb, $correo, $psw);
 
-    $empresa->create();
-    mostrarMensaje("Empresa creada con éxito.");
-}
+// Insertar la empresa en la base de datos
+$empresa->create();
+
+
+?>
