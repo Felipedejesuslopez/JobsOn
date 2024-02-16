@@ -1,6 +1,19 @@
 <style>
     body {
         overflow-y: hidden;
+        padding-top: 5;
+        margin: 0;
+    }
+
+    #content {
+        width: 100%;
+        /* Por ejemplo, ajusta el ancho según tus necesidades */
+        margin: 0 auto;
+        /* Para centrar el contenido horizontalmente */
+        overflow-y: auto;
+        /* Agrega scroll vertical si es necesario */
+        height: 100vh;
+        /* Establece la altura máxima */
     }
 </style>
 <?php
