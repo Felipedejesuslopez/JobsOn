@@ -74,7 +74,7 @@ class cita
         return $bd->query($sql);
     }
 
-/*
+    /*
     private function enviarCorreoCita()
     {
         $mail = new PHPMailer(true);
@@ -100,8 +100,4 @@ class cita
     }
 
     */
-
 }
-
-
-?>

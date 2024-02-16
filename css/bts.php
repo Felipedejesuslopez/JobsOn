@@ -203,6 +203,60 @@ if ($_SESSION['TEMA'] == 'D') {
             align-self: flex-start;
             /* Alineado a la izquierda */
         }
+
+        /* Estilos para el fondo del modal */
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Fondo negro semi-transparente */
+        }
+
+        /* Estilos para el contenido del modal */
+        .modal-content {
+            background-color: #000000;
+            /* Negro */
+            color: #ffffff;
+            /* Texto blanco */
+        }
+
+        /* Estilos para el encabezado del modal */
+        .modal-header {
+            background-color: #000000;
+            /* Negro */
+            color: #ffffff;
+            /* Texto blanco */
+            border-bottom: 1px solid #ffffff;
+            /* Borde blanco */
+        }
+
+        /* Estilos para el cuerpo del modal */
+        .modal-body {
+            color: #ffffff;
+            /* Texto blanco */
+        }
+
+        /* Estilos para el pie del modal */
+        .modal-footer {
+            background-color: #000000;
+            /* Negro */
+            color: #ffffff;
+            /* Texto blanco */
+            border-top: 1px solid #ffffff;
+            /* Borde blanco */
+        }
+
+        /* Estilos para los botones del pie del modal */
+        .modal-footer button {
+            background-color: #000000;
+            /* Negro */
+            color: #ffffff;
+            /* Texto blanco */
+        }
+
+        /* Estilos para el botón de cierre del modal */
+        .close {
+            color: #ffffff;
+            /* Texto blanco */
+        }
     </style>
 <?php
 } else if ($_SESSION['TEMA'] == 'G') {
@@ -357,6 +411,38 @@ if ($_SESSION['TEMA'] == 'D') {
             word-wrap: break-word;
             /* Romper palabras largas */
         }
+
+        /* Estilos para el fondo del modal */
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Estilos para el contenido del modal */
+        .modal-content {
+            background-color: #000;
+            color: #fff;
+        }
+
+        /* Estilos para el encabezado del modal */
+        .modal-header {
+            border-bottom: 1px solid #333;
+        }
+
+        /* Estilos para el pie del modal */
+        .modal-footer {
+            border-top: 1px solid #333;
+        }
+
+        /* Estilos para los botones del pie del modal */
+        .modal-footer button {
+            background-color: #333;
+            color: #fff;
+        }
+
+        /* Estilos para el botón de cierre del modal */
+        .close {
+            color: #fff;
+        }
     </style>
 <?php } else if ($_SESSION['TEMA'] == 'N') {
 ?>
@@ -508,6 +594,47 @@ if ($_SESSION['TEMA'] == 'D') {
             /* Ancho máximo del mensaje */
             align-self: flex-start;
             /* Alineado a la izquierda */
+        }
+
+        /* Estilos para el fondo del modal */
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Negro semi-transparente */
+        }
+
+        /* Estilos para el contenido del modal */
+        .modal-content {
+            background-color: #f0f;
+            /* Rosa fluorescente */
+            color: #000;
+            /* Texto negro */
+        }
+
+        /* Estilos para el encabezado del modal */
+        .modal-header {
+            border-bottom: 1px solid #f0f;
+            /* Borde rosa fluorescente */
+        }
+
+
+        /* Estilos para el pie del modal */
+        .modal-footer {
+            border-top: 1px solid #f0f;
+            /* Borde rosa fluorescente */
+        }
+
+        /* Estilos para los botones del pie del modal */
+        .modal-footer button {
+            background-color: #f0f;
+            /* Rosa fluorescente */
+            color: #000;
+            /* Texto negro */
+        }
+
+        /* Estilos para el botón de cierre del modal */
+        .close {
+            color: #f0f;
+            /* Rosa fluorescente */
         }
     </style>
 <?php
@@ -683,6 +810,46 @@ if ($_SESSION['TEMA'] == 'D') {
             align-self: flex-start;
             /* Alineado a la izquierda */
         }
+
+        /* Estilos para el fondo del modal */
+        .modal-backdrop {
+            background-color: rgba(100, 100, 100, 0.5);
+            /* Gris semi-transparente */
+        }
+
+        /* Estilos para el contenido del modal */
+        .modal-content {
+            background-color: #ccc;
+            /* Gris medio */
+            color: #333;
+            /* Texto gris oscuro */
+        }
+
+        /* Estilos para el encabezado del modal */
+        .modal-header {
+            border-bottom: 1px solid #999;
+            /* Borde gris */
+        }
+
+        /* Estilos para el pie del modal */
+        .modal-footer {
+            border-top: 1px solid #999;
+            /* Borde gris */
+        }
+
+        /* Estilos para los botones del pie del modal */
+        .modal-footer button {
+            background-color: #999;
+            /* Gris */
+            color: #333;
+            /* Texto gris oscuro */
+        }
+
+        /* Estilos para el botón de cierre del modal */
+        .close {
+            color: #999;
+            /* Gris */
+        }
     </style>
 <?php
 } else if ($_SESSION['TEMA'] == 'A') {
@@ -835,6 +1002,46 @@ if ($_SESSION['TEMA'] == 'D') {
             /* Ancho máximo del mensaje */
             align-self: flex-start;
             /* Alineado a la izquierda */
+        }
+
+        /* Estilos para el fondo del modal */
+        .modal-backdrop {
+            background-color: rgba(0, 0, 255, 0.5);
+            /* Azul semi-transparente */
+        }
+
+        /* Estilos para el contenido del modal */
+        .modal-content {
+            background-color: #007bff;
+            /* Azul */
+            color: #fff;
+            /* Texto blanco */
+        }
+
+        /* Estilos para el encabezado del modal */
+        .modal-header {
+            border-bottom: 1px solid #fff;
+            /* Borde blanco */
+        }
+
+        /* Estilos para el pie del modal */
+        .modal-footer {
+            border-top: 1px solid #fff;
+            /* Borde blanco */
+        }
+
+        /* Estilos para los botones del pie del modal */
+        .modal-footer button {
+            background-color: #007bff;
+            /* Azul */
+            color: #fff;
+            /* Texto blanco */
+        }
+
+        /* Estilos para el botón de cierre del modal */
+        .close {
+            color: #fff;
+            /* Texto blanco */
         }
     </style>
 <?php
@@ -1000,6 +1207,46 @@ if ($_SESSION['TEMA'] == 'D') {
             align-self: flex-start;
             /* Alineado a la izquierda */
         }
+
+        /* Estilos para el fondo del modal */
+        .modal-backdrop {
+            background-color: rgba(255, 192, 203, 0.5);
+            /* Rosa semi-transparente */
+        }
+
+        /* Estilos para el contenido del modal */
+        .modal-content {
+            background-color: #ff69b4;
+            /* Rosa */
+            color: #fff;
+            /* Texto blanco */
+        }
+
+        /* Estilos para el encabezado del modal */
+        .modal-header {
+            border-bottom: 1px solid #fff;
+            /* Borde blanco */
+        }
+
+        /* Estilos para el pie del modal */
+        .modal-footer {
+            border-top: 1px solid #fff;
+            /* Borde blanco */
+        }
+
+        /* Estilos para los botones del pie del modal */
+        .modal-footer button {
+            background-color: #ff69b4;
+            /* Rosa */
+            color: #fff;
+            /* Texto blanco */
+        }
+
+        /* Estilos para el botón de cierre del modal */
+        .close {
+            color: #fff;
+            /* Texto blanco */
+        }
     </style>
 <?php
 } else if ($_SESSION['TEMA'] == 'RM') {
@@ -1157,6 +1404,41 @@ if ($_SESSION['TEMA'] == 'D') {
             align-self: flex-start;
             /* Alineado a la izquierda */
         }
+
+        /* Estilos para el fondo del modal */
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Fondo negro semi-transparente */
+        }
+
+        /* Estilos para el contenido del modal */
+        .modal-content {
+            background-color: #ffffff;
+            /* Blanco */
+            color: #000000;
+            /* Texto negro */
+        }
+
+        /* Estilos para el encabezado del modal */
+        .modal-header {
+            background-color: #00529f;
+            /* Azul Real Madrid */
+            color: #ffffff;
+            /* Texto blanco */
+            border-bottom: 1px solid #000000;
+            /* Borde negro */
+        }
+
+        /* Estilos para el cuerpo del modal */
+        .modal-body {
+            color: #000000;
+            /* Texto negro */
+        }
+
+        /* Estilos para el pie del modal */
+        .modal-footer {
+            background-color: #00529f;
+            /* Azul Real Madrid */
     </style>
 <?php
 } else {
@@ -1286,6 +1568,42 @@ if ($_SESSION['TEMA'] == 'D') {
             /* Ancho máximo del mensaje */
             align-self: flex-start;
             /* Alineado a la izquierda */
+        }
+
+        /* Estilos para el fondo del modal */
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Fondo negro semi-transparente */
+        }
+
+        /* Estilos para el contenido del modal */
+        .modal-content {
+            background-color: #ffffff;
+            /* Blanco */
+            color: #000000;
+            /* Texto negro */
+        }
+
+        /* Estilos para el encabezado del modal */
+        .modal-header {
+            background-color: #00529f;
+            /* Azul Real Madrid */
+            color: #ffffff;
+            /* Texto blanco */
+            border-bottom: 1px solid #000000;
+            /* Borde negro */
+        }
+
+        /* Estilos para el cuerpo del modal */
+        .modal-body {
+            color: #000000;
+            /* Texto negro */
+        }
+
+        /* Estilos para el pie del modal */
+        .modal-footer {
+            background-color: #00529f;
+            /* Azul Real Madrid */
         }
     </style>
 <?php
@@ -1778,7 +2096,7 @@ if ($_SESSION['TEMA'] == 'D') {
         background-color: rgba(150, 150, 220, 0.2);
         border-radius: 70px;
         border: 2px solid black;
-    
+
         z-index: 1;
         /* Para que esté por encima del resto del contenido */
 
@@ -1803,14 +2121,29 @@ if ($_SESSION['TEMA'] == 'D') {
         padding: 10px;
     }
 
-    .mensaje input{
+    .mensaje input {
         background-color: rgba(0, 100, 0, 0.2);
     }
-    .chat p{
+
+    .chat p {
         font-size: 8pt;
     }
 
-    .progress1{
-        
+    .progress1 {
+        background-image: url('img/progreso/1.png');
+
+    }
+
+    .progress-line {
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 150px;
+        padding: 3%;
+    }
+
+    .progress-line .fecha {
+        font-size: 11pt;
+        text-align: center;
+        color: black;
     }
 </style>

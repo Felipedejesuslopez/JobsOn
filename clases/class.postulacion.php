@@ -120,8 +120,9 @@ class postulacion
     public function read()
     {
         $bd = new Conexion();
-
-        if (isset($this->usuario) && $this->usuario != '') {
+        if (isset($this->id) && $this->id != null) {
+            $sql = "SELECT * FROM postulaciones WHERE ID = '{$this->id}'";
+        } else if (isset($this->usuario) && $this->usuario != '') {
             $sql = "SELECT * FROM postulaciones WHERE USUARIO = '{$this->usuario}'";
         } else if (isset($this->vacante) && $this->vacante != null) {
             $sql = "SELECT * FROM postulaciones WHERE VACANTE = '{$this->vacante}'";

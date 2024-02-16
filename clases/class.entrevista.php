@@ -3,48 +3,57 @@
 class Entrevista
 {
 
-    protected $id_empresa;
-    protected $id_oferta;
+
     protected $id;
-    protected $id_reclutador;
-    protected $id_usuario;
+    protected $postulacion;
+    protected $rolagenda; //Se refiere a si agenda reclutador, empresa o alguien
+    protected $idagenda; //Id de quien agenda, reclutador o empresa
+    protected $usuario;
     protected $fecha;
     protected $hora;
     protected $ubicacion;
-    protected $estado_resultado;
+    protected $estado;
+    protected $observaciones;
 
-    public function __construct($id_empresa, $id_oferta, $id, $id_reclutador, $id_usuario, $fecha, $hora, $ubicacion, $estado_resultado)
+    public function __construct($id, $postulacion, $rolagenda, $idagenda, $usuario, $fecha, $hora, $ubicacion, $estado, $observaciones)
     {
-        $this->id_empresa = $id_empresa;
-        $this->id_oferta = $id_oferta;
         $this->id = $id;
-        $this->id_reclutador = $id_reclutador;
-        $this->id_usuario = $id_usuario;
+        $this->postulacion = $postulacion;
+        $this->rolagenda = $rolagenda;
+        $this->idagenda = $idagenda;
+        $this->usuario = $usuario;
         $this->fecha = $fecha;
         $this->hora = $hora;
         $this->ubicacion = $ubicacion;
-        $this->estado_resultado = $estado_resultado;
+        $this->estado = $estado;
+        $this->observaciones = $observaciones;
     }
+
 
     public function create()
     {
         $bd = new Conexion();
         $consultaExistencia = "SHOW TABLES LIKE 'entrevistas'";
         $resultado = $bd->query($consultaExistencia);
-        $sql = "INSERT INTO entrevistas (ID_EMPRESA, ID_OFERTA, ID_RECLUTADOR, ID_USUARIO, FECHA, HORA, UBICACION, ESTADO_RESULTADO) VALUES ('{$this->id_empresa}', '{$this->id_oferta}', '{$this->id_reclutador}', '{$this->id_usuario}', '{$this->fecha}', '{$this->hora}', '{$this->ubicacion}', '{$this->estado_resultado}')";
+        $sql = "INSERT INTO ENTREVISTA 
+        (POSTULACION, ROLAGENDA, IDAGENDA, USUARIO, FECHA, HORA, UBICACION, ESTADO, OBSERVACIONES) 
+        VALUES 
+        ('{$this->postulacion}', '{$this->rolagenda}', '{$this->idagenda}', '{$this->usuario}', '{$this->fecha}', '{$this->hora}', '{$this->ubicacion}', '{$this->estado}', '{$this->observaciones}')";
+
 
         if ($resultado->num_rows < 1) {
-            $crearTabla = "CREATE TABLE entrevistas (
-                ID_EMPRESA INT,
-                ID_OFERTA INT,
+            $crearTabla = "CREATE TABLE entrevista (
                 ID INT AUTO_INCREMENT PRIMARY KEY,
-                ID_RECLUTADOR INT,
-                ID_USUARIO INT,
-                FECHA DATE,
-                HORA TIME,
-                UBICACION VARCHAR(100),
-                ESTADO_RESULTADO VARCHAR(255)
-            )";
+                POSTULACION INT NOT NULL,
+                ROLAGENDA VARCHAR(255) NOT NULL,
+                IDAGENDA INT NOT NULL,
+                USUARIO INT NOT NULL,
+                FECHA DATE NOT NULL,
+                HORA TIME NOT NULL,
+                UBICACION VARCHAR(255),
+                ESTADO VARCHAR(255),
+                OBSERVACIONES TEXT
+            );";
 
             $bd->query($crearTabla);
         }
@@ -67,8 +76,17 @@ class Entrevista
     public function update()
     {
         $bd = new Conexion();
-        $sql = "UPDATE entrevistas SET ID_EMPRESA = '{$this->id_empresa}', ID_OFERTA = '{$this->id_oferta}', ID_RECLUTADOR = '{$this->id_reclutador}', ID_USUARIO = '{$this->id_usuario}', FECHA = '{$this->fecha}', HORA = '{$this->hora}', UBICACION = '{$this->ubicacion}', ESTADO_RESULTADO = '{$this->estado_resultado}' WHERE ID = '{$this->id}'";
+        $sql = "UPDATE ENTREVISTA
+            SET POSTULACION = '{$this->postulacion}', 
+                ROLAGENDA = '{$this->rolagenda}', 
+                IDAGENDA = '{$this->idagenda}', 
+                USUARIO = '{$this->usuario}', 
+                FECHA = '{$this->fecha}', 
+                HORA = '{$this->hora}', 
+                UBICACION = '{$this->ubicacion}', 
+                ESTADO = '{$this->estado}', 
+                OBSERVACIONES = '{$this->observaciones}'
+            WHERE ID = '{$this->id}'";
         return $bd->query($sql);
     }
 }
-?>
