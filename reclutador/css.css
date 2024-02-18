@@ -1,0 +1,32 @@
+.reclutador-detalles {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.reclutador-detalles h5 {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.reclutador-detalles .list-group-item {
+    border: none;
+    border-bottom: 1px solid #ddd;
+    background-color: transparent;
+    font-size: 16px;
+}
+
+.reclutador-detalles .list-group-item i {
+    margin-right: 10px;
+}
+
+.reclutador-detalles .list-group-item:last-child {
+    border-bottom: none;
+}
+
+.reclutador-detalles a.btn {
+    margin-right: 10px;
+}
