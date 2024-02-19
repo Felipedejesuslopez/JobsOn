@@ -27,8 +27,6 @@ function cuato() {
     <div class="container" style="vertical-align:center;" id="pimero">
     <div class="card" style="background-color:rgba(255,255,255,0.7); z-index:0;">
     
-    
-
 
     <div class="card-body"  style="text-align: center;">
     <img src="img/JobsOn2.png" alt="Mensaje de alerta" style="width: 200px; height: auto; margin: 0 auto;">
@@ -36,22 +34,22 @@ function cuato() {
    
     <div class="col-sm-6">
             <label for="user"><i class="fas fa-user"></i> USUARIO:</label>
-            <input type="text" id="user" name="user" required>
+            <input type="text" id="user" name="user"class="form-control" required>
         </div>
 
         <div class="col-sm-6">
             <label for="email"><i class="fas fa-envelope"></i> CORREO:</label>
-            <input type="email" id="email" name="email">
+            <input type="email" id="email" name="email"class="form-control">
         </div>
 
         <div class="col-sm-6">
             <label for="password"><i class="fas fa-lock"></i> CONTRASEÑA:</label>
-            <input type="password" id="password" name="password">
+            <input type="password" id="password" name="password"class="form-control">
         </div>
 
         <div class="col-sm-6">
             <label for="cedula"><i class="fas fa-id-card"></i> CEDULA:</label>
-            <input type="text" id="cedula" name="cedula">
+            <input type="text" id="cedula" name="cedula"class="form-control">
         </div>
 
         </div>
@@ -74,22 +72,22 @@ function cuato() {
 
         <div class="col-sm-6">
             <label for="name"><i class="fas fa-user"></i>NOMBRE:</label>
-            <input type="text" id="name" name="name">
+            <input type="text" id="name" name="name"class="form-control">
         </div>
 
         <div class="col-sm-6">
             <label for="telefono"><i class="fas fa-phone"></i>TELEFONO:</label>
-            <input type="number" id="telefono" name="telefono">
+            <input type="number" id="telefono" name="telefono"class="form-control">
         </div>
 
         <div class="col-sm-6">
             <label for="foto"><i class="fas fa-camera"></i>FOTO:</label>
-            <input type="file" id="foto" name="foto" accept="image/*">
+            <input type="file" id="foto" name="foto" accept="image/*"class="form-control">
         </div>
 
         <div class="col-sm-6">
             <label for="nacimiento"><i class="fas fa-birthday-cake"></i>FECHA DE NACIMIENTO:</label>
-            <input type="date" id="nacimiento" name="nacimiento">
+            <input type="date" id="nacimiento" name="nacimiento"class="form-control">
         </div>
 
 
@@ -111,12 +109,12 @@ function cuato() {
     <div class="row">
         <div class="col-sm-6">
             <label for="ingreso"><i class="fas fa-calendar-alt"></i>INGRESO:</label>
-            <input type="date" id="ingreso" name="ingreso">
+            <input type="date" id="ingreso" name="ingreso"class="form-control">
         </div>
 
         <div class="col-sm-6">
             <label for="estatus"><i class="fas fa-info-circle"></i>ESTATUS:</label>
-            <input type="text" id="estatus" name="estatus">
+            <input type="text" id="estatus" name="estatus"class="form-control">
         </div>
 
    </div>
