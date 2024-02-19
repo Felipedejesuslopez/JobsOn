@@ -32,22 +32,22 @@ function cuato() {
 
     <div class="col-sm-6">
     <label for="user"><i class="fas fa-user"></i> USER:</label>
-    <input type="text" id="user" name="user" required>
+    <input type="text" id="user" name="user" class="form-control"required>
 </div>
 
 <div class="col-sm-6">
     <label for="email"><i class="fas fa-envelope"></i> EMAIL:</label>
-    <input type="email" id="email" name="email" required>
+    <input type="email" id="email" name="email" class="form-control"required>
 </div>
 
 <div class="col-sm-6">
     <label for="password"><i class="fas fa-lock"></i> PASSWORD:</label>
-    <input type="password" id="password" name="password" required>
+    <input type="password" id="password" name="password"class="form-control" required>
 </div>
 
 <div class="col-sm-6">
     <label for="name"><i class="fas fa-user"></i> NAME:</label>
-    <input type="text" id="name" name="name" required>
+    <input type="text" id="name" name="name" class="form-control"required>
 </div>
 
 
@@ -72,22 +72,22 @@ function cuato() {
 
     <div class="col-sm-6">
     <label for="licencia"><i class="fas fa-id-card"></i> Licencia:</label>
-    <input type="text" id="licencia" name="licencia" required>
+    <input type="text" id="licencia" name="licencia" class="form-control"required>
 </div>
 
 <div class="col-sm-6">
     <label for="ine"><i class="fas fa-address-card"></i> INE:</label>
-    <input type="text" id="ine" name="ine" required>
+    <input type="text" id="ine" name="ine" class="form-control"required>
 </div>
 
 <div class="col-sm-6">
     <label for="foto"><i class="fas fa-image"></i> FOTO:</label>
-    <input type="file" id="foto" name="foto" required>
+    <input type="file" id="foto" name="foto" class="form-control"required>
 </div>
 
 <div class="col-sm-6">
     <label for="nacimiento"><i class="fas fa-calendar-alt"></i> NACIMIENTO:</label>
-    <input type="date" id="nacimiento" name="nacimiento" required>
+    <input type="date" id="nacimiento" name="nacimiento" class="form-control"required>
 </div>
 
 
@@ -110,32 +110,32 @@ function cuato() {
 
     <div class="col-sm-6">
     <label for="ingreso"><i class="fas fa-calendar-alt"></i> INGRESO:</label>
-    <input type="date" id="ingreso" name="ingreso" required>
+    <input type="date" id="ingreso" name="ingreso" class="form-control" required>
 </div>
 
 <div class="col-sm-6">
     <label for="completados"><i class="fas fa-check"></i> COMPLETADOS:</label>
-    <input type="text" id="completados" name="completados" required>
+    <input type="text" id="completados" name="completados"class="form-control" required>
 </div>
 
 <div class="col-sm-6">
     <label for="cancelados"><i class="fas fa-times"></i> CANCELADOS:</label>
-    <input type="text" id="cancelados" name="cancelados" required>
+    <input type="text" id="cancelados" name="cancelados"class="form-control" required>
 </div>
 
 <div class="col-sm-6">
     <label for="estatus"><i class="fas fa-heartbeat"></i> ESTATUS:</label>
-    <input type="text" id="estatus" name="estatus" required>
+    <input type="text" id="estatus" name="estatus" class="form-control"required>
 </div>
 
 <div class="col-sm-6">
     <label for="T1"><i class="fas fa-info-circle"></i> T1:</label>
-    <input type="text" id="T1" name="T1" required>
+    <input type="text" id="T1" name="T1" class="form-control"required>
 </div>
 
 <div class="col-sm-6">
     <label for="T2"><i class="fas fa-info-circle"></i> T2:</label>
-    <input type="text" id="T2" name="T2" required>
+    <input type="text" id="T2" name="T2" class="form-control"required>
     </div>
 
    </div>
