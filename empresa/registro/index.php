@@ -28,22 +28,22 @@ function cuato() {
         
     <div class="col-sm-6">
     <label for="nombre"><i class="fas fa-user"></i> Nombre:</label>
-    <input type="text" id="nombre" name="nombre" required>
+    <input type="text" id="nombre" name="nombre"class="form-control" required>
 </div>
 
 <div class="col-sm-6">
     <label for="direccion"><i class="fas fa-map-marker-alt"></i> Dirección:</label>
-    <input type="text" id="direccion" name="direccion">
+    <input type="text" id="direccion" class="form-control"name="direccion">
 </div>
 
 <div class="col-sm-6">
     <label for="telefono"><i class="fas fa-phone"></i> Teléfono:</label>
-    <input type="number" id="telefono" name="telefono">
+    <input type="number" id="telefono" class="form-control"name="telefono">
 </div>
 
 <div class="col-sm-6">
     <label for="descripcion"><i class="fas fa-info-circle"></i> Descripción:</label>
-    <textarea id="descripcion" name="descripcion"></textarea>
+    <textarea id="descripcion" name="descripcion"class="form-control"></textarea>
     </div>
 
 </div>
@@ -66,22 +66,22 @@ function cuato() {
 
     <div class="col-sm-6">
     <label for="sector"><i class="fas fa-industry"></i> Sector:</label>
-    <input type="text" id="sector" name="sector">
+    <input type="text" id="sector" name="sector"class="form-control">
 </div>
 
 <div class="col-sm-6">
     <label for="contactoNombre"><i class="fas fa-user"></i> Nombre de Contacto:</label>
-    <input type="text" id="contactoNombre" name="contactoNombre">
+    <input type="text" id="contactoNombre" name="contactoNombre"class="form-control">
 </div>
 
 <div class="col-sm-6">
     <label for="contactoCorreo"><i class="fas fa-envelope"></i> Correo de Contacto:</label>
-    <input type="email" id="contactoCorreo" name="contactoCorreo">
+    <input type="email" id="contactoCorreo" name="contactoCorreo"class="form-control">
 </div>
 
 <div class="col-sm-6">
     <label for="sitioWeb"><i class="fas fa-globe"></i> Sitio Web:</label>
-    <input type="text" id="sitioWeb" name="sitioWeb">
+    <input type="text" id="sitioWeb" name="sitioWeb"class="form-control">
 </div>
 
 
@@ -104,12 +104,12 @@ function cuato() {
 
     <div class="col-sm-6">
     <label for="correo"><i class="fas fa-at"></i> Correo Electrónico:</label><br>
-    <input type="email" id="correo" name="correo">
+    <input type="email" id="correo" name="correo"class="form-control">
 </div>
 
 <div class="col-sm-6">
     <label for="psw"><i class="fas fa-lock"></i> Contraseña:</label><br>
-    <input type="password" id="psw" name="psw">
+    <input type="password" id="psw" name="psw"class="form-control">
 </div>
 
         </div>
