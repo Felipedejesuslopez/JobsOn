@@ -30,22 +30,22 @@ function cuato() {
     <div class="row">
     <div class="col-sm-6">
     <label for="user"><i class="fas fa-user"></i> Usuario:</label>
-    <input type="text" id="user" name="user">
+    <input type="text" id="user" name="user"class="form-control">
 </div>
 
 <div class="col-sm-6">
     <label for="email"><i class="fas fa-at"></i> Correo Electrónico:</label>
-    <input type="email" id="email" name="email">
+    <input type="email" id="email" name="email"class="form-control">
 </div>
 
 <div class="col-sm-6">
     <label for="password"><i class="fas fa-lock"></i> Contraseña:</label>
-    <input type="password" id="password" name="password">
+    <input type="password" id="password" name="password"class="form-control">
 </div>
 
 <div class="col-sm-6">
     <label for="name"><i class="fas fa-user"></i> Nombre:</label>
-    <input type="text" id="name" name="name">
+    <input type="text" id="name" name="name"class="form-control">
 </div>
 
 
@@ -71,22 +71,22 @@ function cuato() {
 
     <div class="col-sm-6">
     <label for="direccion"><i class="fas fa-map-marker-alt"></i> Dirección:</label>
-    <input type="text" id="direccion" name="direccion">
+    <input type="text" id="direccion" name="direccion"class="form-control">
 </div>
 
 <div class="col-sm-6">
     <label for="horario"><i class="fas fa-clock"></i> Horario:</label>
-    <input type="text" id="horario" name="horario">
+    <input type="text" id="horario" name="horario"class="form-control">
 </div>
 
 <div class="col-sm-6">
     <label for="telefono"><i class="fas fa-phone"></i> Teléfono:</label>
-    <input type="number" id="telefono" name="telefono">
+    <input type="number" id="telefono" name="telefono"class="form-control">
 </div>
 
 <div class="col-sm-6">
     <label for="estatus"><i class="fas fa-heartbeat"></i> Estatus:</label>
-    <input type="text" id="estatus" name="estatus">
+    <input type="text" id="estatus" name="estatus"class="form-control">
 </div>
 
 
@@ -111,17 +111,17 @@ function cuato() {
 
     <div class="col-sm-6">
     <label for="op1"><i class="fas fa-info-circle"></i> Opción 1:</label>
-    <input type="text" id="op1" name="op1">
+    <input type="text" id="op1" name="op1"class="form-control">
 </div>
 
 <div class="col-sm-6">
     <label for="op2"><i class="fas fa-info-circle"></i> Opción 2:</label>
-    <input type="text" id="op2" name="op2">
+    <input type="text" id="op2" name="op2"class="form-control">
 </div>
 
 <div class="col-sm-6">
     <label for="op3"><i class="fas fa-info-circle"></i> Opción 3:</label>
-    <input type="text" id="op3" name="op3">
+    <input type="text" id="op3" name="op3"class="form-control">
 </div>
 
 
