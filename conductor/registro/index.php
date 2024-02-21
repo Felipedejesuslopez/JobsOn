@@ -1,182 +1,140 @@
-<script>
-function segundo() {
-    $('#pimero').hide();
-    $('#segundo').show();
-}
+<?php
+error_reporting(0);
+session_start();
+?>
+<div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-KyZXEAg3QhqLMpG8r+Knujsl5+z0I5t9z3zUphh+9uMHvtT5it9uLk7UwUpJ4ZU6Cg4PxhtyVBjQhp2KO6JuFw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <center>
+        <h1>Conductores Activos</h1>
+    </center>
+    <?php
+    require_once '../clases/class.conexion.php';
+    require_once '../clases/class.conductor.php';
 
-function tercero() {
-    $('#segundo').hide();
-    $('#tecero').show();
-}
+    $conductor = new Conductor(0, '', '', '', '', '', '', '', '', '', '', '', '', '', '');
 
-function cuato() {
-    $('#tecero').hide();
-    $('#cuato').show();
-}
-</script>
-<link rel="stylesheet" href="../css/registro.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
-<form method="post" action="php/registroconductor.php" enctype="multipart/form-data"> 
+    function mostrarMensaje($mensaje, $tipo = 'success')
+    {
+        return "<div style='color: " . ($tipo === 'success' ? 'green' : 'red') . "; margin-bottom: 10px;'>{$mensaje}</div>";
+    }
 
-        <input type="hidden" name="action" value="create">
-        
+    try {
+        $resultados = $conductor->read();
 
-        <div class="container" style="vertical-align:center;" id="pimero">
-    <div class="card" style="background-color:rgba(255,255,255,0.7); z-index:0;">
-    <img src="img/JobsOn2.png" alt="Mensaje de alerta" style="width: 200px; height: auto; margin: 0 auto;">
-    <div class="card-body" style="text-align: center;">
-    <div class="row">
+        if ($resultados->num_rows > 0) {
+            echo '<div class="conductores-container">';
 
-    <div class="col-sm-6">
-    <label for="user"><i class="fas fa-user"></i> USER:</label>
-    <input type="text" id="user" name="user" class="form-control"required>
-</div>
+            while ($row = $resultados->fetch_assoc()) {
+    ?>
+                <div class="card" style="margin-bottom: 10px">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-2">
+                                <?php
+                                if (is_dir('../../imagenes_conductor/' . $row['ID'] . '/')) {
+                                    $archivos = scandir('../../imagenes_conductor/' . $row['ID'] . '/');
+                                } else if (is_dir('../imagenes_conductor/' . $row['ID'] . '/')) {
+                                    $archivos = scandir('../imagenes_conductor/' . $row['ID'] . '/');
+                                } else {
+                                    $archivos = [];
+                                }
 
-<div class="col-sm-6">
-    <label for="email"><i class="fas fa-envelope"></i> EMAIL:</label>
-    <input type="email" id="email" name="email" class="form-control"required>
-</div>
+                                $archivos = array_diff($archivos, array('..', '.'));
+                                foreach ($archivos as $archivo) {
+                                    $img = $archivo;
+                                }
+                                ?>
+                                <img src="imagenes_conductor/<?php echo $row['ID']; ?>/<?php echo $img; ?>" style="width:75%;">
+                            </div>
 
-<div class="col-sm-6">
-    <label for="password"><i class="fas fa-lock"></i> PASSWORD:</label>
-    <input type="password" id="password" name="password"class="form-control" required>
-</div>
+                            <div class="col">
+                                <h5 class="card-title conductor-nombre"><?= $row['NAME'] ?></h5>
+                                <div class="conductor-contenido" style="display:none;">
+                                    <div class="conductor-detalles">
 
-<div class="col-sm-6">
-    <label for="name"><i class="fas fa-user"></i> NAME:</label>
-    <input type="text" id="name" name="name" class="form-control"required>
-</div>
+                                        <table class="table">
+                                            <tr>
+                                                <td><i class="fas fa-database"></i> Usuario:<?= $row['USER'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="fas fa-envelope"></i> Email:<?= $row['EMAIL'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="fas fa-map-marker-alt"></i> Dirección:<?= $row['DIRECCION'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="fas fa-clock"></i> Nacimiento:<?= $row['NACIMIENTO'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="fas fa-phone"></i> Teléfono:<?= $row['TELEFONO'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="fas fa-id-card"></i> Licencia:<?= $row['LICENCIA'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="fas fa-address-card"></i> INE:<?= $row['INE'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="fas fa-calendar-alt"></i> Ingreso:<?= $row['INGRESO'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="fas fa-check"></i> Completados:<?= $row['COMPLETADOS'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="fas fa-times"></i> Cancelados:<?= $row['CANCELADOS'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="fas fa-heartbeat"></i> Estatus:<?= $row['ESTATUS'] ?></td>
+                                            </tr>
 
-
-
-        </div>
-</div>
-</div>
-
-        
-        <button type="button" onclick="segundo()" id="fi" class="btn btn-success" style="z-index:2; font-size:15pt; margin-left:95%; margin-top:0%; text-align:right; border-radius:50%;">
-            <i class="fa fa-arrow-right" aria-hidden="true"></i>
-        </button>
-        </div>
-
-
-    <div class="container" id="segundo" style="display: none;">
-    <div class="card" style="background-color:rgba(255,255,255,0.7); z-index:0;">
-    <img src="img/JobsOn2.png" alt="Mensaje de alerta" style="width: 200px; height: auto; margin: 0 auto;">
-    <div class="card-body" style="text-align: center;">
-    <div class="row">
-
-
-    <div class="col-sm-6">
-    <label for="licencia"><i class="fas fa-id-card"></i> Licencia:</label>
-    <input type="text" id="licencia" name="licencia" class="form-control"required>
-</div>
-
-<div class="col-sm-6">
-    <label for="ine"><i class="fas fa-address-card"></i> INE:</label>
-    <input type="text" id="ine" name="ine" class="form-control"required>
-</div>
-
-<div class="col-sm-6">
-    <label for="foto"><i class="fas fa-image"></i> FOTO:</label>
-    <input type="file" id="foto" name="foto" class="form-control"required>
-</div>
-
-<div class="col-sm-6">
-    <label for="nacimiento"><i class="fas fa-calendar-alt"></i> NACIMIENTO:</label>
-    <input type="date" id="nacimiento" name="nacimiento" class="form-control"required>
-</div>
-
-
-        
-</div>
-</div>
-</div>
-
-
-    <button type="button" id="terc" onclick="tercero()" class="btn btn-success" style="z-index:2; font-size:15pt; margin-left:95%; margin-top:0%; text-align:right; border-radius:50%;">
-            <i class="fa fa-arrow-right" aria-hidden="true"></i>
-        </button>
-    </div>
-
-    <div class="container" id="tecero" style="display: none;">
-    <div class="card" style="background-color:rgba(255,255,255,0.7); z-index:0;">
-    <img src="img/JobsOn2.png" alt="Mensaje de alerta" style="width: 200px; height: auto; margin: 0 auto;">
-    <div class="card-body" style="text-align: center;">
-    <div class="row">
-
-    <div class="col-sm-6">
-    <label for="ingreso"><i class="fas fa-calendar-alt"></i> INGRESO:</label>
-    <input type="date" id="ingreso" name="ingreso" class="form-control" required>
-</div>
-
-<div class="col-sm-6">
-    <label for="completados"><i class="fas fa-check"></i> COMPLETADOS:</label>
-    <input type="text" id="completados" name="completados"class="form-control" required>
-</div>
-
-<div class="col-sm-6">
-    <label for="cancelados"><i class="fas fa-times"></i> CANCELADOS:</label>
-    <input type="text" id="cancelados" name="cancelados"class="form-control" required>
-</div>
-
-<div class="col-sm-6">
-    <label for="estatus"><i class="fas fa-heartbeat"></i> ESTATUS:</label>
-    <input type="text" id="estatus" name="estatus" class="form-control"required>
-</div>
-
-<div class="col-sm-6">
-    <label for="T1"><i class="fas fa-info-circle"></i> T1:</label>
-    <input type="text" id="T1" name="T1" class="form-control"required>
-</div>
-
-<div class="col-sm-6">
-    <label for="T2"><i class="fas fa-info-circle"></i> T2:</label>
-    <input type="text" id="T2" name="T2" class="form-control"required>
-    </div>
-
-   </div>
-</div>
-</div>
-
-<button id="btnRegistro" type="submit" class="btn btn-primary" style="z-index:2; font-size:20pt; margin-left:95%; margin-top:0%; text-align:right; border-radius:50%;">
-            <i class="fa fa-arrow-right" aria-hidden="true"></i>
-            </button>
-    </div>
-    <br>
-    </form>
-    <script>
-        document.getElementById('btnRegistro').addEventListener('click', function() {
-            // Simulación de registro exitoso
-            var registroExitoso = true;
-
-            if (registroExitoso) {
-                // Mostrar alerta personalizada con SweetAlert
-                Swal.fire({
-                    icon: 'success',
-                    title: '¡Registro exitoso!',
-                    text: 'Nuevo conductor registrado correctamente.',
-                    confirmButtonText: 'Aceptar'
-                }).then((result) => {
-                    // Recargar la página después de cerrar la alerta
-                    if (result.isConfirmed) {
-                        location.reload();
-                    }
-                });
-            } else {
-                // Manejar el caso de registro fallido si es necesario
-                alert('Hubo un error al registrar el conductor. Por favor, inténtalo de nuevo.');
+                                        </table>
+                                    </div>
+                                    <br>
+                                    <a href="#" class="btn btn-primary" data-id="<?= $row['ID'] ?>"><i class="fas fa-edit"></i></a>
+                                    <a href="#" class="btn btn-danger eliminar-conductor" data-id="<?= $row['ID'] ?>"><i class="fas fa-trash-alt"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    <?php
             }
+
+            echo '</div>';
+        } else {
+            echo mostrarMensaje("No hay datos de conductores para mostrar.");
+        }
+    } catch (Exception $e) {
+        echo mostrarMensaje("Error al recuperar datos de conductores: " . $e->getMessage(), 'error');
+    }
+    ?>
+
+    <script>
+        $(document).ready(function() {
+            $(".conductor-nombre").click(function() {
+                $(this).next(".conductor-contenido").slideToggle();
+            });
         });
     </script>
-    
-    </div>
+    <br>
 
+    <button onclick="cargarFormulario()" class="btn btn-success" style="width:100%;">Agregar Conductor</button>
 
+    <div id="formularioContainer"></div>
 
-
-
-
+    <script>
+        function cargarFormulario() {
+            $.ajax({
+                url: 'conductor/registro/',
+                type: 'GET',
+                success: function(data) {
+                    $('#formularioContainer').html(data);
+                },
+                error: function() {
+                    alert('Error al cargar el formulario.');
+                }
+            });
+        }
+    </script>
+</div>

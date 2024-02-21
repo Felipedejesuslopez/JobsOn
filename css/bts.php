@@ -2134,8 +2134,12 @@ if ($_SESSION['TEMA'] == 'D') {
 
     }
 
+    .progress2{
+        background-image: url('img/progreso/2.png');
+    }
     .progress-line {
-        background-size: contain;
+        
+        background-size: cover;
         background-repeat: no-repeat;
         height: 150px;
         padding: 3%;
@@ -2146,4 +2150,8 @@ if ($_SESSION['TEMA'] == 'D') {
         text-align: center;
         color: black;
     }
+
+.burbuja-shat{
+    overflow-wrap: break-word; /* Rompe el texto en palabras para ajustarse */
+}
 </style>

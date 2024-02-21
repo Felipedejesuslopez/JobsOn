@@ -31,7 +31,7 @@
 
             <div class="row" class>
                 <div class="col-6">
-                    <a class="botonmenu" href="Postulado/Reclutador/entrevistas.php">
+                    <a class="botonmenu" href="entrevista">
                         <img src="img/Menu/Reclutador/reentrevistas.png" class="botonmenu">
                     </a>
                 </div>

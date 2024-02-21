@@ -18,27 +18,29 @@ while ($postulacion = $posts->fetch_array()) {
     $us = new usuariopostulante($postulacion['USUARIO'], null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     $usuario = $us->read()->fetch_array();
 ?>
-    <div class="card">
-        <div class="row">
-            <div class="col-2">
+    <a href="postulacion/detalles/?id=<?php echo $postulacion['ID']; ?>">
+        <div class="card zoom-on-hover">
+            <div class="row">
+                <div class="col-2">
 
-                <img src="img/profile/<?php echo $usuario['ID']; ?>.png" alt="" style="width:75%; cursor:pointer;" onclick="window.open('curriculum/pdf/?id=<?php echo $usuario['ID']; ?>','_blank')">
+                    <img src="img/profile/<?php echo $usuario['ID']; ?>.png" alt="" style="width:75%; cursor:pointer;" onclick="window.open('curriculum/pdf/?id=<?php echo $usuario['ID']; ?>','_blank')">
 
-            </div>
-            <div class="col-4">
-                <br>
-                <h6 onclick="window.open('curriculum/pdf/?id=<?php echo $usuario['ID']; ?>','_blank')"><?php echo $usuario['NOMBRE'] . ' ' . $usuario['APELLIDOS']; ?></h6>
-            </div>
-            <div class="col-3">
-                <br>
-                <p><?php echo date('d-m-Y', strtotime($postulacion['FECHA'])); ?></p>
-            </div>
-            <div class="col-3">
-                <br>
-                <?php echo $postulacion['ESTATUS']; ?>
+                </div>
+                <div class="col-4">
+                    <br>
+                    <h6 onclick="window.open('curriculum/pdf/?id=<?php echo $usuario['ID']; ?>','_blank')"><?php echo $usuario['NOMBRE'] . ' ' . $usuario['APELLIDOS']; ?></h6>
+                </div>
+                <div class="col-3">
+                    <br>
+                    <p><?php echo date('d-m-Y', strtotime($postulacion['FECHA'])); ?></p>
+                </div>
+                <div class="col-3">
+                    <br>
+                    <?php echo $postulacion['ESTATUS']; ?>
+                </div>
             </div>
         </div>
-    </div>
+    </a>
     <br>
 <?php
 }

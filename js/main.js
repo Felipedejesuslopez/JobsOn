@@ -179,7 +179,7 @@ $(document).ready(function() {
                 $("#aviso").html(msg);
                 $("#modalavisos").modal("show");
                 setTimeout(function() {
-                    location.reload();
+                    //location.reload();
                 }, 5000);
                 console.log(msg);
             })
