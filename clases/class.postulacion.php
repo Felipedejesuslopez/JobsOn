@@ -133,4 +133,10 @@ class postulacion
         $res = $bd->query($sql);
         return $res;
     }
+
+    public function avanzar(){
+        $bd = new Conexion();
+        $sql = "UPDATE postulaciones SET ESTATUS = '{$this->estatus}' WHERE ID = '{$this->id}'";
+        $bd->query($sql);
+    }
 }

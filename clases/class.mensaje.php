@@ -22,6 +22,7 @@ class mensaje
         $this->hora = $hora;
     }
 
+    
     public function create()
     {
         $bd = new Conexion();
@@ -40,7 +41,7 @@ class mensaje
                 ID_RECEPTOR INT,
                 ROL_EMISOR VARCHAR(255),
                 ROL_RECEPTOR VARCHAR(255),
-                MENSAJE VARCHAR(255),
+                MENSAJE VARCHAR(2255),
                 FECHA VARCHAR(255),
                 HORA TIME)";
 
@@ -48,7 +49,6 @@ class mensaje
         }
         $bd->query($sql);
     }
-
 
 
     public function read()
@@ -71,12 +71,14 @@ class mensaje
     {
     }
 
+
     public function delete($id)
     {
         $bd = new Conexion();
         $sql = "DELETE FROM mensaje WHERE ID = {$id}";
         $bd->query($sql);
     }
+
 
     public function chats()
     {
@@ -92,7 +94,6 @@ class mensaje
         $res = $bd->query($sql);
         return $res;
     }
-
 
 
     public function chat()

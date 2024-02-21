@@ -33,9 +33,9 @@ class Entrevista
     public function create()
     {
         $bd = new Conexion();
-        $consultaExistencia = "SHOW TABLES LIKE 'entrevistas'";
+        $consultaExistencia = "SHOW TABLES LIKE 'entrevista'";
         $resultado = $bd->query($consultaExistencia);
-        $sql = "INSERT INTO ENTREVISTA 
+        $sql = "INSERT INTO entrevista 
         (POSTULACION, ROLAGENDA, IDAGENDA, USUARIO, FECHA, HORA, UBICACION, ESTADO, OBSERVACIONES) 
         VALUES 
         ('{$this->postulacion}', '{$this->rolagenda}', '{$this->idagenda}', '{$this->usuario}', '{$this->fecha}', '{$this->hora}', '{$this->ubicacion}', '{$this->estado}', '{$this->observaciones}')";
@@ -64,10 +64,14 @@ class Entrevista
     public function read()
     {
         $bd = new Conexion();
-        if (isset($this->id) && $this->id != "") {
-            $sql = "SELECT * FROM entrevistas ORDER BY ID ASC";
+        if (isset($this->id) && $this->id != null) {
+            $sql = "SELECT * FROM entrevista ORDER BY ID ASC";
+        } else if (isset($this->rolagenda) && $this->rolagenda != null && isset($this->idagenda) && $this->idagenda != null) {
+            $sql = "SELECT * FROM entrevista WHERE ROLAGENDA = '{$this->rolagenda}' AND IDAGENDA = '{$this->idagenda}' AND FECHA < CURDATE() ORDER BY FECHA ASC";
+        } else if (isset($this->postulacion)) {
+            $sql = "SELECT * FROM entrevista WHERE POSTULACION = '{$this->postulacion}' ORDER BY FECHA ASC";
         } else {
-            $sql = "SELECT * FROM entrevistas WHERE ID = '{$this->id}'";
+            $sql = "SELECT * FROM entrevista WHERE ID = '{$this->id}'";
         }
 
         return $bd->query($sql);
@@ -76,7 +80,7 @@ class Entrevista
     public function update()
     {
         $bd = new Conexion();
-        $sql = "UPDATE ENTREVISTA
+        $sql = "UPDATE entrevista
             SET POSTULACION = '{$this->postulacion}', 
                 ROLAGENDA = '{$this->rolagenda}', 
                 IDAGENDA = '{$this->idagenda}', 
