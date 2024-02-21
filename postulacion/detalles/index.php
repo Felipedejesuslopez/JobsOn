@@ -1,9 +1,13 @@
 <?php
+session_start();
 include '../../clases/class.conexion.php';
 include '../../clases/class.postulacion.php';
 include '../../clases/class.ofertalaboral.php';
 include '../../clases/class.usuariopostulante.php';
-session_start();
+include '../../clases/class.entrevista.php';
+include '../../clases/class.empresa.php';
+include '../../resources/const.php';
+
 $postu = new postulacion($_GET['id'], null, null, null, null, null, null, null);
 $postulacion = $postu->read()->fetch_array();
 
@@ -12,6 +16,10 @@ $postulante = $usuario->read()->fetch_array();
 
 $vac = new OfertaLaboral($postulacion['VACANTE'], null, null, null, null, null, null, null, null, null, null, null);
 $vacante = $vac->read()->fetch_array();
+
+$emp = new Empresa($vacante['EMPRESA'], null, null, null, null, null, null, null, null, null, null);
+$empresa = $emp->read()->fetch_array();
+
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
@@ -99,10 +107,29 @@ switch ($postulacion['ESTATUS']) {
             <div class="alert alert-danger">
                ¡No hay ningún progreso ni información referente a esta vacante, probablemente ha terminado o existió un error!
             </div>
-         <?php
+            <?php
          }
 
          if ($ent == true) {
+            $entrevista = new Entrevista(null, $postulacion['ID'], null, null, null, null, null, null, null, null);
+            $entrevistas = $entrevista->read();
+            while ($interviews = $entrevistas->fetch_array()) {
+            ?>
+               <div class="progress2 progress-line">
+                  <br><br>
+                  <div class="row">
+                     <div class="col-3">
+                        <p class="fecha">
+                           <?php echo date('d/m/Y', strtotime($interviews['FECHA'])); ?>
+                        </p>
+                     </div>
+                     <div class="col-4"></div>
+                     <div class="col-4"><?php echo $l['interview']; ?></div>
+                  </div>
+                  <br>
+               </div>
+         <?php
+            }
          }
          ?>
       </div>
@@ -113,7 +140,10 @@ switch ($postulacion['ESTATUS']) {
                <button class="btn btn-outline-primary" style="border-radius:50%; padding:15px; margin:5%;" onclick="$('#agendar').modal('show')" title="Agedar Entrevista">
                   <i class="fas fa-clipboard-list"></i>
                </button>
-               <button class="btn btn-outline-success" style="border-radius:50%; padding:15px; margin:5%;" title="Citar a presentarse">
+               <button class="btn btn-outline-warning" style="border-radius:50%; padding:15px; margin:5%;" title="Programar a examenes médicos">
+                  <i class="fas fa-flask"></i>
+               </button>
+               <button class="btn btn-outline-success" style="border-radius:50%; padding:15px; margin:5%;" onclick="$('#cita').modal('show')" title="Citar a presentarse">
                   <i class="fas fa-city"></i>
                </button>
                <button class="btn btn-outline-danger" style="border-radius:50%; padding:15px; margin:5%;" title="Rechazar">

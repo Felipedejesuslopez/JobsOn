@@ -32,7 +32,7 @@ $list = $vacante->read();
             } else if(is_dir('imagenes_vacantes/' . $oferta['ID'] . '/')){
                 $archivos = scandir('imagenes_vacantes/' . $oferta['ID'] . '/');
             }else{
-                
+                $archivos=[];
             }
 
             // Filtrar los archivos y directorios especiales (., ..)

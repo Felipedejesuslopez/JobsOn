@@ -54,7 +54,7 @@ $msjs = $mensaje->chat();
             $clase = "message-received";
         }
     ?>
-        <div class="<?php echo $clase; ?>">
+        <div class="burbuja-shat <?php echo $clase; ?>">
             <?php echo $msj['MENSAJE']; ?>
             <p><?php echo $msj['HORA']; ?></p>
         </div>

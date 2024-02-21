@@ -13,7 +13,7 @@ session_start();
     require_once '../clases/class.reclutador.php';
 
     $reclutador = new Reclutador(0, '', '', '', '', '', '', '', '', '', '');
-    
+
     function mostrarMensaje($mensaje, $tipo = 'success')
     {
         return "<div style='color: " . ($tipo === 'success' ? 'green' : 'red') . "; margin-bottom: 10px;'>{$mensaje}</div>";
@@ -24,67 +24,35 @@ session_start();
 
         if ($resultados->num_rows > 0) {
             echo '<div class="reclutadores-container">';
-    
+
             while ($row = $resultados->fetch_assoc()) {
 ?>
-              <div class="card zoom-on-hover" style="margin-bottom: 10px">
-    <div class="card-body">
-        <div class="row">
-            <div class="col-2">
-                <?php
-                if (is_dir('../../imagenes_reclutador/' . $row['ID'] . '/')) {
-                    $archivos = scandir('../../imagenes_reclutador/' . $row['ID'] . '/');
-                } else if (is_dir('../imagenes_reclutador/' . $row['ID'] . '/')) {
-                    $archivos = scandir('../imagenes_reclutador/' . $row['ID'] . '/');
-                } else {
-                    $archivos = [];
-                }
+                <div class="card" style="margin-bottom: 10px">
+                    <div class="card-body">
 
-                $archivos = array_diff($archivos, array('..', '.'));
-                foreach ($archivos as $archivo) {
-                    $img = $archivo;
-                }
-                ?>
-                <img src="imagenes_reclutador/<?php echo $row['ID']; ?>/<?php echo $img; ?>" style="width:75%;">
-            </div>
-            <div class="col">
-                <h5 class="card-title reclutador-nombre"><?= $row['NAME'] ?></h5>
-                <div class="reclutador-contenido" style="display:none;">
-                    <div class="reclutador-detalles">
-                    <table class="table">
-   
-    <tr>
-        <td><i class="fas fa-envelope"></i> Email:<?= $row['EMAIL'] ?></td>
-    </tr>
-    <tr>
-        <td><i class="fas fa-address-card"></i> Cédula:<?= $row['CEDULA'] ?></td>
-    </tr>
-    <tr>
-        <td><i class="fas fa-map-marker-alt"></i> Dirección:<?= $row['DIRECCION'] ?></td>
-    </tr>
-    <tr>
-        <td><i class="fas fa-clock"></i> Nacimiento:<?= $row['NACIMIENTO'] ?></td>
-    </tr>
-    <tr>
-        <td><i class="fas fa-phone"></i> Teléfono:<?= $row['TELEFONO'] ?></td>
-    </tr>
-    <tr>
-        <td><i class="fas fa-calendar-alt"></i> Ingreso:<?= $row['INGRESO'] ?></td>
-    </tr>
-    <tr>
-        <td><i class="fas fa-circle"></i> Estatus:<?= $row['ESTATUS'] ?></td>
-    </tr>
-</table>
+                        <h5 class="card-title reclutador-nombre"><?= $row['NAME'] ?></h5>
+                        <div class="reclutador-contenido" style="display:none;">
+                            <div class="reclutador-detalles">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><i class="fas fa-id-badge"></i> ID: <?= $row['ID'] ?></li>
+                                    <li class="list-group-item"><i class="fas fa-database"></i> Usuario: <?= $row['USER'] ?></li>
+                                    <li class="list-group-item"><i class="fas fa-envelope"></i> Email: <?= $row['EMAIL'] ?></li>
+                                    <li class="list-group-item"><i class="fas fa-address-card"></i> Cédula: <?= $row['CEDULA'] ?></li>
+                                    <li class="list-group-item"><i class="fas fa-map-marker-alt"></i> Dirección: <?= $row['DIRECCION'] ?></li>
+                                    <li class="list-group-item"><i class="fas fa-clock"></i> Nacimiento: <?= $row['NACIMIENTO'] ?></li>
+                                    <li class="list-group-item"><i class="fas fa-phone"></i> Teléfono: <?= $row['TELEFONO'] ?></li>
+                                    <li class="list-group-item"><i class="fas fa-image"></i> Foto: <?= $row['FOTO'] ?></li>
+                                    <li class="list-group-item"><i class="fas fa-calendar-alt"></i> Ingreso: <?= $row['INGRESO'] ?></li>
+                                    <li class="list-group-item"><i class="fas fa-heartbeat"></i> Estatus: <?= $row['ESTATUS'] ?></li>
+                                    <!-- Agrega más detalles según sea necesario -->
+                                </ul>
+                            </div>
+                            <br>
+                            <a href="#" class="btn btn-primary" data-id="<?= $row['ID'] ?>"><i class="fas fa-edit"></i></a>
+                            <a href="#" class="btn btn-danger eliminar-reclutador" data-id="<?= $row['ID'] ?>"><i class="fas fa-trash-alt"></i></a>
+                        </div>
                     </div>
-                    <br>
-                    <a href="#" class="btn btn-primary" data-id="<?= $row['ID'] ?>"><i class="fas fa-edit"></i></a>
-                    <a href="#" class="btn btn-danger eliminar-reclutador" data-id="<?= $row['ID'] ?>"><i class="fas fa-trash-alt"></i></a>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <?php
             }
 
@@ -106,14 +74,12 @@ session_start();
     </script>
 
     <br>
-    
+
 
     <br>
-    
+
     <button onclick="cargarFormulario()" class="btn btn-success" style="width:100%;">Agregar Reclutador</button>
-    <br>
-    <br>
-    
+
 <div id="formularioContainer"></div>
 
 <script>
@@ -130,6 +96,4 @@ function cargarFormulario() {
   });
 }
 </script>
-
-
 </div>
