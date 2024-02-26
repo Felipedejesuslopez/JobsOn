@@ -123,7 +123,7 @@ class conductor
     {
 
         $bd = new Conexion();
-        $sql = "SELECT * FROM conductores WHERE (USER = ? OR EMAIL = ? OR T1 = ?) AND PASSWORD = ?";
+        $sql = "SELECT * FROM conductores WHERE (USER = ? OR EMAIL = ? OR TELEFONO = ?) AND PASSWORD = ?";
 
         $stmt = $bd->prepare($sql);
         $stmt->bind_param("ssss", $this->user, $this->email, $this->telefono, $this->password);
