@@ -8,16 +8,41 @@
                         <img src="img/JobsOn.png" id="logo">
                         <h7><br>
                             Hola, <b>
-                                <?php echo $user['NOMBRE'] ?>
+                                <?php echo $user['NAME'] ?>
                             </b>
                         </h7>
                     </div>
                     
                     <div class="col-4" id="mad">
-                        <br>
-                        <img src="img/profile.png" id="profile" alt="">
-                    </div>
+                    <br>
+                    <?php
+                    session_start();
+
+                    if(isset($_SESSION['ID'])) {
+
+                        $id_conductor = $_SESSION['ID'];
+                        $folder_path = "imagenes_conductor/$id_conductor/";
+                        $files = scandir($folder_path);
+                        $files = array_diff($files, array('.', '..'));
+
+                        if (!empty($files)) {
+                            
+                            $first_file = reset($files);
+                            $image_path = $folder_path . $first_file;
+
+                            echo "<img src='$image_path' id='profile' alt=''>";
+
+                        } else {
+
+                            echo "<img src='img/profile.png' id='profile' alt=''>";
+                        }
+                    } else {
+
+                        echo "<img src='img/profile.png' id='profile' alt=''>";
+                    }
+                    ?>
                 </div>
+            </div>
 
                 <div class="container custom-search">
                     <div class="input-group">
@@ -52,6 +77,18 @@
                         </a>
                     </div>
                 <br><br><br>
+                <div class="col-6">
+                        <a class="botonmenu" href="conductor/informacion/perfil_conductor.php">
+                            <img class="botonmenu" src="img/Menu/Conductor/conviaje.png" alt="">
+                        </a>
+                    </div>
+                    <br><br><br>
+                    <div class="col-6">
+                        <a class="botonmenu" href="conductor/registro/registro_vehiculo.php">
+                            <img class="botonmenu" src="img/Menu/Conductor/conviaje.png" alt="">
+                        </a>
+                    </div>
+                    <br><br><br>
                 <div class="od">
                     <center>
                         <a href="Settings/" class="botonopt">
