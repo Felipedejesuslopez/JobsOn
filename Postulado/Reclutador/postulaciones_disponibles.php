@@ -65,8 +65,11 @@ $vac = $ofertas->read();
             </div>
             <br>
         <?php } ?>
-        <button type="button" id="btnTomarPostulaciones">Tomar Postulaciones</button>
+        <button type="button" id="btnTomarPostulaciones" class="btn btn-primary">Tomar Postulaciones</button>
     </form>
+
+
+
 </div>
 
 <script>
