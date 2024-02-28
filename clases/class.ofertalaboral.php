@@ -188,4 +188,21 @@ class OfertaLaboral
         return $this->titulo;
     }
 
+    public function readByEmpresa()
+    {
+        $bd = new Conexion();
+        $sql = "SELECT * FROM ofertas_laborales WHERE EMPRESA = '{$this->empresa}'";
+        $res = $bd->query($sql);
+        return $res;
+    }
+    public function countByEmpresa()
+{
+    $bd = new Conexion();
+    $sql = "SELECT COUNT(*) AS total FROM ofertas_laborales WHERE EMPRESA = '{$this->empresa}'";
+    $res = $bd->query($sql);
+    $row = $res->fetch_assoc();
+    return $row['total'];
+}
+
+
 }
