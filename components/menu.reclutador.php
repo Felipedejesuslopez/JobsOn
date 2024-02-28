@@ -52,7 +52,11 @@
                     </a>
                 </div>
                 <br><br><br>
-                <div class="col-3"></div>
+                <div class="col-6">
+                    <a class="botonmenu" href="Postulado/Reclutador/seleccionados.php">
+                        <img class="botonmenu" src="img/Menu/Reclutador/6.jpg" alt="">
+                    </a>
+                </div>
                 <div class="col-6">
                     <a class="botonmenu" href="Postulado/Reclutador/postulaciones_disponibles.php">
                         <img class="botonmenu" src="img/Menu/Reclutador/revacantes.png" alt="">
