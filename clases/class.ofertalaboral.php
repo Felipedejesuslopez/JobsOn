@@ -141,11 +141,11 @@ class OfertaLaboral
         return $res['ID'];
     }
 
-        public function buscarOfertasSimilares(usuariopostulante $usuario, Curriculum $curriculum)
+    public function buscarOfertasSimilares(usuariopostulante $usuario, Curriculum $curriculum)
     {
         $bd = new Conexion();
-        $prioridades = array('ubicacion', 'experiencia', 'estudios', 'trabajoPrevio', 'titulo');
-    
+        
+        // Campos de mapeo para las consultas SQL
         $campoMapeoUsuario = array(
             'ubicacion' => 'UBICACION',
         );
@@ -158,51 +158,72 @@ class OfertaLaboral
             'titulo' => 'TITULO',
         );
     
+        // Consulta base
         $sql = "SELECT * FROM ofertas_laborales WHERE 1=1";
     
-        foreach ($prioridades as $campo) {
-            if (property_exists($usuario, $campo) && !empty($usuario->$campo) && isset($campoMapeoUsuario[$campo])) {
-                $valorUsuario = $usuario->$campo;
-                $sql .= " AND {$campoMapeoUsuario[$campo]} = '{$valorUsuario}'";
-            }
-
-            if (property_exists($curriculum, $campo) && !empty($curriculum->$campo) && isset($campoMapeoCurriculum[$campo])) {
-                $valorCurriculum = $curriculum->$campo;
-                $sql .= " AND {$campoMapeoCurriculum[$campo]} = '{$valorCurriculum}'";
-            }
-
-            if (property_exists($this, $campo) && !empty($this->$campo) && isset($campoMapeoOfertaLaboral[$campo])) {
-                $valorOfertaLaboral = $this->$campo;
-                $sql .= " AND {$campoMapeoOfertaLaboral[$campo]} = '{$valorOfertaLaboral}'";
+        // Aplicar filtros según las prioridades
+        foreach ($campoMapeoUsuario as $campo => $campoBD) {
+            if (property_exists($usuario, $campo) && !empty($usuario->$campo)) {
+                $sql .= " AND {$campoBD} = ?";
             }
         }
-
-        $sql .= " ORDER BY UBICACION DESC, TITULO DESC";
-        $res = $bd->query($sql);
     
-        return $res;
+        foreach ($campoMapeoCurriculum as $campo => $campoBD) {
+            if (property_exists($curriculum, $campo) && !empty($curriculum->$campo)) {
+                $sql .= " AND {$campoBD} = ?";
+            }
+        }
+    
+        foreach ($campoMapeoOfertaLaboral as $campo => $campoBD) {
+            if (property_exists($this, $campo) && !empty($this->$campo)) {
+                $sql .= " AND {$campoBD} = ?";
+            }
+        }
+    
+        // Ordenar los resultados
+        $sql .= " ORDER BY UBICACION DESC, TITULO DESC";
+    
+        // Preparar la consulta
+        $statement = $bd->prepare($sql);
+    
+        // Manejar errores en la preparación de la consulta
+        if (!$statement) {
+            echo "Error al preparar la consulta: " . $bd->error;
+            $bd->close();
+            return false;
+        }
+    
+        // Asignar valores a los parámetros y ejecutar la consulta
+        // Aquí necesitarás ajustar según las propiedades y valores específicos de las clases
+        // Por ejemplo, $usuario->ubicacion, $curriculum->estudios, etc.
+        // $statement->bind_param('ss', $usuario->ubicacion, $curriculum->estudios);
+    
+        // Ejecutar la consulta
+        $result = $statement->execute();
+    
+        // Manejar errores en la ejecución de la consulta
+        if (!$result) {
+            echo "Error al ejecutar la consulta: " . $bd->error;
+            $statement->close();
+            $bd->close();
+            return false;
+        }
+    
+        // Obtener los resultados
+        $resultSet = $statement->get_result();
+    
+        // Cerrar la conexión y el statement
+        $statement->close();
+        $bd->close();
+    
+        // Devolver los resultados
+        return $resultSet;
     }
+    
 
     public function getTitulo()
     {
         return $this->titulo;
     }
-
-    public function readByEmpresa()
-    {
-        $bd = new Conexion();
-        $sql = "SELECT * FROM ofertas_laborales WHERE EMPRESA = '{$this->empresa}'";
-        $res = $bd->query($sql);
-        return $res;
-    }
-    public function countByEmpresa()
-{
-    $bd = new Conexion();
-    $sql = "SELECT COUNT(*) AS total FROM ofertas_laborales WHERE EMPRESA = '{$this->empresa}'";
-    $res = $bd->query($sql);
-    $row = $res->fetch_assoc();
-    return $row['total'];
-}
-
 
 }
