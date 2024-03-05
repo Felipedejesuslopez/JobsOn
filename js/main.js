@@ -236,3 +236,22 @@ $(function() {
         }
     });
 });
+
+$(".search-input").keyup(function () {
+  var searchTerm = $(this).val().trim();
+
+  $.ajax({
+    url: "vacantes/busqueda/buscar_vacantes.php",
+    method: "POST",
+    data: {
+      searchTerm: searchTerm,
+    },
+  })
+    .done(function (response) {
+      $("#main").html(response);
+    })
+    .fail(function (e) {
+      $("#aviso").html(e);
+      $("#modalavisos").modal("show");
+    });
+});
