@@ -15,17 +15,65 @@
         height: 100vh;
         /* Establece la altura máxima */
     }
+
+    .reclutador-img {
+        max-width: 100%;
+        max-height: 60%;
+    }
+
+    .empresa-img {
+        max-width: 50%;
+        max-height: 40%;
+    }
+
+    .reclutador-name {
+        font-size: 1.2em;
+    }
+
+    .empresa-name {
+        font-size: 1em;
+    }
+
+    @media (min-width: 768px) {
+        .img-profile {
+            max-width: 100%;
+            max-height: 60%;
+        }
+    }
 </style>
 <?php
 session_start();
 include '../../../clases/class.conexion.php';
 include '../../../clases/class.usuariopostulante.php';
 include '../../../clases/class.mensaje.php';
-include '../../../clases/class.reclutador.php';
-ini_set('display_errprs', 1);
+if ($_GET['re'] == 'postulante') {
+    $emisor = 'postulante';
+    $iemisor = $_GET['ie'];
+    $receptor = $_GET['rr'];
+    $ireceptor = $_GET['ir'];
+} else if ($_GET['rr'] == 'postulante') {
+    $emisor = 'postulante';
+    $iemisor = $_GET['ir'];
+    $receptor = $_GET['re'];
+    $ireceptor = $_GET['ie'];
+}
+
+//ini_set('display_errors', 1);
 error_reporting(E_ALL);
-$postu = new reclutador($_GET['ir'], null, null, null, null, null, null, null, null, null, null);
-$usuario = $postu->read()->fetch_array();
+if ($_GET['rr'] == 'reclutador' || $_GET['re'] == 'reclutador') {
+    include '../../../clases/class.reclutador.php';
+    $postu = new reclutador($_GET['ir'], null, null, null, null, null, null, null, null, null, null);
+    $usuario = $postu->read()->fetch_array();
+    $nombre = $usuario['NAME'];
+    $foto = 'imagenes_reclutador/' . $usuario['FOTO'];
+} else if ($_GET['rr'] == 'empresa' || $_GET['re'] == 'empresa') {
+    include '../../../clases/class.empresa.php';
+    $postu = new Empresa($_GET['ir'], null, null, null, null, null, null, null, null, null, null);
+    $usuario = $postu->read()->fetch_array();
+    $nombre = $usuario['NOMBRE'];
+    $foto = 'img/empresas/' . $usuario['ID'] . '.jpg';
+} else if ($_GET['rr'] == 'laboratorio' || $_get['re'] == 'laboratorio') {
+}
 
 $mensaje = new mensaje(null, $_GET['ie'], $_GET['ir'], $_GET['re'], $_GET['rr'], null, null, null);
 $msjs = $mensaje->chat();
@@ -35,17 +83,19 @@ $msjs = $mensaje->chat();
     <div class="col-10">
         <div class="encabezado">
             <div class="row">
-                <div class="col-2">
-                    <img src="img/profile/<?php echo $usuario['ID']; ?>.png" style="width:80%; border-radius:20px;" alt="">
+                <div class="col-4 col-md-2">
+                    <img src="<?php echo $foto; ?>" class="img-fluid rounded-circle img-profile" alt="">
                 </div>
-                <div class="col-10">
-                    <?php echo $usuario['NAME']; ?>
-                </div> 
+                <div class="col-8 col-md-10">
+                    <?php echo $nombre; ?>
+                </div>
             </div>
+
         </div>
     </div>
 </div>
-<div class="chat">
+
+<div class="chat" id="chat-container">
     <?php
     while ($msj = $msjs->fetch_array()) {
         if ($_SESSION['ID'] == $msj['ID_EMISOR'] && $msj['ROL_EMISOR'] == 'postulante') {
@@ -64,10 +114,10 @@ $msjs = $mensaje->chat();
 </div>
 <div class="mensaje">
     <form id="mensaje">
-        <input type="text" id="ID_EMISOR" name="ID_EMISOR" value="<?php echo $_GET['ie']; ?>" style="display: none;">
-        <input type="text" id="ID_RECEPTOR" name="ID_RECEPTOR" value="<?php echo $_GET['ir']; ?>" style="display: none;">
-        <input type="text" id="ROL_EMISOR" name="ROL_EMISOR" value="<?php echo $_GET['re']; ?>" style="display: none;">
-        <input type="text" id="ROL_RECEPTOR" name="ROL_RECEPTOR" value="<?php echo $_GET['rr']; ?>" style="display: none;">
+        <input type="text" id="ID_EMISOR" name="ID_EMISOR" value="<?php echo $iemisor; ?>" style="display: none;">
+        <input type="text" id="ID_RECEPTOR" name="ID_RECEPTOR" value="<?php echo $ireceptor; ?>" style="display: none;">
+        <input type="text" id="ROL_EMISOR" name="ROL_EMISOR" value="<?php echo $emisor; ?>" style="display: none;">
+        <input type="text" id="ROL_RECEPTOR" name="ROL_RECEPTOR" value="<?php echo $receptor; ?>" style="display: none;">
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Escribe tu mensaje aquí" name="mensaje" id="message" autofocus>
             <div class="input-group-append">

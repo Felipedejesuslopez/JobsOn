@@ -1,10 +1,10 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
 session_start();
 include '../../clases/class.conexion.php';
 include '../../clases/class.usuariopostulante.php';
 include '../../clases/class.curriculum.php';
+//ini_set('display_errors', 1);
+//error_reporting(E_ALL);
 
 if (isset($_GET['id'])) {
   $us = new usuariopostulante($_GET['id'], null, null, null, null, null, null, null, null, null, null, null, null, null, null);

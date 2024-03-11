@@ -1,6 +1,7 @@
 <?php
 session_start();
-
+ini_set('display_errors', 1);
+error_reporting(0);
 if (isset($_SESSION["ID"])) {
     include 'css/bts.php';
     include 'modals/modalavisos.php';
@@ -18,7 +19,8 @@ if (isset($_SESSION["ID"])) {
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="Job, work, trabajo, empleo, saltillo, coahuila, trabajar, sueldo, ingreso, vacante, ofertas laborales">
     <script src="js/main.js"></script>
     <link rel="stylesheet" href="css/main.css">
     <!-- Incluye la hoja de estilos de Bootstrap -->
@@ -61,39 +63,39 @@ if (isset($_SESSION["ID"])) {
 
         ?>
     </div>
-    <div class="container" id="content">
-        <div id="main">
-            
-            <?php
-            error_reporting(0);
-            switch ($_SESSION['tipo']) {
-                case 1:
-                    include 'vacantes/index.php';
-                    break;
+    <div class="container" id="main" style="margin-top:2% ;">
 
-                case 2:
-                    include 'components/menu.admin.php';
-                    break;
 
-                case 3:
-                    include 'empresa/vacantes/detalles/';
-                    break;
+        <?php
+        //print_r($_SESSION);
+        error_reporting(0);
+        switch ($_SESSION['tipo']) {
+            case 1:
+                include 'vacantes/index.php';
+                break;
 
-                case 4:
-                    include 'components/menu.laboratorio.php';
-                    break;
+            case 2:
+                include 'components/menu.admin.php';
+                break;
 
-                case 5:
-                    include 'components/menu.conductor.php';
-                    break;
+            case 3:
+                include 'empresa/vacantes/detalles/';
+                break;
 
-                case 6:
-                    include 'components/menu.reclutador.php';
-                    break;
-            }
-            ?>
-            
-        </div>
+            case 4:
+                include 'components/menu.laboratorio.php';
+                break;
+
+            case 5:
+                include 'components/menu.conductor.php';
+                break;
+
+            case 6:
+                include 'components/menu.reclutador.php';
+                break;
+        }
+        ?>
+
     </div>
 </body>
 
